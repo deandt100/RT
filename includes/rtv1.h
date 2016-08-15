@@ -20,7 +20,7 @@
 # include "vector.h"
 # include "colours.h"
 # include "light.h"
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # define WIN_X 800
 # define WIN_Y 600
 # define EXIT 53
