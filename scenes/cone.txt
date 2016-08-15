@@ -1,0 +1,21 @@
+# Comment lines to be prefixed with '#'
+A materials:4
+A lights:1
+A spheres:0
+A triangles:0
+A cylinders:0
+A cone:1
+A Camera :  R x0 y0 z0 D x0 y0 z1 P x0 y0 z-2000
+# Materials r[0-255] g[0-255] b[0-255] *[reflection]
+M r255 g255 b255 *0
+M r125 g42 b200 *2
+M r215 g0 b255 *7
+M r255 g255 b255 *2
+# -L Lights (x; y; x) colour [0-255] g[0-255] b[0-255] 
+L (x400 ; y300 ; z-1000) r200 g200 b200
+# L (x200 ; y300 ; z-1000) r100 g100 b100
+# Spheres
+# Triangles
+# Cylinders
+# Cone
+O R x0 y0 z30 P x400 y300 z-1000 V x0 y0 z1 a30 m0
