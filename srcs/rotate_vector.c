@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 07:50:46 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 09:24:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 11:10:10 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	rotate_vec_y(float angle, t_vector *v)
 	float	z1;
 
 	angle = angle * 0.01745329252;
-	printf("angle y %f\n", angle);
-	exit(1);
 	x1 = v->z * cos(angle) + v->x * sin(angle);
 	z1 = v->x * cos(angle) - v->z * sin(angle);
 	v->x = x1;

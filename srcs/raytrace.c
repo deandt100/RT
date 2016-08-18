@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/16 15:01:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 12:20:29 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,15 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		else if (OBJ.cur_tri != -1)
 			set_val_tri(env, t, ray);
 		else if (OBJ.cur_cyl != -1)
+		{
 			set_val_cyl(env, t, ray);
+//			set_col(&OBJ.col, 42, 42, 42);
+//			return(OBJ.col);
+		}
 		else if (OBJ.cur_cone != -1)
+		{
 			set_val_cone(env, t, ray);
+		}
 		else
 			break ;
 		if (env->br == 1)

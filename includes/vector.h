@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/16 11:09:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 12:10:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ t_vector		vector_div(t_vector *v1, t_vector *v2);
 
 t_vector		vector_unit(t_vector v);
 
+t_vector		vector_project(t_vector a, t_vector b);
+
 /*
 ** Rotation
 */
@@ -117,5 +119,9 @@ void			rotate_vec_y(float angle, t_vector *v);
 void			rotate_vec_z(float angle, t_vector *v);
 
 void			rotate_tri(t_triangle *tri);
+
+t_vector		get_cyl_normal(t_cylinder cyl, t_vector p);
+
+t_vector		get_cone_normal(t_cone	cone, t_vector p);
 
 #endif

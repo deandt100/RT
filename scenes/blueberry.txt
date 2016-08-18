@@ -19,4 +19,4 @@ Sx40 y0 z0 r20 m0
 #T v1(x0y0z200), v2(x800y0z200), v3(x800y600z200) m0 R x0 y-44 z0
 #T v1(x0y0z200), v2(x800y600z200), v3(x0y600z200) m0 R x0 y0 z0
 # Cones
-O R x0 y0 z0 P x0 y0 z0 V x0 y0 z1 a30 m0
+O R x0 y0 z0 P x0 y0 z0 V x0 y0 z1 a45 m0

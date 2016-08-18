@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 11:09:03 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/16 14:49:52 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 11:07:38 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ void			init_cam(t_env *env)
 
 	CAM.n = vector_sub(&CAM.pos, &CAM.dir); //n = (eye – COI) / | eye – COI| 
 	print_vector("n : ", CAM.n);
-//	CAM.n = vector_unit(CAM.n);
 	vector_norm(&CAM.n);
 	print_vector("n : ", CAM.n);
 	print_vector("pos : ", CAM.pos);
 	print_vector("u : ", CAM.u);
 	CAM.u = vector_cross(&CAM.v_up, &CAM.n);
 	print_vector("u : ", CAM.u);
-//	CAM.u = vector_unit(CAM.u);
 	vector_norm(&CAM.u);
 
 	CAM.v = vector_cross(&CAM.n, &CAM.u);
@@ -69,7 +67,6 @@ void			init_cam(t_env *env)
 	CAM.l = vector_sub(&CAM.c, &uw2);
 	CAM.l =  vector_add(&CAM.l, &vh2);//C - u * W/2 - v * H/2
 	print_vector("L : ", CAM.l);
-//	exit(1);
 }
 
 void			get_cam(t_env *env, int fd)
@@ -96,11 +93,8 @@ void			get_cam(t_env *env, int fd)
 		}
 		free(line);
 	}
-//	OBJ.cam_dir = vector_dir(&OBJ.cam_s, &OBJ.cam_dir);
 	print_vector("cam dir vector : ", CAM.dir);
 	rotate_cam(env);
 	print_vector("cam dir vector : ", CAM.dir);
 	init_cam(env);
-//	exit(1);
-	print_vector("cam dir vector : ", OBJ.cam_dir);
 }
