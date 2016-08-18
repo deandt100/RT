@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/16 09:21:14 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/16 15:01:23 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,24 @@ static void			save_to_img(t_env *env, t_col col, int x, int y)
 	env->img.data[(x + y * WIN_X) * 4 + 0] = (unsigned char)temp.b;
 }
 
+void	create_ray(double x, double y, t_ray *ray, t_env *env)
+{
+	t_vector	s;
+	t_vector	ut;
+	t_vector	vt;
+
+	ut = vector_scale(x * CAM.w / (double)WIN_X, &CAM.u);
+	vt = vector_scale(y * CAM.h / (double)WIN_Y, &CAM.v);
+	s = vector_add(&CAM.l, &ut);
+	s = vector_sub(&s, &vt);
+//	print_vector("u : ", CAM.u);
+//	print_vector("ut : ", ut);
+//	print_vector("s : ", s);
+	ray->dir = vector_sub(&s, &CAM.pos);
+//	ray->dir = vector_unit(ray->dir);
+	vector_norm(&ray->dir);
+}
+
 /*
 ** Iterate through each pixel, shoot ray into scene for each and save returned
 ** colour value to image.
@@ -99,19 +117,22 @@ void				raytrace(t_env *env)
 	t_col	col;
 
 	y = 0;
+	ray.start = CAM.pos;
 	while (y < WIN_Y)
 	{
 		x = 0;
 		while (x < WIN_X)
 		{
-			ray.start = OBJ.cam_s;
-			ray.start.x += x;
-			ray.start.y += y;
-			ray.dir = OBJ.cam_dir;
-			vector_norm(&ray.dir);
+//			ray.start.x += x;
+//			ray.start.y += y;
+			create_ray(x, y, &ray, env);
+//			print_vector("cam s: ", ray.start);
+//			print_vector("cam d: ", ray.dir);
+//:			ray.dir = OBJ.cam_dir;
+//			vector_norm(&ray.dir);
 			set_col(&OBJ.col, 0, 0, 0);
 			env->br = 0;
-			col = shoot_ray(ray, 10, env);
+			col = shoot_ray(ray, 5, env);
 			save_to_img(env, col, x, y);
 			x++;
 		}

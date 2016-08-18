@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_sub.c                                       :+:      :+:    :+:   */
+/*   vector_unit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/04 08:26:31 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/16 09:40:59 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/08/16 08:40:09 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/08/16 14:44:01 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
-/*
-** Subtract two vectors and return the resulting vector
-*/
-
-t_vector	vector_sub(t_vector *v1, t_vector *v2)
+t_vector	vector_unit(t_vector v)
 {
-	t_vector	ret;
+	t_vector	v_n;
 
-	ret.x = v1->x - v2->x;
-	ret.y = v1->y - v2->y;
-	ret.z = v1->z - v2->z;
-	return (ret);
+	v_n = v;
+	print_vector("v_n :", v_n);
+	vector_norm(&v_n);
+	print_vector("v_n :", v_n);
+	return (vector_div(&v, &v_n));
 }

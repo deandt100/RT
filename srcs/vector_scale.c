@@ -6,13 +6,13 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 13:09:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/13 16:49:46 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/15 10:00:11 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vector.h"
 
-t_vector	vector_scale(float c, t_vector *v)
+t_vector	vector_scale(double c, t_vector *v)
 {
 	t_vector	ret;
 

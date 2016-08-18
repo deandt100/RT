@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 13:03:07 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 13:11:47 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/16 08:50:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
 t_vector	vector_norm(t_vector *v)
 {

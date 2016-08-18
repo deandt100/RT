@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 14:02:18 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/16 00:00:12 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/15 14:46:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int			intersect_ray_sphere(t_ray *ray, t_sphere *sphere, float *t)
 		return (0);
 	else
 	{
-		rs.sqrtdiscr = sqrtf(rs.discr);
+		return (solve_quadratic(&rs, t));
+/*		rs.sqrtdiscr = sqrtf(rs.discr);
 		rs.t0 = (-rs.b + rs.sqrtdiscr) / 2;
 		rs.t1 = (-rs.b - rs.sqrtdiscr) / 2;
 		if (rs.t0 > rs.t1)
@@ -100,7 +101,7 @@ int			intersect_ray_sphere(t_ray *ray, t_sphere *sphere, float *t)
 		}
 		else
 			return (0);
-	}
+*/	}
 }
 
 /*

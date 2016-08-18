@@ -6,15 +6,15 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 21:06:32 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/08 21:50:28 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/15 12:17:13 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
-float	vector_dist(t_vector *v1, t_vector *v2)
+double	vector_dist(t_vector *v1, t_vector *v2)
 {
-	float		dist;
+	double		dist;
 	t_vector	d;
 
 	d = vector_sub(v2, v1);
