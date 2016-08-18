@@ -3,135 +3,72 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/15 15:15:58 by ggroener         ###   ########.fr        #
+#    Created: 2016/07/01 13:21:50 by daviwel           #+#    #+#              #
+#    Updated: 2016/08/18 07:25:03 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RT
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -g
+PATH = srcs/
 
-CC = gcc
+V_PATH = src/vector/
 
-INCLUDES_PATH = includes/
+SRC = $(PATH)main.c \
+	  $(PATH)vector_dot.c \
+	  $(PATH)vector_new.c \
+	  $(PATH)vector_sub.c \
+	  $(PATH)vector_add.c \
+	  $(PATH)vector_cross.c \
+	  $(PATH)vector_scale.c \
+	  $(PATH)vector_dist.c \
+	  $(PATH)vector_rotate.c \
+	  $(PATH)vector_norm.c \
+	  $(PATH)vector_dir.c \
+	  $(PATH)vector_div.c \
+	  $(PATH)vector_unit.c \
+	  $(PATH)rotate_tri.c \
+	  $(PATH)key_hook.c \
+	  $(PATH)close_window.c \
+	  $(PATH)intersect_ray_trace.c \
+	  $(PATH)get_input.c \
+	  $(PATH)count_types.c \
+	  $(PATH)get_cam.c \
+	  $(PATH)fill_spheres.c\
+	  $(PATH)fill_triangles.c\
+	  $(PATH)fill_lights.c\
+	  $(PATH)fill_materials.c\
+	  $(PATH)fill_cylinders.c\
+	  $(PATH)fill_cone.c\
+	  $(PATH)raytrace.c\
+	  $(PATH)set_vec_shape.c\
+	  $(PATH)get_intersections.c\
+	  $(PATH)light.c\
+	  $(PATH)shadow.c\
+	  $(PATH)set_structs.c\
+	  $(PATH)new_triangle.c\
+	  $(PATH)unrotate_vec2.c \
+	  $(PATH)solve_quadratic.c
 
-SRCS_PATH = srcs/
+OBJ = $(SRC:.c=.o)
 
-SRCS_NAME1 = main.c \
-			vector_dot.c \
-			vector_new.c \
-			vector_sub.c \
-			vector_add.c \
-			vector_cross.c \
-			vector_scale.c \
-			vector_dist.c \
-			vector_rotate.c \
-			vector_norm.c \
-			vector_dir.c \
-			rotate_tri.c \
-			key_hook.c \
-			close_window.c \
-			intersect_ray_trace.c \
+ATTACH = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 
-SRCS_NAME2 = get_input.c \
-			count_types.c \
-			get_cam.c \
-			fill_spheres.c\
-			fill_triangles.c\
-			fill_lights.c\
-			fill_materials.c\
-			fill_cylinders.c\
-			fill_cone.c\
-			raytrace.c\
-			set_vec_shape.c\
-			get_intersections.c\
-			light.c\
-			shadow.c\
-			set_structs.c\
-			new_triangle.c\
-			unrotate_vec2.c \
-			solve_quadratic.c 
+INCLUDES = -I includes/ -I libft/includes
 
-SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
+all: $(NAME)
 
-SRCS1 = $(addprefix $(SRCS_PATH), $(SRCS_NAME1))
-
-SRCS = $(SRCS1) $(SRCS2)
-
-OBJS_PATH = objs/
-
-OBJS_NAME = $(SRCS_NAME1:.c=.o) $(SRCS_NAME2:.c=.o)
-
-OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
-
-LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
-
-HEADER = 	$(INCLUDES_PATH)colours.h \
-			$(INCLUDES_PATH)light.h \
-			$(INCLUDES_PATH)vector.h \
-			$(INCLUDES_PATH)rtv1.h \
-
-all: qme odir $(NAME)
-
-define colourecho
-	@tput setaf 14
-	@echo $1
-	@tput sgr0
-endef
-
-define colourecho2
-	@tput setaf 2
-	@echo $1
-	@tput sgr0
-endef
-
-$(NAME): $(OBJS)
-	@Make -C libft
-	@$(call colourecho, " - Making $(NAME)")
-	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) -I$(INCLUDES_PATH)
-	@clear
-	@$(call colourecho, "Make Done!")
-
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	@$(call colourecho, " - Compiling $<")
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_PATH)
-	@$(call colourecho, "Compiling Done!")
-
-odir:
-	@mkdir -p $(OBJS_PATH)
+$(NAME):
+	clang -Wall -Werror -Wextra $(INCLUDES) -c $(SRC)
+	/bin/mv *.o srcs
+	clang -Wall -Werror -Wextra -o $(NAME) $(OBJ) $(ATTACH) $(INCLUDES)
 
 clean:
-	@Make clean -C libft
-	@$(call colourecho, " - Clearing object files")
-	@rm -f $(OBJS)
-	@$(call colourecho, "clean done!")
+	/bin/rm -f $(OBJ)
 
 fclean: clean
-	@Make fclean -C libft
-	@$(call colourecho, "Clearing executable files")
-	@rm -f $(NAME)
-	@$(call colourecho, "fclean done")
+	/bin/rm -f $(NAME)
 
 re: fclean all
-	@$(call colourecho, "re Done!")
-
-format: norme me
-
-norm:
-	@clear
-	@$(call colourecho2, "Norminette:")
-	@norminette $(SRCS1)
-	@norminette $(SRCS2)
-	@norminette $(HEADER)
-
-qme:
-	@rm -Rf author
-	@whoami > author
-	
-me: qme
-	cat -e author
-
-.PHONY: clean fclean re odir

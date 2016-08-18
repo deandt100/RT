@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/04 10:38:12 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/08/15 09:59:41 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Creates a new t_vector and returns a pointer to it.
 */
 
-t_vector	new_vector(float x, float y, float z)
+t_vector	new_vector(double x, double y, double z)
 {
 	t_vector	new;
 

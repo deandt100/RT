@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/07/16 09:18:44 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/16 15:54:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@
 # include <stdlib.h>
 # include <math.h>
 # include <mlx.h>
-# include "vector.h"
-# include "colours.h"
-# include "light.h"
-# include "../libft/includes/libft.h"
+# include <vector.h>
+# include <colours.h>
+# include <light.h>
+# include <libft.h>
 # define WIN_X 800
 # define WIN_Y 600
+# define WIN_RATIO WIN_X / WIN_Y
+# define VFOV (double) 60
 # define EXIT 53
 # define OBJ env->obj
+# define CAM OBJ.cam
 # define SPHERES env->obj.spheres
 # define CYLINDERS env->obj.cylinders
 # define CONES env->obj.cones
@@ -76,9 +79,11 @@ typedef struct	s_obj
 	t_vector	normal;
 	t_vector	new_start;
 	t_col		col;
+	t_cam		cam;
 	t_vector	cam_s;
 	t_vector	cam_dir;
 	t_vector	cam_rot;
+	float		fov;
 	float		ref_dist;
 }				t_obj;
 
