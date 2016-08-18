@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 12:20:29 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 16:57:25 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 	ray->start = OBJ.new_start;
 	reflect = 2.0f * vector_dot(&ray->dir, &OBJ.normal);
 	tmp = vector_scale(reflect, &OBJ.normal);
-	ray->dir = vector_sub(&ray->dir, &tmp);
+	ray->dir = vector_sub(ray->dir, tmp);
 }
 
 /*
@@ -45,7 +45,11 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		if (OBJ.cur_sphere != -1)
 			set_val_sphere(env, t, ray);
 		else if (OBJ.cur_tri != -1)
+		{
 			set_val_tri(env, t, ray);
+//			set_col(&OBJ.col, 42, 42, 42);
+//			return(OBJ.col);		
+		}
 		else if (OBJ.cur_cyl != -1)
 		{
 			set_val_cyl(env, t, ray);
@@ -100,12 +104,12 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 
 	ut = vector_scale(x * CAM.w / (double)WIN_X, &CAM.u);
 	vt = vector_scale(y * CAM.h / (double)WIN_Y, &CAM.v);
-	s = vector_add(&CAM.l, &ut);
-	s = vector_sub(&s, &vt);
+	s = vector_add(CAM.l, ut);
+	s = vector_sub(s, vt);
 //	print_vector("u : ", CAM.u);
 //	print_vector("ut : ", ut);
 //	print_vector("s : ", s);
-	ray->dir = vector_sub(&s, &CAM.pos);
+	ray->dir = vector_sub(s, CAM.pos);
 //	ray->dir = vector_unit(ray->dir);
 	vector_norm(&ray->dir);
 }

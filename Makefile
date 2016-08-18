@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/18 10:50:07 by ggroener         ###   ########.fr        #
+#    Updated: 2016/08/18 16:05:15 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS_NAME1 = main.c \
 			vector_rotate.c \
 			vector_norm.c \
 			vector_dir.c \
+			vector_project.c \
 			rotate_tri.c \
 			key_hook.c \
 			close_window.c \
@@ -53,7 +54,8 @@ SRCS_NAME2 = get_input.c \
 			set_structs.c\
 			new_triangle.c\
 			unrotate_vec2.c \
-			solve_quadratic.c 
+			solve_quadratic.c \
+		   normals.c	
 
 SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
 

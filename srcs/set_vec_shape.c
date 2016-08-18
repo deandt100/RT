@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 15:47:55 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 16:57:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	set_val_sphere(t_env *env, float t, t_ray ray)
 	t_vector	scaled;
 
 	scaled = vector_scale(t, &ray.dir);
-	OBJ.new_start = vector_add(&ray.start, &scaled);
-	OBJ.normal = vector_sub(&OBJ.new_start, &SP_POS(OBJ.cur_sphere));
+	OBJ.new_start = vector_add(ray.start, scaled);
+	OBJ.normal = vector_sub(OBJ.new_start, SP_POS(OBJ.cur_sphere));
 	if (vector_dot(&OBJ.normal, &OBJ.normal) == 0)
 	{
 		env->br = 1;
@@ -37,7 +37,8 @@ void	set_val_tri(t_env *env, float t, t_ray ray)
 	t_vector	scaled;
 
 	scaled = vector_scale(t, &ray.dir);
-	OBJ.new_start = vector_add(&ray.start, &scaled);
+	OBJ.new_start = vector_add(ray.start, scaled);
+	OBJ.normal = vector_project(OBJ.normal, ray.start);
 	OBJ.normal = TRI[OBJ.cur_tri].normal;
 	if (vector_dot(&OBJ.normal, &OBJ.normal) == 0)
 	{
@@ -61,7 +62,7 @@ void	set_val_cyl(t_env *env, float t, t_ray ray)
 	t_vector	scaled;
 
 	scaled = vector_scale(t, &ray.dir);
-	OBJ.new_start = vector_add(&ray.start, &scaled);
+	OBJ.new_start = vector_add(ray.start, scaled);
 	OBJ.normal = get_cyl_normal(CYLINDERS[OBJ.cur_cyl], OBJ.new_start);
 	OBJ.cur_mat = env->obj.mats[CYLINDERS[OBJ.cur_cyl].shape.material];
 }
@@ -71,7 +72,7 @@ void	set_val_cone(t_env *env, float t, t_ray ray)
 	t_vector	scaled;
 
 	scaled = vector_scale(t, &ray.dir);
-	OBJ.new_start = vector_add(&ray.start, &scaled);
+	OBJ.new_start = vector_add(ray.start, scaled);
 	OBJ.normal = get_cone_normal(CONES[OBJ.cur_cone], OBJ.new_start);
 /*	OBJ.cur_mat = env->obj.mats[CYLINDERS[OBJ.cur_cyl].shape.material];
 	OBJ.normal = vector_sub(&OBJ.new_start, &CN_POS(OBJ.cur_cone));
