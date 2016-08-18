@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 11:37:37 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 16:48:33 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		gi_sphere(t_env *env, t_ray ray, float *t, float *ref_dist)
 		if (intersect_ray_sphere(&ray, &OBJ.spheres[i], &t1))
 		{
 			scaled = vector_scale(t1, &ray.dir);
-			ns = vector_add(&ray.start, &scaled);
+			ns = vector_add(ray.start, scaled);
 			SPHERES[i].shape.dist = vector_dist(&ns, &ray.start);
 			if (SPHERES[i].shape.dist < *ref_dist)
 			{
@@ -59,7 +59,7 @@ static void		gi_tri(t_env *env, t_ray ray, float *t, float *ref_dist)
 		if (intersect_ray_tri(&ray, &OBJ.triangles[i], &t2, &n))
 		{
 			scaled = vector_scale(t2, &ray.dir);
-			nt = vector_add(&ray.start, &scaled);
+			nt = vector_add(ray.start, scaled);
 			TRI[i].shape.dist = vector_dist(&nt, &ray.start);
 			if (TRI[i].shape.dist < *ref_dist)
 			{
@@ -86,7 +86,7 @@ static void		gi_cyl(t_env *env, t_ray ray, float *t, float *ref_dist)
 		if (intersect_ray_cylinder(&ray, &CYLINDERS[i], &t3))
 		{
 			scaled = vector_scale(t3, &ray.dir);
-			nc = vector_add(&ray.start, &scaled);
+			nc = vector_add(ray.start, scaled);
 			CYLINDERS[i].shape.dist = vector_dist(&nc, &ray.start);
 			if (CYLINDERS[i].shape.dist < *ref_dist)
 			{
@@ -113,7 +113,7 @@ static void		gi_cone(t_env *env, t_ray ray, float *t, float *ref_dist)
 		if (intersect_ray_cone(&ray, &CONES[i], &t4))
 		{
 			scaled = vector_scale(t4, &ray.dir);
-			nc = vector_add(&ray.start, &scaled);
+			nc = vector_add(ray.start, scaled);
 			CONES[i].shape.dist = vector_dist(&nc, &ray.start);
 			if (CONES[i].shape.dist < *ref_dist)
 			{

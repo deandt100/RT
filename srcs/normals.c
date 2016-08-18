@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/18 08:53:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 14:48:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 17:05:15 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ t_vector	get_cone_normal(t_cone cone, t_vector p)
 	t_vector	v;
 	t_vector	p_par;
 	t_vector	p_perp;
+	t_vector	vp;
 
 	n = vector_project(p, cone.v);
 	p_par = n;
 	n = vector_dir(&n, &p);
-	u = vector_cross(&cone.v, &n);
-	v = vector_cross(&u, &n);
-	p_perp = vector_sub(&p, &p_par);
-	p_perp = vector_scale(cos(cone.alpha), &p_perp);
-	return (n);
+	u = vector_cross(cone.v, n);
+	v = vector_cross(u, n);
+	p_perp = vector_sub(p, p_par);
+	vp = vector_cross(cone.v, p_perp);
+	p_perp = vector_add(vector_scale(cos(cone.alpha), &p_perp), 
+			vector_scale(sin(cone.alpha), &vp));
+	return (vector_norm(&p_perp));
 }

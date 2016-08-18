@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/13 16:47:05 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/18 16:58:10 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	calc_lighting(t_env *env, float coef)
 	j = 0;
 	while (j < OBJ.num_lights)
 	{
-		dist = vector_sub(&OBJ.lights[j].pos, &OBJ.new_start);
+		dist = vector_sub(OBJ.lights[j].pos, OBJ.new_start);
 		if (vector_dot(&OBJ.normal, &dist) <= 0.0f)
 		{
 			j++;
