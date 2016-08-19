@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 11:09:03 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 23:19:51 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/08/19 08:37:28 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void			fill_cone(t_env *env, int fd)
 			set_vector(&CONES[i].v, ++temp);
 			rotate_cone(env, i);
 			temp = set_temp(++temp, 'a');
-			CONES[i].alpha = ft_atoi(++temp);
+			CONES[i].alpha = (double)ft_atoi(++temp);
 			temp = set_temp(++temp, 'm');
 			CONES[i].shape.material = ft_atoi(++temp);
 			i++;

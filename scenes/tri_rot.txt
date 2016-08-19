@@ -5,13 +5,13 @@ A spheres:1
 A triangles:1
 A cylinders:2
 A cone:0
-A Camera :  R x0 y0 z0 D x1 y0 z0 P x-100 y0 z0
+A Camera :  R x0 y0 z0 D x-1 y0 z0 P x100 y0 z0
 # Materials r[0-255] g[0-255] b[0-255] *[reflection]
 M r255 g255 b255 *0
 M r0 g0 b255 *0
 M r255 g0 b0 *0
 # -L Lights (x; y; x) colour [0-255] g[0-255] b[0-255] 
-L (x-50 ; y0 ; z0) r255 g255 b255
+L (x50 ; y0 ; z0) r255 g255 b255
 # Spheres
 S x0 y0 z0 r2 m0
 # Triangles

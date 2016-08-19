@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/18 17:05:12 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/19 07:47:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_cone
 	t_shape		shape;
 }				t_cone;
 
-double			vector_dot(t_vector *v1, t_vector *v2);
+double			vector_dot(t_vector v1, t_vector v2);
 
 t_vector		new_vector(double x, double y, double z);
 
@@ -90,7 +90,7 @@ t_vector		vector_sub(t_vector v1, t_vector v2);
 
 t_vector		vector_add(t_vector v1, t_vector v2);
 
-t_vector		vector_scale(double c, t_vector *v);
+t_vector		vector_scale(double c, t_vector v);
 
 t_vector		vector_cross(t_vector v1, t_vector v2);
 
@@ -100,9 +100,7 @@ double			vector_dist(t_vector *v1, t_vector *v2);
 
 t_vector		vector_norm(t_vector *v);
 
-t_vector		vector_dir(t_vector *s, t_vector *t);
-
-t_vector		vector_div(t_vector *v1, t_vector *v2);
+t_vector		vector_dir(t_vector s, t_vector t);
 
 t_vector		vector_unit(t_vector v);
 

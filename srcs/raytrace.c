@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 16:57:25 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/19 10:00:04 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 	t_vector	tmp;
 
 	ray->start = OBJ.new_start;
-	reflect = 2.0f * vector_dot(&ray->dir, &OBJ.normal);
-	tmp = vector_scale(reflect, &OBJ.normal);
+	reflect = 2.0f * vector_dot(ray->dir, OBJ.normal);
+	tmp = vector_scale(reflect, OBJ.normal);
 	ray->dir = vector_sub(ray->dir, tmp);
+	vector_norm(&ray->dir);
 }
 
 /*
@@ -102,15 +103,11 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 	t_vector	ut;
 	t_vector	vt;
 
-	ut = vector_scale(x * CAM.w / (double)WIN_X, &CAM.u);
-	vt = vector_scale(y * CAM.h / (double)WIN_Y, &CAM.v);
+	ut = vector_scale(x * CAM.w / (double)WIN_X, CAM.u);
+	vt = vector_scale(y * CAM.h / (double)WIN_Y, CAM.v);
 	s = vector_add(CAM.l, ut);
 	s = vector_sub(s, vt);
-//	print_vector("u : ", CAM.u);
-//	print_vector("ut : ", ut);
-//	print_vector("s : ", s);
 	ray->dir = vector_sub(s, CAM.pos);
-//	ray->dir = vector_unit(ray->dir);
 	vector_norm(&ray->dir);
 }
 
@@ -133,13 +130,7 @@ void				raytrace(t_env *env)
 		x = 0;
 		while (x < WIN_X)
 		{
-//			ray.start.x += x;
-//			ray.start.y += y;
 			create_ray(x, y, &ray, env);
-//			print_vector("cam s: ", ray.start);
-//			print_vector("cam d: ", ray.dir);
-//:			ray.dir = OBJ.cam_dir;
-//			vector_norm(&ray.dir);
 			set_col(&OBJ.col, 0, 0, 0);
 			env->br = 0;
 			col = shoot_ray(ray, 5, env);
