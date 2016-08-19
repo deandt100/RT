@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/18 08:56:35 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 09:24:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/19 07:47:35 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 
 t_vector	vector_project(t_vector a, t_vector b)
 {
-	return (vector_scale(vector_dot(&a, &b) / vector_dot(&b , &b), &b));
+	return (vector_scale(vector_dot(a, b) / vector_dot(b , b), b));
 }

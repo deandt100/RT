@@ -6,13 +6,13 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/18 16:05:15 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/08/19 10:02:52 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RT
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -g
+CFLAGS = -Wall -Wextra -Werror -pedantic -Ofast -g
 
 CC = gcc
 
@@ -32,6 +32,8 @@ SRCS_NAME1 = main.c \
 			vector_norm.c \
 			vector_dir.c \
 			vector_project.c \
+			vector_unit.c \
+			vector_div.c \
 			rotate_tri.c \
 			key_hook.c \
 			close_window.c \
@@ -80,47 +82,47 @@ HEADER = 	$(INCLUDES_PATH)colours.h \
 
 all: qme odir $(NAME)
 
-define colourecho
-	@tput setaf 14
-	@echo $1
-	@tput sgr0
-endef
+#define colourecho
+#	@tput setaf 14
+#	@echo $1
+#	@tput sgr0
+#endef
 
-define colourecho2
-	@tput setaf 2
-	@echo $1
-	@tput sgr0
-endef
+#define colourecho2
+#	@tput setaf 2
+#	@echo $1
+#	@tput sgr0
+#endef
 
 $(NAME): $(OBJS)
-	#@Make -C libft
-	@$(call colourecho, " - Making $(NAME)")
+#	@Make -C libft
+#	@$(call colourecho, " - Making $(NAME)")
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
 	@clear
-	@$(call colourecho, "Make Done!")
+#	@$(call colourecho, "Make Done!")
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
-	@$(call colourecho, " - Compiling $<")
+#	@$(call colourecho, " - Compiling $<")
 	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $< -I$(INCLUDES_PATH)
-	@$(call colourecho, "Compiling Done!")
+#	@$(call colourecho, "Compiling Done!")
 
 odir:
 	@mkdir -p $(OBJS_PATH)
 
 clean:
 	#@Make clean -C libft
-	@$(call colourecho, " - Clearing object files")
+	#@$(call colourecho, " - Clearing object files")
 	@rm -f $(OBJS)
-	@$(call colourecho, "clean done!")
+	#@$(call colourecho, "clean done!")
 
 fclean: clean
 	#@Make fclean -C libft
-	@$(call colourecho, "Clearing executable files")
+	#@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
-	@$(call colourecho, "fclean done")
+	#@$(call colourecho, "fclean done")
 
 re: fclean all
-	@$(call colourecho, "re Done!")
+	#@$(call colourecho, "re Done!")
 
 format: norme me
 

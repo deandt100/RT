@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 11:09:03 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/18 17:05:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/19 07:48:39 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void			init_cam(t_env *env)
 	CAM.v = vector_cross(CAM.n, CAM.u);
 	print_vector("v : ", CAM.v);
 
-	CAM.c = vector_scale(CAM.d, &CAM.n);
+	CAM.c = vector_scale(CAM.d, CAM.n);
 	CAM.c = vector_sub(CAM.pos, CAM.c); //e - n * d
 
-	uw2 = vector_scale(CAM.w / 2.0, &CAM.u);
-	vh2 = vector_scale(CAM.h / 2.0, &CAM.v);
+	uw2 = vector_scale(CAM.w / 2.0, CAM.u);
+	vh2 = vector_scale(CAM.h / 2.0, CAM.v);
 	CAM.l = vector_sub(CAM.c, uw2);
 	CAM.l =  vector_add(CAM.l, vh2);//C - u * W/2 - v * H/2
 	print_vector("L : ", CAM.l);
