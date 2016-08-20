@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/19 10:00:04 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/20 14:36:48 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 	reflect = 2.0f * vector_dot(ray->dir, OBJ.normal);
 	tmp = vector_scale(reflect, OBJ.normal);
 	ray->dir = vector_sub(ray->dir, tmp);
-	vector_norm(&ray->dir);
 }
 
 /*
@@ -48,21 +47,19 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		else if (OBJ.cur_tri != -1)
 		{
 			set_val_tri(env, t, ray);
-//			set_col(&OBJ.col, 42, 42, 42);
-//			return(OBJ.col);		
 		}
 		else if (OBJ.cur_cyl != -1)
 		{
 			set_val_cyl(env, t, ray);
-//			set_col(&OBJ.col, 42, 42, 42);
-//			return(OBJ.col);
 		}
 		else if (OBJ.cur_cone != -1)
 		{
 			set_val_cone(env, t, ray);
 		}
 		else
+		{
 			break ;
+		}
 		if (env->br == 1)
 			break ;
 		calc_lighting(env, coef);
@@ -134,6 +131,11 @@ void				raytrace(t_env *env)
 			set_col(&OBJ.col, 0, 0, 0);
 			env->br = 0;
 			col = shoot_ray(ray, 5, env);
+			if (col.r * col.g * col.b)
+			{
+				printf("\n(%d ; %d)", x, y);
+				print_col(col);
+			}
 			save_to_img(env, col, x, y);
 			x++;
 		}

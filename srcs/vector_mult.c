@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_norm.c                                      :+:      :+:    :+:   */
+/*   vector_mult.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/15 13:03:07 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 10:22:41 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/08/20 09:26:08 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/08/20 09:31:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-t_vector	vector_norm(t_vector *v)
+t_vector	vector_mult(t_vector v1, t_vector v2)
 {
-	float	m;
+	t_vector	ret;
 
-	m = sqrt(SQR(v->x) + SQR(v->y) + SQR(v->z));
-	if (m != 0)
-	{
-		v->x /= m;
-		v->y /= m;
-		v->z /= m;
-	}
-	return (*v);
+	ret.x = v1.x * v2.x;
+	ret.y = v1.y * v2.y;
+	ret.z = v1.z * v2.z;
+	return (ret);
 }
