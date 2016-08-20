@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/19 10:59:31 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/20 15:14:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,13 @@ void	set_val_cone(t_env *env, float t, t_ray ray)
 
 	scaled = vector_scale(t, ray.dir);
 	OBJ.new_start = vector_add(ray.start, scaled);
+	print_vector("S : ", OBJ.new_start);
 	OBJ.normal = get_cone_normal(CONES[OBJ.cur_cone], OBJ.new_start);
-	vector_norm(&OBJ.normal);
+	if (vector_dot(OBJ.normal, OBJ.normal) == 0)
+	{
+		env->br = 1;
+		return ;
+	}
+	print_vector(" Normal : ", OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[CONES[OBJ.cur_cone].shape.material];
 }

@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/19 09:39:50 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/20 11:32:58 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ void			val_types(t_env *env, t_obj temp);
 /*
 ** Primitive Intersection & raytracing
 */
+
+void    print_col(t_col col);
 
 void			calc_lighting(t_env *env, float coef);
 

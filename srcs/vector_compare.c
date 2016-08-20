@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_norm.c                                      :+:      :+:    :+:   */
+/*   vector_compare.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/15 13:03:07 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 10:22:41 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/08/20 09:52:52 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/08/20 09:59:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-t_vector	vector_norm(t_vector *v)
+int		vector_comp(t_vector v1, t_vector v2)
 {
-	float	m;
-
-	m = sqrt(SQR(v->x) + SQR(v->y) + SQR(v->z));
-	if (m != 0)
-	{
-		v->x /= m;
-		v->y /= m;
-		v->z /= m;
-	}
-	return (*v);
+	return (!(v1.x != v2.x || v1.y != v2.y || v1.z != v2.z));
 }
+
+
