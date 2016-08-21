@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/20 11:32:58 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 13:31:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+# include <complex.h>
 # include <mlx.h>
 # include <vector.h>
 # include <colours.h>
 # include <light.h>
 # include <libft.h>
-# define WIN_X 800
-# define WIN_Y 600
+# define EPSILON 0.000001
+# define WIN_X 1280
+# define WIN_Y 720
 # define WIN_RATIO WIN_X / WIN_Y
 # define VFOV (double) 60
 # define EXIT 53
@@ -93,6 +95,9 @@ typedef struct	s_env
 	t_img		img;
 	t_obj		obj;
 	int			br;
+	t_ray		ray;
+	int			spec_n;
+	double		spec_coef;
 }				t_env;
 
 typedef struct	s_ray_sphere
@@ -120,6 +125,8 @@ typedef struct	s_ray_tri
 	t_vector	s2;
 	t_vector	s3;
 }				t_ray_tri;
+
+int				in_epsilon(double val);
 
 int				solve_quadratic(t_ray_sphere *rs, float *t);
 
@@ -168,7 +175,7 @@ void			val_types(t_env *env, t_obj temp);
 ** Primitive Intersection & raytracing
 */
 
-void    print_col(t_col col);
+void    		print_col(t_col col);
 
 void			calc_lighting(t_env *env, float coef);
 
@@ -203,4 +210,5 @@ int				sh_tri(t_env *env, t_ray *light_ray, float t);
 
 int				sh_cylinder(t_env *env, t_ray *light_ray, float t);
 
+int				sh_cone(t_env *env, t_ray *light_ray, float t);
 #endif

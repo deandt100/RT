@@ -11,7 +11,7 @@ M1 r210 g210 b210 *2
 M2 r130 g100 b250 *5
 # Lights (x; y; x) colour [0-255] g[0-255] b[0-255] 
 #L(x100 ; y-35 ; z0) r255 g255 b255
-L(x0 ; y-100 ; z0) r200 g200 b200
+L(x20 ; y-100 ; z0) r200 g200 b200
 # Spheres
 Sx0 y0 z0 r35 m1
 Sx40 y0 z0 r20 m0

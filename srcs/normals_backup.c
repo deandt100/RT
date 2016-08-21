@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/18 08:53:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/21 09:48:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 09:47:55 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ t_vector	get_cyl_normal(t_cylinder cyl, t_vector p)
 t_vector	get_cone_normal(t_cone cone, t_vector p)
 {
 	t_vector	v;
+//	t_vector	proj;
 	t_vector	n;
 	t_vector	p_par;
 	t_vector	p_orth;
 
+//	proj = vector_project(vector_sub(p, cone.p), cone.v);
 	n = vector_unit(vector_sub(vector_sub(p, cone.p),
 				vector_project(vector_sub(p, cone.p), cone.v)));
 	v = (vector_comp(vector_dir(

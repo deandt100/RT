@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 09:26:08 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 09:31:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 09:32:16 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 t_vector	vector_mult(t_vector v1, t_vector v2)
 {
-	t_vector	ret;
-
-	ret.x = v1.x * v2.x;
-	ret.y = v1.y * v2.y;
-	ret.z = v1.z * v2.z;
-	return (ret);
+	return (t_vector){v1.x * v2.x, v1.y * v2.y, v1.z * v2.z};
 }
