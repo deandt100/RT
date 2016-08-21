@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:59:41 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 23:03:46 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/08/21 11:43:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_col
 typedef struct	s_material
 {
 	t_col		diffuse;
-	float		reflection;
+	double		reflection;
 }				t_material;
 
 void			set_col(t_col *col, float r, float g, float b);

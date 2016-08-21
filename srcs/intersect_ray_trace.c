@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 14:02:18 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 15:18:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 10:22:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
 /*
 ** Determine whether ray intersects with cone by substiting ray equation

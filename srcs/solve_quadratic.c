@@ -6,11 +6,11 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 23:27:50 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/18 11:32:08 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 10:17:11 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
 int	solve_quadratic(t_ray_sphere *rs, float *t)
 {

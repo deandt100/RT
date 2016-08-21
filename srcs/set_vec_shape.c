@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 15:14:08 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 10:07:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@
 
 void	set_val_sphere(t_env *env, float t, t_ray ray)
 {
-	t_vector	scaled;
-
-	scaled = vector_scale(t, ray.dir);
-	OBJ.new_start = vector_add(ray.start, scaled);
+	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = vector_sub(OBJ.new_start, SP_POS(OBJ.cur_sphere));
 	if (vector_dot(OBJ.normal, OBJ.normal) == 0)
 	{
@@ -34,17 +31,8 @@ void	set_val_sphere(t_env *env, float t, t_ray ray)
 
 void	set_val_tri(t_env *env, float t, t_ray ray)
 {
-	t_vector	scaled;
-
-	scaled = vector_scale(t, ray.dir);
-	OBJ.new_start = vector_add(ray.start, scaled);
-	OBJ.normal = vector_project(OBJ.normal, ray.start);
+	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = TRI[OBJ.cur_tri].normal;
-	if (vector_dot(OBJ.normal, OBJ.normal) == 0)
-	{
-		env->br = 1;
-		return ;
-	}
 	OBJ.normal = vector_scale(1.0f / ABSV(OBJ.normal), OBJ.normal);
 	vector_norm(&OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[TRI[OBJ.cur_tri].shape.material];
@@ -69,17 +57,7 @@ void	set_val_cyl(t_env *env, float t, t_ray ray)
 
 void	set_val_cone(t_env *env, float t, t_ray ray)
 {
-	t_vector	scaled;
-
-	scaled = vector_scale(t, ray.dir);
-	OBJ.new_start = vector_add(ray.start, scaled);
-	print_vector("S : ", OBJ.new_start);
+	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = get_cone_normal(CONES[OBJ.cur_cone], OBJ.new_start);
-	if (vector_dot(OBJ.normal, OBJ.normal) == 0)
-	{
-		env->br = 1;
-		return ;
-	}
-	print_vector(" Normal : ", OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[CONES[OBJ.cur_cone].shape.material];
 }

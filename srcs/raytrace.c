@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 14:36:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 13:51:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@
 
 static void			reflect_ray(t_env *env, t_ray *ray)
 {
-	float		reflect;
-	t_vector	tmp;
-
 	ray->start = OBJ.new_start;
-	reflect = 2.0f * vector_dot(ray->dir, OBJ.normal);
-	tmp = vector_scale(reflect, OBJ.normal);
-	ray->dir = vector_sub(ray->dir, tmp);
+	ray->dir = vector_sub(ray->dir,
+		vector_scale(2.0f * vector_dot(ray->dir, OBJ.normal), OBJ.normal));
 }
 
 /*
@@ -38,6 +34,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	float		t;
 
 	coef = 1.0;
+	env->spec_coef = 1;
 	while (coef > 0.0f && level_max--)
 	{
 		t = 20000.0f;
@@ -45,25 +42,18 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		if (OBJ.cur_sphere != -1)
 			set_val_sphere(env, t, ray);
 		else if (OBJ.cur_tri != -1)
-		{
 			set_val_tri(env, t, ray);
-		}
 		else if (OBJ.cur_cyl != -1)
-		{
 			set_val_cyl(env, t, ray);
-		}
 		else if (OBJ.cur_cone != -1)
-		{
 			set_val_cone(env, t, ray);
-		}
 		else
-		{
 			break ;
-		}
 		if (env->br == 1)
 			break ;
 		calc_lighting(env, coef);
 		coef *= OBJ.cur_mat.reflection;
+		env->spec_coef = 0.0;
 		reflect_ray(env, &ray);
 	}
 	return (OBJ.col);
@@ -97,13 +87,9 @@ static void			save_to_img(t_env *env, t_col col, int x, int y)
 void	create_ray(double x, double y, t_ray *ray, t_env *env)
 {
 	t_vector	s;
-	t_vector	ut;
-	t_vector	vt;
 
-	ut = vector_scale(x * CAM.w / (double)WIN_X, CAM.u);
-	vt = vector_scale(y * CAM.h / (double)WIN_Y, CAM.v);
-	s = vector_add(CAM.l, ut);
-	s = vector_sub(s, vt);
+	s = vector_add(CAM.l, vector_scale(x * CAM.w / (double)WIN_X, CAM.u));
+	s = vector_sub(s, vector_scale(y * CAM.h / (double)WIN_Y, CAM.v));
 	ray->dir = vector_sub(s, CAM.pos);
 	vector_norm(&ray->dir);
 }
@@ -118,27 +104,19 @@ void				raytrace(t_env *env)
 	int		x;
 	int		y;
 	t_ray	ray;
-	t_col	col;
 
-	y = 0;
+	y = -1;
 	ray.start = CAM.pos;
-	while (y < WIN_Y)
+	while (++y < WIN_Y)
 	{
-		x = 0;
-		while (x < WIN_X)
+		x = -1;
+		while (++x < WIN_X)
 		{
 			create_ray(x, y, &ray, env);
-			set_col(&OBJ.col, 0, 0, 0);
+			env->ray = ray;
+			OBJ.col = (t_col){0.0, 0.0, 0.0};
 			env->br = 0;
-			col = shoot_ray(ray, 5, env);
-			if (col.r * col.g * col.b)
-			{
-				printf("\n(%d ; %d)", x, y);
-				print_col(col);
-			}
-			save_to_img(env, col, x, y);
-			x++;
+			save_to_img(env, shoot_ray(ray, 5, env), x, y);
 		}
-		y++;
 	}
 }

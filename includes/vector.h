@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/20 10:41:17 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 09:25:40 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_vector		vector_div(t_vector *v1, t_vector *v2);
 
 t_vector		vector_mult(t_vector v1, t_vector v2);
 
-double			vector_dist(t_vector *v1, t_vector *v2);
+double			vector_dist(t_vector v1, t_vector v2);
 
 t_vector		vector_norm(t_vector *v);
 

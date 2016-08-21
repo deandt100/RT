@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/20 15:18:26 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/08/21 08:25:25 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS_NAME1 = main.c \
 			vector_div.c \
 			vector_mult.c \
 			vector_comp.c \
+			in_epsilon.c \
 			rotate_tri.c \
 			key_hook.c \
 			close_window.c \

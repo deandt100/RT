@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 08:29:09 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/19 10:07:47 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 09:30:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_vector	vector_div(t_vector *v1, t_vector *v2)
 {
 	t_vector	ret;
 
-//	print_vector("v1 :", *v1);
-//	print_vector("v2 :", *v2);
 	if (v2->x != 0)
 		ret.x = v1->x / v2->x;
 	else
