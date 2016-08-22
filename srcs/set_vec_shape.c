@@ -35,6 +35,8 @@ void	set_val_tri(t_env *env, float t, t_ray ray)
 	OBJ.normal = TRI[OBJ.cur_tri].normal;
 	OBJ.normal = vector_scale(1.0f / ABSV(OBJ.normal), OBJ.normal);
 	vector_norm(&OBJ.normal);
+	if (vector_dot(ray.dir, OBJ.normal) > 0.0F)
+		OBJ.normal = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[TRI[OBJ.cur_tri].shape.material];
 }
 

@@ -15,7 +15,7 @@ L (x50 ; y0 ; z0) r255 g255 b255
 # Spheres
 S x0 y0 z0 r2 m0
 # Triangles
-T v1(x0y0z50), v2(x0y0z0), v3(x0y40z0) m0 R x0 y0 z180
+T v1(x0y0z50), v2(x0y0z0), v3(x0y40z0) m0 R x0 y0 z0
 #T v1(x10y-10z10), v2(x800y100z50), v3(x0y100z50) m1 R x0 y0 z0
 # Cylinders
 C R x0 y0 z0 P x0 y0 z0 V x0 y1 z0 r1 m1
