@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 07:49:51 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 11:52:44 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rtv1.h>
 
 int		check_in_shadow(t_env *env, float t, t_vector dist, t_ray *light_ray)
 {
@@ -29,17 +29,11 @@ void	lambert_diffuse(t_env *env, float coef, t_ray light_ray, t_light light)
 {
 	double		lam;
 	double		spec;
-//	t_vector	r;
 	t_vector	dir;
 	double		temp;
 	double		term;
 
 	lam = vector_dot(light_ray.dir, OBJ.normal) * coef;
-//	print_vector("\nNS", OBJ.new_start);
-//	print_vector("L",light.pos);
-//	r = vector_add(env->ray.dir,
-//			        vector_scale(2.0f * vector_dot(env->ray.dir, OBJ.normal), OBJ.normal));
-//	vector_norm(&r);
 	dir = vector_sub(light_ray.dir, env->ray.dir);
 	temp = sqrt(vector_dot(dir, dir));
 	dir = vector_scale(1.0 / temp, dir);
@@ -56,6 +50,13 @@ void	lambert_diffuse(t_env *env, float coef, t_ray light_ray, t_light light)
 	OBJ.col.b += spec * light.intensity.b * OBJ.cur_mat.diffuse.b;
 }
 
+void	add_global(t_env *env, t_light *light)
+{
+	OBJ.col.r += (0.2 * env->ambient_coef) * light->intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += (0.2 * env->ambient_coef) * light->intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += (0.2 * env->ambient_coef) * light->intensity.b * OBJ.cur_mat.diffuse.b;
+}
+
 void	calc_lighting(t_env *env, float coef)
 {
 	int			j;
@@ -68,7 +69,8 @@ void	calc_lighting(t_env *env, float coef)
 	while (j < OBJ.num_lights)
 	{
 		dist = vector_sub(OBJ.lights[j].pos, OBJ.new_start);
-		if (vector_dot(OBJ.normal, dist) <= 0.0f)
+		add_global(env, &OBJ.lights[j]);
+		if (vector_dot(OBJ.normal, dist) <= 0.0F)
 		{
 			j++;
 			continue ;
