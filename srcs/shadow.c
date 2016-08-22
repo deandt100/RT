@@ -6,13 +6,13 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 08:44:25 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:34:26 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-int		sh_spheres(t_env *env, t_ray *light_ray, float t)
+int		sh_spheres(t_env *env, t_ray *light_ray, double t)
 {
 	int	k;
 
@@ -26,7 +26,7 @@ int		sh_spheres(t_env *env, t_ray *light_ray, float t)
 	return (0);
 }
 
-int		sh_tri(t_env *env, t_ray *light_ray, float t)
+int		sh_tri(t_env *env, t_ray *light_ray, double t)
 {
 	int			k;
 	t_vector	n;
@@ -41,7 +41,7 @@ int		sh_tri(t_env *env, t_ray *light_ray, float t)
 	return (0);
 }
 
-int		sh_cylinder(t_env *env, t_ray *light_ray, float t)
+int		sh_cylinder(t_env *env, t_ray *light_ray, double t)
 {
 	int			k;
 
@@ -55,7 +55,7 @@ int		sh_cylinder(t_env *env, t_ray *light_ray, float t)
 	return (0);
 }
 
-int		sh_cone(t_env *env, t_ray *light_ray, float t)
+int		sh_cone(t_env *env, t_ray *light_ray, double t)
 {
 	int			k;
 

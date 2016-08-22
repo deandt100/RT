@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 15:26:42 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:27:40 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Calculate ray - primitive intesection.
 */
 
-static void		gi_sphere(t_env *env, t_ray ray, float *t, float *ref_dist)
+static void		gi_sphere(t_env *env, t_ray ray, double *t, double *ref_dist)
 {
 	int			i;
-	float		t1;
+	double		t1;
 	t_vector	scaled;
 	t_vector	ns;
 
@@ -44,12 +44,12 @@ static void		gi_sphere(t_env *env, t_ray ray, float *t, float *ref_dist)
 	}
 }
 
-static void		gi_tri(t_env *env, t_ray ray, float *t, float *ref_dist)
+static void		gi_tri(t_env *env, t_ray ray, double *t, double *ref_dist)
 {
 	int			i;
 	t_vector	n;
 	t_vector	nt;
-	float		t2;
+	double		t2;
 	t_vector	scaled;
 
 	t2 = *t;
@@ -72,10 +72,10 @@ static void		gi_tri(t_env *env, t_ray ray, float *t, float *ref_dist)
 		}
 }
 
-static void		gi_cyl(t_env *env, t_ray ray, float *t, float *ref_dist)
+static void		gi_cyl(t_env *env, t_ray ray, double *t, double *ref_dist)
 {
 	int			i;
-	float		t3;
+	double		t3;
 	t_vector	scaled;
 	t_vector	nc;
 
@@ -99,10 +99,10 @@ static void		gi_cyl(t_env *env, t_ray ray, float *t, float *ref_dist)
 		}
 }
 
-static void		gi_cone(t_env *env, t_ray ray, float *t, float *ref_dist)
+static void		gi_cone(t_env *env, t_ray ray, double *t, double *ref_dist)
 {
 	int			i;
-	float		t4;
+	double		t4;
 	t_vector	scaled;
 	t_vector	nc;
 
@@ -131,9 +131,9 @@ static void		gi_cone(t_env *env, t_ray ray, float *t, float *ref_dist)
 ** Get shape intersections with ray - sets values for closest one.
 */
 
-void			get_intersections(t_env *env, t_ray ray, float *t)
+void			get_intersections(t_env *env, t_ray ray, double *t)
 {
-	float	ref_dist;
+	double	ref_dist;
 
 	ref_dist = 3.402823e+38;
 	gi_sphere(env, ray, t, &ref_dist);
