@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 08:06:17 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:29:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Functions to set new_start and normal for shapes.
 */
 
-void	set_val_sphere(t_env *env, float t, t_ray ray)
+void	set_val_sphere(t_env *env, double t, t_ray ray)
 {
 	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = vector_sub(OBJ.new_start, SP_POS(OBJ.cur_sphere));
@@ -29,7 +29,7 @@ void	set_val_sphere(t_env *env, float t, t_ray ray)
 	OBJ.cur_mat = env->obj.mats[SPHERES[OBJ.cur_sphere].shape.material];
 }
 
-void	set_val_tri(t_env *env, float t, t_ray ray)
+void	set_val_tri(t_env *env, double t, t_ray ray)
 {
 	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = TRI[OBJ.cur_tri].normal;
@@ -40,7 +40,7 @@ void	set_val_tri(t_env *env, float t, t_ray ray)
 	OBJ.cur_mat = env->obj.mats[TRI[OBJ.cur_tri].shape.material];
 }
 
-void	set_val_cyl(t_env *env, float t, t_ray ray)
+void	set_val_cyl(t_env *env, double t, t_ray ray)
 {
 	t_vector	scaled;
 
@@ -50,7 +50,7 @@ void	set_val_cyl(t_env *env, float t, t_ray ray)
 	OBJ.cur_mat = env->obj.mats[CYLINDERS[OBJ.cur_cyl].shape.material];
 }
 
-void	set_val_cone(t_env *env, float t, t_ray ray)
+void	set_val_cone(t_env *env, double t, t_ray ray)
 {
 	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = get_cone_normal(CONES[OBJ.cur_cone], OBJ.new_start);

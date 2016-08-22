@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 14:12:53 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:34:05 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 {
 	float		coef;
-	float		t;
+	double		t;
 
 	coef = 1.0;
 	env->spec_coef = 0.6; //to set in scene file

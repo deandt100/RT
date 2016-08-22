@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 15:19:43 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 15:19:56 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:33:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** the plane.
 */
 
-int			intersect_ray_tri(t_ray *ray, t_triangle *tri, float *res,
+int			intersect_ray_tri(t_ray *ray, t_triangle *tri, double *res,
 		t_vector *n)
 {
 	t_ray_tri	r;
