@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/21 13:31:50 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 08:00:21 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct	s_env
 	t_ray		ray;
 	int			spec_n;
 	double		spec_coef;
+
 }				t_env;
 
 typedef struct	s_ray_sphere
@@ -135,7 +136,7 @@ void			unrotate_vec2(t_env *env, int i, t_vector *vec);
 void			print_vector(char *des, t_vector v);
 
 void			mlx_image_put_pixel(void *mlx, t_img *i, t_vector p,
-		t_col *c);
+					t_col *c);
 
 void			set_tri_pos(t_triangle *tri);
 
@@ -196,7 +197,7 @@ int				intersect_ray_sphere(t_ray *ray, t_sphere *sphere, float *t);
 int				intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, float *t);
 
 int				intersect_ray_tri(t_ray *r, t_triangle *tri, float *res,
-		t_vector *n);
+					t_vector *n);
 
 int				intersect_ray_cone(t_ray *ray, t_cone *cone, float *t);
 
