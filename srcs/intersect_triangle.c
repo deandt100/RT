@@ -26,7 +26,7 @@ int			intersect_ray_tri(t_ray *ray, t_triangle *tri, float *res,
 	r.e2 = vector_sub(tri->v3, tri->v1);
 	r.s1 = vector_cross(ray->dir, r.e2);
 	r.d = vector_dot(r.e1, r.s1);
-	if (r.d > -0.000001 && r.d < 0.000001)
+	if (r.d > -EPSILON && r.d < EPSILON)
 		return (0);
 	r.inv_d = 1 / r.d;
 	r.s2 = vector_sub(ray->start, tri->v1);
@@ -38,9 +38,9 @@ int			intersect_ray_tri(t_ray *ray, t_triangle *tri, float *res,
 	if (r.v < 0 || (r.u + r.v) > 1)
 		return (0);
 	r.tmp = vector_dot(r.e2, r.s3) * r.inv_d;
-	if (r.tmp < 0.000001)
+	if (r.tmp < EPSILON)
 		return (0);
-	*res = r.tmp - 0.05;
-	*n = vector_cross(r.e2, r.e1);
+	*res = r.tmp - 0.05F;
+	*n = vector_cross(r.e1, r.e2);
 	return (1);
 }
