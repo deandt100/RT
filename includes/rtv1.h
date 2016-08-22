@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 08:25:20 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/22 10:31:04 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@
 # define VA cyl->v
 # define DEL_P vector_sub(&P, &PA)
 # define VEC_SQR(X) vector_dot(X, X)
+
+typedef struct	s_count
+{
+	int			mats;
+	int			lights;
+	int			spheres;
+	int			triangles;
+	int			cylinders;
+	int			cones;
+}				t_count;
 
 typedef struct	s_img
 {
@@ -98,7 +108,7 @@ typedef struct	s_env
 	t_ray		ray;
 	int			spec_n;
 	double		spec_coef;
-
+	t_count		count;
 }				t_env;
 
 typedef struct	s_ray_sphere
@@ -176,8 +186,13 @@ void			val_types(t_env *env, t_obj temp);
 ** New file input.
 */
 
+
+
 void			ft_get_input(t_env *env, char *file);
 void			ft_count_objs(t_env *env, char *file);
+
+void			ft_fill_camera(int fd, t_env *env);
+void			ft_fill_material(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
