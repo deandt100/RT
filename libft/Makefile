@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/15 07:50:12 by ggroener          #+#    #+#              #
-#    Updated: 2016/07/24 14:55:43 by ggroener         ###   ########.fr        #
+#    Updated: 2016/08/22 08:21:39 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SRCS_NAME = ft_atoi.c \
 			ft_printf_format.c \
 			ft_printf_out.c \
 			ft_printf.c \
+			ft_calloc.c
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

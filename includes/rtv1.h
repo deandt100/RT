@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/21 13:31:50 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 07:11:50 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,13 @@ void			get_input(t_env *env, char *file);
 void			count_types(t_obj *temp, int fd);
 
 void			val_types(t_env *env, t_obj temp);
+
+/*
+** New file input.
+*/
+
+void			ft_get_input(t_env *env, char *file);
+void			ft_count_objs(t_env *env, char *file);
 
 /*
 ** Primitive Intersection & raytracing
