@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 11:52:44 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:11:22 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	calc_lighting(t_env *env, float coef)
 			continue ;
 		}
 		t = sqrt(vector_dot(dist, dist));
-		if (t <= 0.0f)
+		if (t <= 0.00001f)
 		{
 			j++;
 			continue ;

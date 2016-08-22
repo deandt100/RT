@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 13:04:53 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:22:12 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ typedef struct	s_obj
 	t_vector	new_start;
 	t_col		col;
 	t_cam		cam;
-	t_vector	cam_s;
-	t_vector	cam_dir;
 	t_vector	cam_rot;
 	float		ref_dist;
 }				t_obj;
@@ -105,13 +103,13 @@ typedef struct	s_env
 
 typedef struct	s_ray_sphere
 {
-	float		a;
-	float		b;
-	float		c;
-	float		sqrtdiscr;
-	float		t0;
-	float		t1;
-	float		discr;
+	double		a;
+	double		b;
+	double		c;
+	double		sqrtdiscr;
+	double		t0;
+	double		t1;
+	double		discr;
 	t_vector	dist;
 }				t_ray_sphere;
 

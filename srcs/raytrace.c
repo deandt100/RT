@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 11:59:08 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:12:53 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		else if (OBJ.cur_cyl != -1)
 			set_val_cyl(env, t, ray);
 		else if (OBJ.cur_cone != -1)
+		{
 			set_val_cone(env, t, ray);
+		}
 		else
 			break ;
 		if (env->br == 1)
@@ -118,7 +120,7 @@ void				raytrace(t_env *env)
 			env->ray = ray;
 			OBJ.col = (t_col){0.0, 0.0, 0.0};
 			env->br = 0;
-			save_to_img(env, shoot_ray(ray, 5, env), x, y);
+			save_to_img(env, shoot_ray(ray, env->ref_level, env), x, y);
 		}
 	}
 }
