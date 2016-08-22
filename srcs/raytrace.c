@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/21 13:51:57 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 07:50:15 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	float		t;
 
 	coef = 1.0;
-	env->spec_coef = 1;
+	env->spec_coef = 0.6; //to set in scene file
 	while (coef > 0.0f && level_max--)
 	{
 		t = 20000.0f;

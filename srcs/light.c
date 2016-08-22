@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/21 13:52:59 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 07:49:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,31 @@ void	lambert_diffuse(t_env *env, float coef, t_ray light_ray, t_light light)
 {
 	double		lam;
 	double		spec;
-	t_vector	r;
+//	t_vector	r;
+	t_vector	dir;
+	double		temp;
+	double		term;
 
 	lam = vector_dot(light_ray.dir, OBJ.normal) * coef;
 //	print_vector("\nNS", OBJ.new_start);
 //	print_vector("L",light.pos);
-	r = vector_sub(env->ray.dir,
-			        vector_scale(2.0f * vector_dot(env->ray.dir, OBJ.normal), OBJ.normal));
-	vector_norm(&r);
-	spec = cpow(vector_dot(r, env->ray.dir), OBJ.cur_mat.reflection) * env->spec_coef;
-	spec = (spec > 0) ? spec : 0;
-//	printf("spec  = %F\n", spec);
-	spec = 0;
-	OBJ.col.r += (lam + spec) * light.intensity.r * OBJ.cur_mat.diffuse.r;
-	OBJ.col.g += (lam + spec) * light.intensity.g * OBJ.cur_mat.diffuse.g;
-	OBJ.col.b += (lam + spec) * light.intensity.b * OBJ.cur_mat.diffuse.b;
+//	r = vector_add(env->ray.dir,
+//			        vector_scale(2.0f * vector_dot(env->ray.dir, OBJ.normal), OBJ.normal));
+//	vector_norm(&r);
+	dir = vector_sub(light_ray.dir, env->ray.dir);
+	temp = sqrt(vector_dot(dir, dir));
+	dir = vector_scale(1.0 / temp, dir);
+	term = vector_dot(dir, OBJ.normal);
+	term = (term > 0.0f) ? term : 0.0f;
+	spec = powf(term, 50) * env->spec_coef;
+
+	OBJ.col.r += lam * light.intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += lam * light.intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += lam * light.intensity.b * OBJ.cur_mat.diffuse.b;
+
+	OBJ.col.r += spec * light.intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += spec * light.intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += spec * light.intensity.b * OBJ.cur_mat.diffuse.b;
 }
 
 void	calc_lighting(t_env *env, float coef)

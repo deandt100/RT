@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/21 10:07:32 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 08:06:17 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ void	set_val_tri(t_env *env, float t, t_ray ray)
 	OBJ.cur_mat = env->obj.mats[TRI[OBJ.cur_tri].shape.material];
 }
 
-void	unrotate_vec(t_env *env, int i, t_vector *vec)
-{
-	rotate_vec_x(-CYLINDERS[i].rot.x, vec);
-	rotate_vec_y(-CYLINDERS[i].rot.y, vec);
-	rotate_vec_z(-CYLINDERS[i].rot.z, vec);
-}
-
 void	set_val_cyl(t_env *env, float t, t_ray ray)
 {
 	t_vector	scaled;
@@ -60,4 +53,5 @@ void	set_val_cone(t_env *env, float t, t_ray ray)
 	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
 	OBJ.normal = get_cone_normal(CONES[OBJ.cur_cone], OBJ.new_start);
 	OBJ.cur_mat = env->obj.mats[CONES[OBJ.cur_cone].shape.material];
+	env->spec_coef = OBJ.cur_mat.specular;
 }
