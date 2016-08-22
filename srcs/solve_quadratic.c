@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 23:27:50 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/21 10:17:11 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/21 14:19:51 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	solve_quadratic(t_ray_sphere *rs, float *t)
 	rs->t1 = (-rs->b + sqrt(rs->discr)) / (2 * rs->a);
 	if (rs->t0 > rs->t1 && rs->t1 > 0)
 		rs->t0 = rs->t1;
-	if ((rs->t0 > 0.00001) && (rs->t0 < *t))
+	if ((rs->t0 > EPSILON) && (rs->t0 < *t))
 	{
 		*t = rs->t0;
 		return (1);
