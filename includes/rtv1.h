@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 10:31:04 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/22 13:10:49 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <colours.h>
 # include <light.h>
 # include <libft.h>
-# define EPSILON 0.000001
+# define EPSILON (double)0.000001F
 # define WIN_X 1280
 # define WIN_Y 720
 # define WIN_RATIO WIN_X / WIN_Y
@@ -109,6 +109,9 @@ typedef struct	s_env
 	int			spec_n;
 	double		spec_coef;
 	t_count		count;
+	double      ambient_coef;
+	double      ambient_level;
+	int			ref_level;
 }				t_env;
 
 typedef struct	s_ray_sphere

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/18 08:53:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/21 09:48:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 11:47:14 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vector	get_cone_normal(t_cone cone, t_vector p)
 	n = vector_unit(vector_sub(vector_sub(p, cone.p),
 				vector_project(vector_sub(p, cone.p), cone.v)));
 	v = (vector_comp(vector_dir(
-		vector_project(vector_unit(p), cone.v), cone.p), cone.v)) ?
+		vector_add(vector_project(p, cone.v), cone.p), cone.p), cone.v)) ?
 		vector_unit(vector_cross(n, cone.v)) :
 		vector_unit(vector_cross(cone.v, n));
 	p_par = vector_unit(vector_project(n, v));
