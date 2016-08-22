@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/21 09:25:40 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 11:57:05 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_cam
 	double		d;
 	double		h;
 	double		w;
+	t_vector	rot;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	v_up;
