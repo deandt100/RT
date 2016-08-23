@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 08:22:12 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 08:33:54 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:03:49 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int		in_epsilon(double val)
 {
-	double	abs;
-
-	abs = fabs(val);
-	if (abs < EPSILON || abs == 0.0F)
+	if ((val <= EPSILON && val >= -EPSILON) || val == 0.0F)
 		return (1);
 	else
 		return (0);

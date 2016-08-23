@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 14:02:18 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 08:45:07 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:30:36 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** in cone equation
 */
 
-int			intersect_ray_cone(t_ray *ray, t_cone *cone, float *t)
+int			intersect_ray_cone(t_ray *ray, t_cone *cone, double *t)
 {
 	t_ray_sphere	rs;
 	t_vector		a;
@@ -46,7 +46,7 @@ int			intersect_ray_cone(t_ray *ray, t_cone *cone, float *t)
 ** in cylinder equation
 */
 
-int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, float *t)
+int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, double *t)
 {
 	t_ray_sphere	rs;
 	t_vector		a;
@@ -71,7 +71,7 @@ int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, float *t)
 ** in sphere equation
 */
 
-int			intersect_ray_sphere(t_ray *ray, t_sphere *sphere, float *t)
+int			intersect_ray_sphere(t_ray *ray, t_sphere *sphere, double *t)
 {
 	t_ray_sphere	rs;
 
