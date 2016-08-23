@@ -6,13 +6,13 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/23 10:19:05 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/23 10:58:06 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RT
 
-CFLAGS = -Wall -Wextra -Werror -pedantic -Ofast -g
+CFLAGS = -Wall -Wextra -Werror -g 
 
 CC = gcc
 
@@ -61,7 +61,8 @@ SRCS_NAME2 = get_input.c \
 			new_triangle.c\
 			unrotate_vec2.c \
 			solve_quadratic.c \
-		   normals.c
+		   	normals.c
+			make_threads.c
 
 SRCS_NAME3 = ft_get_input.c \
 			 ft_count_objs.c \
@@ -116,7 +117,7 @@ $(NAME): $(OBJS)
 #	@$(call colourecho, " - Making $(NAME)")
 	@clear
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
-	@clear
+#	@clear
 #	@$(call colourecho, "Make Done!")
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
