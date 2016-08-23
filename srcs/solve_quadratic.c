@@ -6,13 +6,13 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 23:27:50 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 08:57:57 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 15:32:39 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-int	solve_quadratic(t_ray_sphere *rs, float *t)
+int	solve_quadratic(t_ray_sphere *rs, double *t)
 {
 	rs->t0 = (-rs->b - sqrt(rs->discr)) / (2 * rs->a);
 	rs->t1 = (-rs->b + sqrt(rs->discr)) / (2 * rs->a);
