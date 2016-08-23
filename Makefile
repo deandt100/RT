@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/23 07:15:06 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/08/23 10:20:06 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,9 @@ SRCS_NAME2 = get_input.c \
 			new_triangle.c\
 			unrotate_vec2.c \
 			solve_quadratic.c \
-		   normals.c	
+			normals.c\
+			make_threads.c
+
 
 SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
 

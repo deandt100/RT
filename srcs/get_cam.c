@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 11:09:03 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/23 08:34:50 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 09:43:49 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void			rotate_cam(t_env *env)
 	rotate_vec_x(OBJ.cam_rot.x, &CAM.dir);
 	rotate_vec_y(OBJ.cam_rot.y, &CAM.dir);
 	rotate_vec_z(OBJ.cam_rot.z, &CAM.dir);
+	rotate_vec_x(OBJ.cam_rot.x, &CAM.u);
+	rotate_vec_y(OBJ.cam_rot.y, &CAM.u);
+	rotate_vec_z(OBJ.cam_rot.z, &CAM.u);
 }
 
 void			init_cam(t_env *env)

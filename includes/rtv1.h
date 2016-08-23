@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 08:52:02 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 10:18:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define DEL_P vector_sub(&P, &PA)
 # define VEC_SQR(X) vector_dot(X, X)
 # define KEY_UP 126
-# define KEY_DOWN 127
+# define KEY_DOWN 125
 
 typedef struct	s_count
 {
@@ -114,6 +114,15 @@ typedef struct	s_env
 	double      ambient_level;
 	int			ref_level;
 }				t_env;
+
+typedef struct	s_rt_thread
+{
+	int		x_s;
+	int		x_e;
+	int		y_s;
+	int		y_e;
+	t_env	*env;
+}				t_rt_thread;
 
 typedef struct	s_ray_sphere
 {
@@ -186,6 +195,10 @@ void			count_types(t_obj *temp, int fd);
 
 void			val_types(t_env *env, t_obj temp);
 
+void			rotate_cam(t_env *env);
+
+void			init_cam(t_env *env);
+
 /*
 ** New file input.
 */
@@ -208,7 +221,9 @@ void    		print_col(t_col col);
 
 void			calc_lighting(t_env *env, float coef);
 
-void			raytrace(t_env *env);
+void			raytrace(t_rt_thread t);
+
+void			make_threads(t_env *env);
 
 void			set_val_sphere(t_env *env, double t, t_ray ray);
 

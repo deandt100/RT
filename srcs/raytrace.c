@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/23 07:52:24 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 10:09:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,24 +101,23 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 ** colour value to image.
 */
 
-void				raytrace(t_env *env)
+void				raytrace(t_rt_thread t)
 {
 	int		x;
-	int		y;
 	t_ray	ray;
 
-	y = -1;
-	ray.start = CAM.pos;
-	while (++y < WIN_Y)
+	ray.start = t.env->obj.cam.pos;
+	while (t.y_s < t.y_e)
 	{
-		x = -1;
-		while (++x < WIN_X)
+		x = t.x_s - 1;
+		while (++x < t.x_e)
 		{
-			create_ray(x, y, &ray, env);
-			env->ray = ray;
-			OBJ.col = (t_col){0.0, 0.0, 0.0};
-			env->br = 0;
-			save_to_img(env, shoot_ray(ray, 5, env), x, y);
+			create_ray(x, t.y_s, &ray, t.env);
+			t.env->ray = ray;
+			t.env->obj.col = (t_col){0.0, 0.0, 0.0};
+			t.env->br = 0;
+			save_to_img(t.env, shoot_ray(ray, 5, t.env), x, t.y_s);
 		}
+		t.y_s++;
 	}
 }
