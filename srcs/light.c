@@ -6,13 +6,13 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 14:11:22 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 12:00:37 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-int		check_in_shadow(t_env *env, float t, t_vector dist, t_ray *light_ray)
+int		check_in_shadow(t_env *env, double t, t_vector dist, t_ray *light_ray)
 {
 	int			in_shadow;
 
@@ -52,9 +52,9 @@ void	lambert_diffuse(t_env *env, float coef, t_ray light_ray, t_light light)
 
 void	add_global(t_env *env, t_light *light)
 {
-	OBJ.col.r += (0.2 * env->ambient_coef) * light->intensity.r * OBJ.cur_mat.diffuse.r;
-	OBJ.col.g += (0.2 * env->ambient_coef) * light->intensity.g * OBJ.cur_mat.diffuse.g;
-	OBJ.col.b += (0.2 * env->ambient_coef) * light->intensity.b * OBJ.cur_mat.diffuse.b;
+	OBJ.col.r += (env->ambient_level * env->ambient_coef) * light->intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += (env->ambient_level * env->ambient_coef) * light->intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += (env->ambient_level * env->ambient_coef) * light->intensity.b * OBJ.cur_mat.diffuse.b;
 }
 
 void	calc_lighting(t_env *env, float coef)
@@ -62,7 +62,7 @@ void	calc_lighting(t_env *env, float coef)
 	int			j;
 	t_vector	dist;
 	t_ray		light_ray;
-	float		t;
+	double		t;
 
 	j = 0;
 	env->spec_n = 0;

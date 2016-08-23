@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 06:56:36 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 08:57:09 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 11:51:47 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_check_1(int fd, t_env *env, char *line)
 	else if (ft_strncmp(line, "REFLECTION", 10) == 0 && ft_strchr(line, ':'))
 		env->ref_level = ft_atoi(&ft_strchr(line, ':')[1]);
 	else if (ft_strncmp(line, "AMBIENT", 7) == 0 && ft_strchr(line, ':'))
-		env->ambient_level = ft_atoi(&ft_strchr(line, ':')[1]) * 1.0f;
+		env->ambient_level = (ft_atoi(&ft_strchr(line, ':')[1]) * 1.0f) / 100;
 	else if (ft_strncmp(line, "MATERIAL", 8) == 0)
 		ft_fill_material(fd, env);
 	else if (ft_strncmp(line, "LIGHT", 5) == 0)

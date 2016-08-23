@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 13:03:07 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 10:22:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 12:01:21 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vector	vector_norm(t_vector *v)
 {
-	float	m;
+	double	m;
 
 	m = sqrt(SQR(v->x) + SQR(v->y) + SQR(v->z));
 	if (m != 0)
