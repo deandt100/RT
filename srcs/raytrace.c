@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/23 11:37:11 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 16:17:09 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void				raytrace(t_rt_thread t)
 			t.env->ray = ray;
 			t.env->obj.col = (t_col){0.0, 0.0, 0.0};
 			t.env->br = 0;
-			save_to_img(t.env, shoot_ray(ray, t.env->ref_level, t.env), x, t.y_s);
+			save_to_img(t.env, shoot_ray(ray, t.env->ref_level + 1, t.env), x, t.y_s);
 		}
 		t.y_s++;
 	}

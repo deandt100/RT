@@ -14,6 +14,12 @@ LIGHT:
 	G: 250
 	B: 200
 
+LIGHT:
+	P: x20 y-120 z0
+	R: 25
+	G: 25
+	B: 20
+
 MATERIAL:
 	R: 250
 	G: 127
@@ -48,6 +54,11 @@ SPHERE:
 	M: 1
 
 SPHERE:
+	P: x20 y20 z0
+	R: 10
+	M: 1
+
+SPHERE:
 	P: x10 y20 z0
 	R: 10
 	M: 3
@@ -58,6 +69,20 @@ CONE:
 	V: x0 y0 z1
 	A: 30
 	M: 2
+
+CONE:
+	R: x0 y45 z0
+	P: x0 y30 z0
+	V: x0 y0 z1
+	A: 10
+	M: 2
+
+CONE:
+	R: x0 y0 z0
+	P: x0 y30 z0
+	V: x0 y0 z1
+	A: 10
+	M: 3
 
 CONE:
 	R: x0 y45 z0
