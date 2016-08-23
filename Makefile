@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/23 10:59:32 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/23 11:23:34 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,6 +150,7 @@ norm:
 	@$(call colourecho2, "Norminette:")
 	@norminette $(SRCS1)
 	@norminette $(SRCS2)
+	@norminette $(SRCS3)
 	@norminette $(HEADER)
 
 qme:
