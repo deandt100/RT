@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 07:49:34 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 08:33:07 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define VFOV (double) 60
 # define EXIT 53
 # define OBJ env->obj
+# define LIGHTS OBJ.lights
 # define CAM OBJ.cam
 # define SPHERES env->obj.spheres
 # define CYLINDERS env->obj.cylinders
@@ -187,14 +188,15 @@ void			val_types(t_env *env, t_obj temp);
 ** New file input.
 */
 
-
-
+t_vector		ft_get_vector(char *line);
 void			ft_get_input(t_env *env, char *file);
-
 void			ft_count_objs(t_env *env, char *file);
-
 void			ft_fill_camera(int fd, t_env *env);
 void			ft_fill_material(int fd, t_env *env);
+void			ft_fill_light(int fd, t_env *env);
+void			ft_fill_sphere(int fd, t_env *env);
+void			ft_fill_triangle(int fd, t_env *env);
+void			ft_fill_cone(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
