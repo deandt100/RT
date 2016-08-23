@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 07:56:38 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 10:56:33 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	cleanup(t_env *env)
 
 int		expose(t_env *env)
 {
+	ft_printf("drawing\n");
 	if (env->win && env->img.img)
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	cleanup(env);
+	//cleanup(env);
 	return (0);
 }
 
@@ -74,9 +75,9 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 	&env.img.s, &env.img.e);
-	raytrace(&env);
-	mlx_expose_hook(env.win, expose, &env);
+	make_threads(&env);
 	mlx_key_hook(env.win, key_hook, &env);
+	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);
 	mlx_loop(env.mlx);
 	return (0);
