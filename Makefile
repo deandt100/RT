@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/21 08:25:25 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/08/23 10:19:05 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,17 +61,30 @@ SRCS_NAME2 = get_input.c \
 			new_triangle.c\
 			unrotate_vec2.c \
 			solve_quadratic.c \
-		   normals.c	
+		   normals.c
+
+SRCS_NAME3 = ft_get_input.c \
+			 ft_count_objs.c \
+			 ft_fill_material.c \
+			 ft_fill_camera.c \
+			 ft_fill_light.c \
+			 ft_fill_spheres.c \
+			 ft_fill_triangle.c \
+			 ft_fill_cone.c \
+			 ft_fill_cylinder.c \
+			 ft_input_check.c
+
+SRCS3 = $(addprefix ($SRCS_PATH), $(SRCS_NAME3))
 
 SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
 
 SRCS1 = $(addprefix $(SRCS_PATH), $(SRCS_NAME1))
 
-SRCS = $(SRCS1) $(SRCS2)
+SRCS = $(SRCS1) $(SRCS2) $(SRCS3)
 
 OBJS_PATH = objs/
 
-OBJS_NAME = $(SRCS_NAME1:.c=.o) $(SRCS_NAME2:.c=.o)
+OBJS_NAME = $(SRCS_NAME1:.c=.o) $(SRCS_NAME2:.c=.o) $(SRCS_NAME3:.c=.o)
 
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
@@ -101,6 +114,7 @@ all: qme odir $(NAME)
 $(NAME): $(OBJS)
 #	@Make -C libft
 #	@$(call colourecho, " - Making $(NAME)")
+	@clear
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
 	@clear
 #	@$(call colourecho, "Make Done!")

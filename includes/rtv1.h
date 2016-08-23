@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 08:33:07 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 10:43:42 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,10 @@ void			val_types(t_env *env, t_obj temp);
 */
 
 t_vector		ft_get_vector(char *line);
+int				ft_val_col(t_col *col);
+int				ft_val_mat(t_env *env, int mat, char *obj);
+int				ft_input_error(char *obj, char *msg);
+
 void			ft_get_input(t_env *env, char *file);
 void			ft_count_objs(t_env *env, char *file);
 void			ft_fill_camera(int fd, t_env *env);
@@ -197,6 +201,7 @@ void			ft_fill_light(int fd, t_env *env);
 void			ft_fill_sphere(int fd, t_env *env);
 void			ft_fill_triangle(int fd, t_env *env);
 void			ft_fill_cone(int fd, t_env *env);
+void			ft_fill_cylinder(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing

@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/07/16 08:29:01 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 07:56:38 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		main(int argc, char **argv)
 		ft_printf("Please include a scene file\n");
 		return (0);
 	}
-	get_input(&env, argv[1]);
+	ft_get_input(&env, argv[1]);
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "rtv1");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
