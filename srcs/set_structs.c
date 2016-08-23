@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 12:24:33 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/20 11:52:36 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/22 16:56:29 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_vector(char *des, t_vector v)
 {
-	printf("%s (%F ; %F ; %F)", des, v.x, v.y, v.z);
+	printf("%s (%F ; %F ; %F)\n", des, v.x, v.y, v.z);
 }
 
 void	print_col(t_col col)
