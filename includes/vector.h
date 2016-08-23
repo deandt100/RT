@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 11:57:05 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 08:53:34 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ int				vector_comp(t_vector v1, t_vector v2);
 ** Rotation
 */
 
-void			rotate_vec_x(float angle, t_vector *v);
+void			rotate_vec_x(double angle, t_vector *v);
 
-void			rotate_vec_y(float angle, t_vector *v);
+void			rotate_vec_y(double angle, t_vector *v);
 
-void			rotate_vec_z(float angle, t_vector *v);
+void			rotate_vec_z(double angle, t_vector *v);
 
 void			rotate_tri(t_triangle *tri);
 
