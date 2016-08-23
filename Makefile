@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/23 10:58:06 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/23 10:59:32 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRCS_NAME1 = main.c \
 			key_hook.c \
 			close_window.c \
 			intersect_ray_trace.c \
-			intersect_triangle.c \
+			intersect_triangle.c 
 
 SRCS_NAME2 = get_input.c \
 			count_types.c \
@@ -61,7 +61,7 @@ SRCS_NAME2 = get_input.c \
 			new_triangle.c\
 			unrotate_vec2.c \
 			solve_quadratic.c \
-		   	normals.c
+		   	normals.c \
 			make_threads.c
 
 SRCS_NAME3 = ft_get_input.c \
