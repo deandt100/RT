@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 08:42:14 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 08:31:26 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 13:01:44 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int		ft_get_value(char *line)
 {
 	int	tmp;
 
-	tmp = ft_atoi(&ft_strchr(line, ':')[1]);
+	tmp = 0;
+	if (ft_strchr(line, ':') != NULL)
+		tmp = ft_atoi(&ft_strchr(line, ':')[1]);
 	return (tmp);
 }
 
