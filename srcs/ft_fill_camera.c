@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:43:07 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 10:38:38 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/23 12:52:19 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,22 @@ void		ft_rotate_cam(t_env *env)
 	rotate_vec_z(CAM.rot.z, &CAM.pos);
 }
 
-void		ft_init_cam(t_env *env)
+void		ft_init_cam(t_env *env, t_vector rot)
 {
-	t_vector	uw2;
-	t_vector	vh2;
 
 	CAM.d = 2.1675;
 	CAM.h = 18.0 * CAM.d / 35;
 	CAM.w = CAM.h * ((double)WIN_X / (double)WIN_Y);
-	CAM.n = vector_sub(CAM.pos, CAM.dir);
-	vector_norm(&CAM.n);
-	CAM.u = vector_cross(CAM.v_up, CAM.n);
-	vector_norm(&CAM.u);
+	CAM.n = vector_unit(vector_sub(CAM.pos, CAM.dir));
+	print_vector("rotation : ", rot);
+	rotate_vec_x(rot.x, &CAM.n);
+	rotate_vec_y(rot.y, &CAM.n);
+	rotate_vec_z(rot.z, &CAM.n);
+	CAM.u = vector_unit(vector_cross(CAM.v_up, CAM.n));
 	CAM.v = vector_cross(CAM.n, CAM.u);
-	CAM.c = vector_scale(CAM.d, CAM.n);
-	CAM.c = vector_sub(CAM.pos, CAM.c);
-	uw2 = vector_scale(CAM.w / 2.0, CAM.u);
-	vh2 = vector_scale(CAM.h / 2.0, CAM.v);
-	CAM.l = vector_sub(CAM.c, uw2);
-	CAM.l = vector_add(CAM.l, vh2);
+	CAM.c = vector_sub(CAM.pos, vector_scale(CAM.d, CAM.n));
+	CAM.l = vector_sub(CAM.c, vector_scale(CAM.w / 2.0, CAM.u));
+	CAM.l = vector_add(CAM.l, vector_scale(CAM.h / 2.0, CAM.v));
 }
 
 void		ft_fill_camera(int fd, t_env *env)
@@ -90,8 +87,8 @@ void		ft_fill_camera(int fd, t_env *env)
 			r = 0;
 		free(line);
 	}
-	ft_rotate_cam(env);
-	ft_init_cam(env);
+//	ft_rotate_cam(env);
+	ft_init_cam(env, CAM.rot);
 	//DEBUG DEBUG
 	/*print_vector("CAM ROT:", CAM.rot); printf("\n");
 	print_vector("CAM DIR:", CAM.dir); printf("\n");
