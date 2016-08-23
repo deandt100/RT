@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/22 15:32:11 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 08:36:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define VA cyl->v
 # define DEL_P vector_sub(&P, &PA)
 # define VEC_SQR(X) vector_dot(X, X)
+# define KEY_UP 126
+# define KEY_DOWN 127
 
 typedef struct	s_img
 {

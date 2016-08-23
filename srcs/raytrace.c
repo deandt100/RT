@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 15:34:05 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 07:52:24 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	double		t;
 
 	coef = 1.0;
-	env->spec_coef = 0.6; //to set in scene file
-	env->ambient_coef = 1.0F; //to set in scene file
+	env->spec_coef = 0.6; // 
+	env->ambient_coef = 1.0F; //
 	while (coef > 0.0f && level_max--)
 	{
 		t = 20000.0f;
@@ -47,9 +47,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 		else if (OBJ.cur_cyl != -1)
 			set_val_cyl(env, t, ray);
 		else if (OBJ.cur_cone != -1)
-		{
 			set_val_cone(env, t, ray);
-		}
 		else
 			break ;
 		if (env->br == 1)
@@ -120,7 +118,7 @@ void				raytrace(t_env *env)
 			env->ray = ray;
 			OBJ.col = (t_col){0.0, 0.0, 0.0};
 			env->br = 0;
-			save_to_img(env, shoot_ray(ray, env->ref_level, env), x, y);
+			save_to_img(env, shoot_ray(ray, 5, env), x, y);
 		}
 	}
 }

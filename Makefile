@@ -6,13 +6,13 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/21 08:25:25 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/08/23 07:15:06 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RT
 
-CFLAGS = -Wall -Wextra -Werror -pedantic -Ofast -g
+CFLAGS = -Wall -Wextra -Werror -g 
 
 CC = gcc
 
@@ -102,7 +102,7 @@ $(NAME): $(OBJS)
 #	@Make -C libft
 #	@$(call colourecho, " - Making $(NAME)")
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
-	@clear
+#	@clear
 #	@$(call colourecho, "Make Done!")
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
