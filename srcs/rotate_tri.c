@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 07:46:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/07/15 14:24:55 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 12:05:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/vector.h"
+#include <vector.h>
 
 void	rotate_tri(t_triangle *tri)
 {
