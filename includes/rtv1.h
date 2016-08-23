@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 08:36:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/23 08:52:02 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define VFOV (double) 60
 # define EXIT 53
 # define OBJ env->obj
+# define LIGHTS OBJ.lights
 # define CAM OBJ.cam
 # define SPHERES env->obj.spheres
 # define CYLINDERS env->obj.cylinders
@@ -48,6 +49,16 @@
 # define VEC_SQR(X) vector_dot(X, X)
 # define KEY_UP 126
 # define KEY_DOWN 127
+
+typedef struct	s_count
+{
+	int			mats;
+	int			lights;
+	int			spheres;
+	int			triangles;
+	int			cylinders;
+	int			cones;
+}				t_count;
 
 typedef struct	s_img
 {
@@ -98,6 +109,7 @@ typedef struct	s_env
 	t_ray		ray;
 	int			spec_n;
 	double		spec_coef;
+	t_count		count;
 	double      ambient_coef;
 	double      ambient_level;
 	int			ref_level;
@@ -178,9 +190,15 @@ void			val_types(t_env *env, t_obj temp);
 ** New file input.
 */
 
+t_vector		ft_get_vector(char *line);
 void			ft_get_input(t_env *env, char *file);
-
 void			ft_count_objs(t_env *env, char *file);
+void			ft_fill_camera(int fd, t_env *env);
+void			ft_fill_material(int fd, t_env *env);
+void			ft_fill_light(int fd, t_env *env);
+void			ft_fill_sphere(int fd, t_env *env);
+void			ft_fill_triangle(int fd, t_env *env);
+void			ft_fill_cone(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
