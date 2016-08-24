@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/24 12:29:54 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 14:07:18 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@
 # include <colours.h>
 # include <light.h>
 # include <libft.h>
+# include <pthread.h>
+# define NO_THREADS 4
 # define EPSILON (double)0.000001F
-# define WIN_X 1920
-# define WIN_Y 1080
+# define WIN_X 1280
+# define WIN_Y 720
 # define WIN_RATIO WIN_X / WIN_Y
 # define VFOV (double) 60
 # define EXIT 53
@@ -235,7 +237,7 @@ void    		print_col(t_col col);
 
 void			calc_lighting(t_env *env, float coef);
 
-void			raytrace(t_rt_thread t);
+void			*raytrace(void *p);
 
 void			make_threads(t_env *env);
 
