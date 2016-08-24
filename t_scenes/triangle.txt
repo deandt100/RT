@@ -22,7 +22,7 @@ TRIANGLE:
 	v2: x-10 y0 z-5
 	v3: x10 y0 z-5
 	M: 0
-	R: x15 y0 z0
+	R: x45 y0 z0
 
 LIGHT:
 	P: x20 y-100 z0

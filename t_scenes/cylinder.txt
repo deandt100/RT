@@ -4,43 +4,49 @@ CAMERA:
 	P: x0 y-200 z0
 	U: x0 y0 z1
 
-REFLECTION: 50
+REFLECTION: 10
 
-AMBIENT: 5
+AMBIENT: 0
 
-LIGHT:
-	P: x50 y-150 z0
+#LIGHT:
+	P: x50 y-250 z0
 	R: 255
 	G: 255
 	B: 255
 
-MATERIAL:
-	R: 0
+LIGHT:
+	P: x-40 y-50 z0
+	R: 200
 	G: 200
-	B: 0
-	S: 0
+	B: 200
+
+MATERIAL:
+	R: 70
+	G: 255
+	B: 70
+	S: 4
 	*: 6
 
 MATERIAL:
 	R: 0
 	G: 0
 	B: 200
-	S: 0
+	S: 4
 	*: 3
 
 MATERIAL:
 	R: 200
 	G: 0
 	B: 0
-	S: 0
+	S: 4
 	*: 6
 
 MATERIAL:
 	R: 255
 	G: 255
 	B: 255
-	S: 0
-	*: 10
+	S: 4
+	*: 4
 
 SPHERE:
 	P: x0 y0 z0

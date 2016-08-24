@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 15:38:17 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 11:47:42 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define KEY_W 13
 # define KEY_S 1
 # define ROT_DELTA 5.0F
+# define SPEC_POWER 42
 
 typedef struct	s_count
 {
@@ -103,6 +104,7 @@ typedef struct	s_obj
 	t_cam		cam;
 	t_vector	cam_rot;
 	float		ref_dist;
+	int			in_shadow;
 }				t_obj;
 
 typedef struct	s_env
@@ -119,6 +121,7 @@ typedef struct	s_env
 	double      ambient_coef;
 	double      ambient_level;
 	int			ref_level;
+	double		fov;
 }				t_env;
 
 typedef struct	s_rt_thread
@@ -244,7 +247,7 @@ void			set_val_cyl(t_env *env, double t, t_ray ray);
 
 void			set_val_cone(t_env *env, double t, t_ray ray);
 
-void			get_intersections(t_env *env, t_ray ray, double *t);
+void			get_intersections(t_env *env, t_ray *ray, double *t);
 
 int				intersect_ray_sphere(t_ray *ray, t_sphere *sphere, double *t);
 
