@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:43:07 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/24 12:03:56 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 12:18:43 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		ft_rotate_cam(t_env *env)
 
 void		ft_init_cam(t_env *env, t_vector rot)
 {
-	env->fov = 59 * M_PI / 180;
+	env->fov = 59.324377 * M_PI / 180;
 	CAM.d = 1.0F;
 	CAM.h = tan(env->fov / 2) / CAM.d;
 	CAM.w = CAM.h * ((double)WIN_X / (double)WIN_Y);
