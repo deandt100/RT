@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/24 10:50:33 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 14:01:36 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	double		t;
 
 	coef = 1.0;
-	env->spec_coef = 0.6; // 
+	env->spec_coef = 0.6; //
 	env->ambient_coef = 1.0F; //
 	while (coef > 0.0f && level_max--)
 	{
@@ -101,23 +101,26 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 ** colour value to image.
 */
 
-void				raytrace(t_rt_thread t)
+void				*raytrace(void *p)
 {
 	int		x;
 	t_ray	ray;
+	t_rt_thread	*t;
 
-	ray.start = t.env->obj.cam.pos;
-	while (t.y_s < t.y_e)
+	t = (t_rt_thread*)p;
+	ray.start = t->env->obj.cam.pos;
+	while (t->y_s < t->y_e)
 	{
-		x = t.x_s - 1;
-		while (++x < t.x_e)
+		x = t->x_s - 1;
+		while (++x < t->x_e)
 		{
-			create_ray(x, t.y_s, &ray, t.env);
-			t.env->ray = ray;
-			t.env->obj.col = (t_col){0.0, 0.0, 0.0};
-			t.env->br = 0;
-			save_to_img(t.env, shoot_ray(ray, t.env->ref_level + 1, t.env), x, t.y_s);
+			create_ray(x, t->y_s, &ray, t->env);
+			t->env->ray = ray;
+			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
+			t->env->br = 0;			
+			save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env), x, t->y_s);			
 		}
-		t.y_s++;
+		t->y_s++;
 	}
+	pthread_exit(NULL);
 }
