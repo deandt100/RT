@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 07:35:04 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/24 09:33:37 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 12:10:23 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	move_cam(t_env *env)
 	rotate_vec_x(OBJ.cam_rot.x, &n);
 	rotate_vec_y(OBJ.cam_rot.y, &n);
 	rotate_vec_z(OBJ.cam_rot.z, &n);
-	rotate_vec_x(OBJ.cam_rot.x, &CAM.dir);
-	rotate_vec_y(OBJ.cam_rot.y, &CAM.dir);
-	rotate_vec_z(OBJ.cam_rot.z, &CAM.dir);
+//	rotate_vec_x(OBJ.cam_rot.x, &CAM.dir);
+//	rotate_vec_y(OBJ.cam_rot.y, &CAM.dir);
+//	rotate_vec_z(OBJ.cam_rot.z, &CAM.dir);
 	print_vector("Xn = ", n);
 //	n = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.n);
 	print_vector("cam before ",CAM.pos);

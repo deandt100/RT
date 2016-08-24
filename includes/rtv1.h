@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/24 11:47:42 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 12:29:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <light.h>
 # include <libft.h>
 # define EPSILON (double)0.000001F
-# define WIN_X 1280
-# define WIN_Y 720
+# define WIN_X 1920
+# define WIN_Y 1080
 # define WIN_RATIO WIN_X / WIN_Y
 # define VFOV (double) 60
 # define EXIT 53
