@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/23 16:17:09 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 10:50:33 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	while (coef > 0.0f && level_max--)
 	{
 		t = 20000.0f;
-		get_intersections(env, ray, &t);
+		get_intersections(env, &ray, &t);
 		if (OBJ.cur_sphere != -1)
 			set_val_sphere(env, t, ray);
 		else if (OBJ.cur_tri != -1)

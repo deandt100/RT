@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:43:07 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 12:52:19 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 12:03:56 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ void		ft_rotate_cam(t_env *env)
 
 void		ft_init_cam(t_env *env, t_vector rot)
 {
-
-	CAM.d = 2.1675;
-	CAM.h = 18.0 * CAM.d / 35;
+	env->fov = 59 * M_PI / 180;
+	CAM.d = 1.0F;
+	CAM.h = tan(env->fov / 2) / CAM.d;
 	CAM.w = CAM.h * ((double)WIN_X / (double)WIN_Y);
 	CAM.n = vector_unit(vector_sub(CAM.pos, CAM.dir));
-	print_vector("rotation : ", rot);
 	rotate_vec_x(rot.x, &CAM.n);
 	rotate_vec_y(rot.y, &CAM.n);
 	rotate_vec_z(rot.z, &CAM.n);

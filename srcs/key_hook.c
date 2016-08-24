@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 07:35:04 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 15:35:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 09:33:37 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,18 @@ void	move_cam(t_env *env)
 {
 	t_vector	n;
 
-	n = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.n);
-	rotate_vec_x(-OBJ.cam_rot.x, &n);
-	rotate_vec_y(-OBJ.cam_rot.y, &n);
-	rotate_vec_z(-OBJ.cam_rot.z, &n);
+	n = CAM.n;
+	print_vector("Xrot = ", OBJ.cam_rot);
+	rotate_vec_x(OBJ.cam_rot.x, &n);
+	rotate_vec_y(OBJ.cam_rot.y, &n);
+	rotate_vec_z(OBJ.cam_rot.z, &n);
+	rotate_vec_x(OBJ.cam_rot.x, &CAM.dir);
+	rotate_vec_y(OBJ.cam_rot.y, &CAM.dir);
+	rotate_vec_z(OBJ.cam_rot.z, &CAM.dir);
+	print_vector("Xn = ", n);
+//	n = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.n);
 	print_vector("cam before ",CAM.pos);
-	OBJ.cam.pos = vector_add(CAM.pos, vector_scale(10, n));
+	OBJ.cam.pos = vector_sub(CAM.pos, vector_scale(25.0F, n));
 	print_vector("cam after ", CAM.pos);
 	re_render(env);
 }
@@ -61,7 +67,7 @@ int	key_hook(int keycode, t_env *env)
 		OBJ.cam_rot.z += ROT_DELTA;
 		re_render(env);
 	}
-/*	if (keycode == 13)
+	if (keycode == 13)
 	{
 		move_cam(env);
 	}
@@ -70,6 +76,6 @@ int	key_hook(int keycode, t_env *env)
 		OBJ.cam.pos = vector_scale(1.5F, OBJ.cam.pos);//, vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.n));
 //		OBJ.cam.pos.z += 20;
 		re_render(env);
-	}*/
+	}
 	return (env->img.s);
 }
