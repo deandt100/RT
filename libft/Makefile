@@ -89,7 +89,8 @@ SRCS_NAME = ft_atoi.c \
 			ft_printf_format.c \
 			ft_printf_out.c \
 			ft_printf.c \
-			ft_calloc.c
+			ft_calloc.c \
+			ft_atod.c 
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
