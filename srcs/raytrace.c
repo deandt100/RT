@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/25 13:28:15 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 15:21:08 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,14 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 void				*raytrace(void *p)
 {
 	int		x;
-	double	frag_x;
-	double	frag_x;
+	//double	frag_x;
 	double	frag_coef;
 	t_ray	ray;
 	t_rt_thread	*t;
 
 	t = (t_rt_thread*)p;
 	ray.start = t->env->obj.cam.pos;
-	t->env->sampling_level = 2;
+	//t->env->sampling_level = 2;
 	frag_coef = 1.0F;
 	while (t->y_s < t->y_e)
 	{

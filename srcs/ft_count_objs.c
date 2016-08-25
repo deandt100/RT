@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 07:09:37 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/24 14:52:02 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/25 15:21:45 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	ft_count_1(t_env *env, char *line)
 		OBJ.num_cone += 1;
 	else if (ft_strncmp(line, "PLANE", 5) == 0)
 		OBJ.num_planes += 1;
+	else if (ft_strncmp(line, "OBJECT", 6) == 0)
+		OBJ.num_objects += 1;
 	//More shapes can be added below or in another function that runs after
 	//this one.
 }
@@ -54,4 +56,5 @@ void	ft_count_objs(t_env *env, char *file)
 	ft_printf("CYLINDER\t=> %i\n", OBJ.num_cyl);
 	ft_printf("CONES\t\t=> %i\n", OBJ.num_cone);
 	ft_printf("PLANE\t\t=> %i\n", OBJ.num_planes);
+	ft_printf("OBJECT\t\t=> %i\n", OBJ.num_objects);
 }

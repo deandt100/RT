@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 14:49:20 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/25 15:04:43 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct	s_count
 	int			cylinders;
 	int			cones;
 	int			planes;
+	int			objects;
 }				t_count;
 
 typedef struct	s_img
@@ -104,6 +105,9 @@ typedef struct	s_obj
 	t_plane		*planes;
 	int			num_planes;
 	int			cur_plane;
+	t_object	*objects;
+	int			num_objects;
+	int			cur_object;
 	t_material	cur_mat;
 	t_vector	normal;
 	t_vector	new_start;
