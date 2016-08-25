@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 07:50:46 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/23 09:03:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 08:26:11 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	rotate_vec_x(double angle, t_vector *v)
 	double	z1;
 
 	angle = angle * 0.01745329252F;
+	if (in_epsilon(angle))
+		return ;
 	z1 = v->z * cos(angle) - v->y * sin(angle);
 	y1 = v->y * cos(angle) + v->z * sin(angle);
 	v->y = y1;
@@ -30,6 +32,8 @@ void	rotate_vec_y(double angle, t_vector *v)
 	double	z1;
 
 	angle = angle * 0.01745329252F;
+	if (in_epsilon(angle))
+		return ;
 	z1 = v->z * cos(angle) + v->x * sin(angle);
 	x1 = v->x * cos(angle) - v->z * sin(angle);
 	v->x = x1;
@@ -42,6 +46,8 @@ void	rotate_vec_z(double angle, t_vector *v)
 	double	y1;
 
 	angle = angle * 0.01745329252F;
+	if (in_epsilon(angle))
+		return ;
 	y1 = v->y * cos(angle) - v->x * sin(angle);
 	x1 = v->y * sin(angle) + v->x * cos(angle);
 	v->x = x1;

@@ -71,3 +71,8 @@ CYLINDER:
 	V: x0 y0 z1
 	r: 5
 	M: 1
+
+PLANE:
+	P: x0 y30 z0
+	R: x0 y1 z0
+	M:3

@@ -1,5 +1,5 @@
 CAMERA:
-	R: x-5 y0 z0
+	R: x0 y0 z0
 	D: x0 y0 z0
 	P: x0 y-200 z0
 	U: x0 y0 z1
@@ -10,7 +10,7 @@ REFLECTION: 50
 FOV: 60
 
 #1 - 100
-AMBIENT: 20
+AMBIENT: 0
 
 MATERIAL:
 	R: 210
@@ -39,9 +39,9 @@ SPHERE:
 	M: 0
 
 LIGHT:
-	R: 300
-	G: 300
-	B: 300
+	R: 200
+	G: 200
+	B: 200
 	P: x20 y-100 z0
 
 SPHERE:
