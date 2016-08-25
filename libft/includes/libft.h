@@ -93,5 +93,6 @@ int		get_next_line(const int fd, char **line);
 void	ft_printerr(const char *format, ...);
 int		ft_printf(const char *format, ...);
 void	*ft_calloc(size_t count, size_t size);
+double	ft_atod(const char *str)
 
 #endif
