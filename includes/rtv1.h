@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 11:24:56 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 13:51:01 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct	s_env
 	double      ambient_level;
 	int			ref_level;
 	double		fov;
+	int			sampling_level;
 }				t_env;
 
 typedef struct	s_rt_thread
@@ -164,6 +165,8 @@ typedef struct	s_ray_tri
 	t_vector	s2;
 	t_vector	s3;
 }				t_ray_tri;
+
+void			color_add(t_col *col, t_col add);
 
 int				in_epsilon(double val);
 
@@ -269,6 +272,7 @@ int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 
 int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
 void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
+
 /*
 ** Light & shadows
 */
