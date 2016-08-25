@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/24 14:07:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 09:39:26 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_count
 	int			triangles;
 	int			cylinders;
 	int			cones;
+	int			planes;
 }				t_count;
 
 typedef struct	s_img
@@ -99,6 +100,9 @@ typedef struct	s_obj
 	t_cone		*cones;
 	int			cur_cone;
 	int			num_cone;
+	t_plane		*planes;
+	int			num_planes;
+	int			cur_plane;
 	t_material	cur_mat;
 	t_vector	normal;
 	t_vector	new_start;
@@ -228,6 +232,7 @@ void			ft_fill_sphere(int fd, t_env *env);
 void			ft_fill_triangle(int fd, t_env *env);
 void			ft_fill_cone(int fd, t_env *env);
 void			ft_fill_cylinder(int fd, t_env *env);
+void			ft_fill_plane(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
@@ -249,6 +254,8 @@ void			set_val_cyl(t_env *env, double t, t_ray ray);
 
 void			set_val_cone(t_env *env, double t, t_ray ray);
 
+void			set_val_plane(t_env *env, double t, t_ray ray);
+
 void			get_intersections(t_env *env, t_ray *ray, double *t);
 
 int				intersect_ray_sphere(t_ray *ray, t_sphere *sphere, double *t);
@@ -260,6 +267,8 @@ int				intersect_ray_tri(t_ray *r, t_triangle *tri, double *res,
 
 int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 
+int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
+void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 /*
 ** Light & shadows
 */
