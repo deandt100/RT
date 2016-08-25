@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:43:07 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/24 12:18:43 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 13:23:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,30 @@ t_vector	ft_get_vector(char *line)
 
 void		ft_new_cam(t_env *env)
 {
-	CAM.rot = (t_vector){0, 0, 0};
-	CAM.pos = (t_vector){0, 0, 0};
-	CAM.dir = (t_vector){0, 0, 0};
-	CAM.v_up = (t_vector){0, 0, 0};
+	CAM.rot = (t_vector){0.0F, 0.0F, 0.0F};
+	CAM.pos = (t_vector){0.0F, 0.0F, 0.0F};
+	CAM.dir = (t_vector){0.0F, 0.0F, 0.0F};
+	CAM.v_up = (t_vector){0.0F, 0.0F, 0.0F};
 }
 
-void		ft_rotate_cam(t_env *env)
+void		ft_init_cam(t_env *env, t_vector rot, int r)
 {
-	rotate_vec_x(CAM.rot.x, &CAM.dir);
-	rotate_vec_x(CAM.rot.x, &CAM.u);
-	rotate_vec_x(CAM.rot.x, &CAM.pos);
-	rotate_vec_y(CAM.rot.y, &CAM.dir);
-	rotate_vec_y(CAM.rot.y, &CAM.u);
-	rotate_vec_y(CAM.rot.y, &CAM.pos);
-	rotate_vec_z(CAM.rot.z, &CAM.dir);
-	rotate_vec_z(CAM.rot.z, &CAM.u);
-	rotate_vec_z(CAM.rot.z, &CAM.pos);
-}
+	t_vector	drot;
 
-void		ft_init_cam(t_env *env, t_vector rot)
-{
 	env->fov = 59.324377 * M_PI / 180;
 	CAM.d = 1.0F;
 	CAM.h = tan(env->fov / 2) / CAM.d;
 	CAM.w = CAM.h * ((double)WIN_X / (double)WIN_Y);
-	CAM.n = vector_unit(vector_sub(CAM.pos, CAM.dir));
-	rotate_vec_x(rot.x, &CAM.n);
-	rotate_vec_y(rot.y, &CAM.n);
-	rotate_vec_z(rot.z, &CAM.n);
+	if (r)
+	{
+		drot = vector_sub(CAM.dir, CAM.pos);
+		rotate_vec_x(rot.x, &drot);
+		rotate_vec_y(rot.y, &drot);
+		rotate_vec_z(rot.z, &drot);
+		CAM.dir = vector_unit(drot);
+	}
+	CAM.n = vector_unit(vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.dir));
+	print_vector("n", CAM.n);
 	CAM.u = vector_unit(vector_cross(CAM.v_up, CAM.n));
 	CAM.v = vector_cross(CAM.n, CAM.u);
 	CAM.c = vector_sub(CAM.pos, vector_scale(CAM.d, CAM.n));
@@ -86,8 +81,8 @@ void		ft_fill_camera(int fd, t_env *env)
 			r = 0;
 		free(line);
 	}
-//	ft_rotate_cam(env);
-	ft_init_cam(env, CAM.rot);
+	ft_init_cam(env, CAM.rot, 1);
+	OBJ.cam_rot = (t_vector){0.0F, 0.0F, 0.0F};
 	//DEBUG DEBUG
 	/*print_vector("CAM ROT:", CAM.rot); printf("\n");
 	print_vector("CAM DIR:", CAM.dir); printf("\n");

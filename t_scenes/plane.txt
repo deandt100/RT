@@ -4,7 +4,7 @@ CAMERA:
 	P: x0 y-200 z0
 	U: x0 y0 z1
 
-REFLECTION: 50 
+REFLECTION: 3 
 
 # 1 - 89.99...
 FOV: 60
@@ -27,16 +27,16 @@ MATERIAL:
 	*: 5
 
 MATERIAL:
-	R: 240
-	G: 240
-	B: 240
+	R: 220
+	G: 220
+	B: 200
 	S: 5
 	*: 5
 
 LIGHT:
-	R: 225
-	G: 225
-	B: 225
+	R: 200
+	G: 200
+	B: 200
 	P: x20 y-200 z0
 
 SPHERE:

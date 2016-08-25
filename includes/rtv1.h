@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 09:39:26 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/25 11:24:56 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ t_vector		ft_get_vector(char *line);
 int				ft_val_col(t_col *col);
 int				ft_val_mat(t_env *env, int mat, char *obj);
 int				ft_input_error(char *obj, char *msg);
-void			ft_init_cam(t_env *env, t_vector rot);
+void			ft_init_cam(t_env *env, t_vector rot, int r);
 void			ft_get_input(t_env *env, char *file);
 void			ft_count_objs(t_env *env, char *file);
 void			ft_fill_camera(int fd, t_env *env);
