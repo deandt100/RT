@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 06:56:36 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 11:51:47 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 15:13:03 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_init_arrays(t_env *env)
 	OBJ.triangles = (t_triangle *)malloc(sizeof(t_triangle) * OBJ.num_tri);
 	OBJ.cylinders = (t_cylinder *)malloc(sizeof(t_cylinder) * OBJ.num_cyl);
 	OBJ.cones = (t_cone *)malloc(sizeof(t_cone) * OBJ.num_cone);
+	OBJ.planes = (t_plane *)malloc(sizeof(t_plane) * OBJ.num_planes);
 	//Initialize more shape below as we go along
 }
 
@@ -34,12 +35,14 @@ void	ft_init_env(t_env *env)
 	OBJ.num_tri = 0;
 	OBJ.num_cyl = 0;
 	OBJ.num_cone = 0;
+	OBJ.num_planes = 0;
 	env->count.mats = -1;
 	env->count.lights = -1;
 	env->count.spheres = -1;
 	env->count.triangles = -1;
 	env->count.cylinders = -1;
 	env->count.cones = -1;
+	env->count.planes = -1;
 }
 
 void	ft_check_1(int fd, t_env *env, char *line)
@@ -62,6 +65,8 @@ void	ft_check_1(int fd, t_env *env, char *line)
 		ft_fill_cone(fd, env);
 	else if (ft_strncmp(line, "CYLINDER", 8) == 0)
 		ft_fill_cylinder(fd, env);
+	else if (ft_strncmp(line, "PLANE", 5) == 0)
+		ft_fill_plane(fd, env);
 	//ADD more checks below
 }
 

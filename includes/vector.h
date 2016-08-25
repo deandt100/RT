@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:31:19 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/23 08:53:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/24 14:25:49 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct	s_sphere
 	t_shape		shape;
 	double		radius;
 }				t_sphere;
+
+typedef struct	s_plane
+{
+	t_shape		shape;
+	t_vector	rot;
+}				t_plane;
 
 typedef struct	s_ray
 {

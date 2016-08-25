@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/23 11:23:34 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/25 07:11:41 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS_NAME1 = main.c \
 			key_hook.c \
 			close_window.c \
 			intersect_ray_trace.c \
-			intersect_triangle.c 
+			intersect_triangle.c \
+			ft_plane_intersection.c
 
 SRCS_NAME2 = get_input.c \
 			count_types.c \
@@ -73,6 +74,7 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_fill_triangle.c \
 			 ft_fill_cone.c \
 			 ft_fill_cylinder.c \
+			 ft_fill_plane.c \
 			 ft_input_check.c
 
 SRCS3 = $(addprefix ($SRCS_PATH), $(SRCS_NAME3))
