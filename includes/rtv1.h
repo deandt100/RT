@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 11:24:56 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/25 14:49:20 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <complex.h>
 # include <mlx.h>
 # include <vector.h>
+# include <objects.h>
 # include <colours.h>
 # include <light.h>
 # include <libft.h>
