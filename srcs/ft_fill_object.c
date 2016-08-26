@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 06:59:08 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 07:37:18 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 10:03:35 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	ft_fill_object(int fd, t_env *env)
 	}
 	if (ft_val_mat(env, OBJ.objects[i].material, "OBJECT") == -1)
 		exit(-1);
-	if (OBJ.objects[i].path == NULL)
-		exit(-1);
-	//CALL TO GABRIELS FUNCTION
+	read_obj(&OBJ.objects[i]);
 	//DEBUG
 	/*printf("OBJECT:\n");
 	printf("Path: %s\n", OBJ.objects[i].path);
