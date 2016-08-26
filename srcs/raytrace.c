@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/26 08:37:19 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:41:12 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,7 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 	double	frag_step;
 	t_ray	ray;
 	t_col	ret = {0.0F , 0.0F , 0.0F };
-	t_col	temp;
 	double	fragments;
-	int		count = 0;
 
 	fragments = pow(t->env->sampling_level, 2);
 	frag_step = 1.0F / (fragments / t->env->sampling_level);
@@ -121,10 +119,8 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 		{
 			create_ray(x + frag_x, y + frag_y, &ray, t->env);
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
-			temp = shoot_ray(ray, t->env->ref_level, t->env);
-			color_add(&ret, temp);
+			color_add(&ret, shoot_ray(ray, t->env->ref_level, t->env));
 			frag_x += frag_step;
-			count++;
 		}
 		frag_y += frag_step;
 	}
@@ -145,7 +141,7 @@ void				*raytrace(void *p)
 
 	t = (t_rt_thread*)p;
 	ray.start = t->env->obj.cam.pos;
-	t->env->sampling_level = 1;
+	t->env->sampling_level = 2;
 	while (t->y_s < t->y_e)
 	{
 		x = t->x_s - 1;
