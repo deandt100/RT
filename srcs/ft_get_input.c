@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 06:56:36 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/25 15:09:27 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 07:32:47 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	ft_check_1(int fd, t_env *env, char *line)
 		ft_fill_cylinder(fd, env);
 	else if (ft_strncmp(line, "PLANE", 5) == 0)
 		ft_fill_plane(fd, env);
+	else if (ft_strncmp(line, "OBJECT", 6) == 0)
+		ft_fill_object(fd, env);
 	//ADD more checks below
 }
 

@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/25 07:11:41 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/26 07:19:16 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_fill_cone.c \
 			 ft_fill_cylinder.c \
 			 ft_fill_plane.c \
-			 ft_input_check.c
+			 ft_input_check.c \
+			 ft_fill_object.c
 
 SRCS3 = $(addprefix ($SRCS_PATH), $(SRCS_NAME3))
 

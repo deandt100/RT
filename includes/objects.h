@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/25 15:00:26 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 07:31:16 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_object
 {
 	char		*path;
 	t_vector	pos;
+	int			material;
 	t_vector	*vectors;
 	int			num_vecs;
 	t_vector	*normals;
