@@ -55,8 +55,8 @@ SPHERE:
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/cube1.obj
-	R: x45 y0 z45
-	S: 1.5
-	P: x0 y20 z-30
+	F: ./t_scenes/untitled.obj
+	R: x10 y0 z0
+	S: 2.0
+	P: x0 y0 z0
 	M: 1
