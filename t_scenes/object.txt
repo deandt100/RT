@@ -55,6 +55,6 @@ SPHERE:
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/monkey.obj
+	F: ./t_scenes/cube.obj
 	P: x0 y0 z0
 	M: 1
