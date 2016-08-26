@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 13:54:26 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 15:34:07 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct	s_obj
 	int			cur_plane;
 	t_object	*objects;
 	int			num_objects;
-	int			cur_object;
+	int			cur_object[2];
 	t_material	cur_mat;
 	t_vector	normal;
 	t_vector	new_start;

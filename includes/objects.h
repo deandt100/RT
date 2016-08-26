@@ -6,12 +6,15 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 13:52:13 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 15:16:36 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
+
+# include <rtv1.h>
+# include <vector.h>
 
 typedef struct	s_obj_count
 {
@@ -38,7 +41,7 @@ typedef struct	s_object
 	int			num_vecs;
 	t_vector	*normals;
 	int			num_norms;
-	t_face		*faces;
+	t_triangle	*faces;
 	int			num_faces;
 	t_obj_count	count;
 }				t_object;
