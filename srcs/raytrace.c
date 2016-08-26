@@ -106,8 +106,8 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 void				*raytrace(void *p)
 {
 	int		x;
-	double	frag_x;
-	double	frag_x;
+	//double	frag_x;
+	//double	frag_x;
 	double	frag_coef;
 	t_ray	ray;
 	t_rt_thread	*t;

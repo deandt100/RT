@@ -164,7 +164,10 @@ norm:
 
 qme:
 	@rm -Rf author
-	@whoami > author
+	@echo ddu-toit > author
+	@echo oexall >> author
+	@echo daviwel >> author
+	@echo ggroener >> author
 	
 me: qme
 	cat -e author
