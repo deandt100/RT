@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 09:44:57 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 10:17:49 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 11:58:06 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_count_vec(char *line, t_object *obj)
 {
 	if (line[0] == 'v' && line[1] == ' ')
 		obj->num_vecs += 1;
-	else if (ft_strstr(line, "vn"))
+	else if (line[0] == 'v' && line[1] == 'n')
 		obj->num_norms += 1;
 	else if (line[0] == 'f' && line[1] == ' ')
 		obj->num_faces += 1;

@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 08:57:43 by ggroener          #+#    #+#             */
-/*   Updated: 2016/08/26 11:49:28 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 11:59:10 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_vector	ft_obj_vector(char *line)
 	vec.y = ft_atod(tmp);
 	tmp = ft_strrchr(&tmp[1], ' ');
 	vec.z = ft_atod(tmp);
+	print_vector("TEST", vec);
 	return (vec);
 }
 
@@ -52,7 +53,7 @@ void		read_obj(t_object *obj)
 	{
 		if (line[0] == 'v' && line[1] == ' ')
 			obj->vectors[(++obj->count.vecs)] = ft_obj_vector(line);
-		else if (line[0] == 'v' && line[1] == 'n')
+		else if (line[0] == 'v' && line[1] == 'n' && line[2] == ' ')
 			obj->normals[(++obj->count.norms)] = ft_obj_vector(line);
 		free(line);
 	}

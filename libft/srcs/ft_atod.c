@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/14 12:45:45 by ggroener          #+#    #+#             */
-/*   Updated: 2016/06/14 12:45:46 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/08/26 12:06:56 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ double			ft_atod(const char *str)
 	int		integer_value;
 	double	floating_value;
 
+	while (*str == ' ' || *str == '\t')
+		str++;
 	i = 0;
 	while (str[i] && str[i] != '.')
 		i++;
@@ -49,6 +51,7 @@ double			ft_atod(const char *str)
 	integer_value = ft_atoi(integer_part);
 	free(integer_part);
 	floating_value = get_floating_value(((char *)str) + end + 1);
-	return (integer_value +
-			(str[0] == '-' ? -floating_value : floating_value));
+	//return (integer_value +
+	//		(str[0] == '-' ? -floating_value : floating_value));
+	return ((integer_value + floating_value) * ((str[0] == '-') ? -1 : 1));
 }
