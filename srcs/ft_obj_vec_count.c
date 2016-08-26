@@ -6,13 +6,13 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 09:44:57 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 10:01:52 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 10:17:49 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-static char	*ft_trim(char *str)
+ char		*ft_trim(char *str)
 {
 	char	*end;
 
@@ -35,7 +35,7 @@ static void	ft_count_vec(char *line, t_object *obj)
 		obj->num_faces += 1;
 }
 
-void	ft_obj_vec_count(t_object *obj)
+void		ft_obj_vec_count(t_object *obj)
 {
 	int		fd;
 	char	*line;
