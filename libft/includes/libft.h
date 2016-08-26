@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 08:25:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/22 08:22:21 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/25 13:56:28 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int		get_next_line(const int fd, char **line);
 void	ft_printerr(const char *format, ...);
 int		ft_printf(const char *format, ...);
 void	*ft_calloc(size_t count, size_t size);
+double	ft_atod(const char *str);
 
 #endif

@@ -20,6 +20,7 @@
 # include <complex.h>
 # include <mlx.h>
 # include <vector.h>
+# include <objects.h>
 # include <colours.h>
 # include <light.h>
 # include <libft.h>
@@ -68,6 +69,7 @@ typedef struct	s_count
 	int			cylinders;
 	int			cones;
 	int			planes;
+	int			objects;
 }				t_count;
 
 typedef struct	s_img
@@ -103,6 +105,9 @@ typedef struct	s_obj
 	t_plane		*planes;
 	int			num_planes;
 	int			cur_plane;
+	t_object	*objects;
+	int			num_objects;
+	int			cur_object[2];
 	t_material	cur_mat;
 	t_vector	normal;
 	t_vector	new_start;
@@ -239,6 +244,7 @@ void			ft_fill_triangle(int fd, t_env *env);
 void			ft_fill_cone(int fd, t_env *env);
 void			ft_fill_cylinder(int fd, t_env *env);
 void			ft_fill_plane(int fd, t_env *env);
+void			ft_fill_object(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
@@ -276,6 +282,16 @@ int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
 void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 
+<<<<<<< HEAD
+/*
+** Blender Obj Files.
+*/
+int				intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face);
+void			set_val_object(t_env *env, double t, t_ray ray);
+void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
+
+=======
+>>>>>>> master
 /*
 ** Light & shadows
 */

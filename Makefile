@@ -42,7 +42,8 @@ SRCS_NAME1 = main.c \
 			close_window.c \
 			intersect_ray_trace.c \
 			intersect_triangle.c \
-			ft_plane_intersection.c
+			ft_plane_intersection.c \
+			intersect_object.c
 
 SRCS_NAME2 = count_types.c \
 			raytrace.c\
@@ -68,7 +69,10 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_fill_cone.c \
 			 ft_fill_cylinder.c \
 			 ft_fill_plane.c \
-			 ft_input_check.c
+			 ft_input_check.c \
+			 ft_fill_object.c \
+			 ft_obj_vec_count.c \
+			 read_obj.c
 
 SRCS3 = $(addprefix ($SRCS_PATH), $(SRCS_NAME3))
 
@@ -93,7 +97,6 @@ INCLUDES = -I includes/ -I libft/includes
 #LIBRARY = -L /usr/X11/lib -lmlx -lX11 -lm -lXext -L libft/ -lft
  
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
-
 
 HEADER = 	$(INCLUDES_PATH)colours.h \
 			$(INCLUDES_PATH)light.h \

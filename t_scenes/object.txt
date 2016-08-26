@@ -1,0 +1,60 @@
+CAMERA:
+	R: x0 y0 z0
+	D: x0 y0 z0
+	P: x0 y-200 z0
+	U: x0 y0 z1
+
+REFLECTION: 50 
+
+# 1 - 89.99...
+FOV: 60
+
+#1 - 100
+AMBIENT: 30
+
+MATERIAL:
+	R: 210
+	G: 210
+	B: 210
+	S: 0
+	*: 2
+
+MATERIAL:
+	R: 130
+	G: 100
+	B: 250
+	S: 0
+	*: 0
+
+MATERIAL:
+	R: 0
+	G: 200
+	B: 0
+	S: 0
+	*: 5
+
+SPHERE:
+	P: x0 y0 z50
+	R: 20
+	M: 0
+
+LIGHT:
+	R: 200
+	G: 200
+	B: 200
+	P: x20 y-100 z0
+
+SPHERE:
+	P: x60 y0 z0
+	R: 20
+	M: 0
+
+SPHERE:
+	P: x-60 y0 z0
+	R: 20
+	M: 2
+
+OBJECT:
+	F: ./t_scenes/untitled.obj
+	P: x0 y0 z0
+	M: 1

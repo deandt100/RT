@@ -6,7 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/08/26 09:48:57 by ddu-toit         ###   ########.fr       */
+=======
+/*   Updated: 2016/08/26 15:41:50 by oexall           ###   ########.fr       */
+>>>>>>> Obj
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +56,8 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 			set_val_cone(env, t, ray);
 		else if (OBJ.cur_plane != -1)
 			set_val_plane(env, t, ray);
+		else if (OBJ.cur_object[0] != -1)
+			set_val_object(env, t, ray);
 		else
 			break ;
 		if (env->br == 1)
@@ -135,12 +141,15 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 void				*raytrace(void *p)
 {
 	int		x;
+	//double	frag_x;
+	double	frag_coef;
 	t_ray	ray;
 	t_rt_thread	*t;
 
 	t = (t_rt_thread*)p;
 	ray.start = t->env->obj.cam.pos;
 	t->env->sampling_level = 2;
+	frag_coef = 1.0F;
 	while (t->y_s < t->y_e)
 	{
 		x = t->x_s - 1;
