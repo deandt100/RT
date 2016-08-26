@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 15:16:36 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 16:39:22 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_object
 {
 	char		*path;
 	t_vector	pos;
+	t_vector	rot;
+	double		scale;
 	int			material;
 	double		dist;
 	t_vector	*vectors;
@@ -50,5 +52,6 @@ char	*ft_trim(char *str);
 
 void	read_obj(t_object *obj);
 void	ft_obj_vec_count(t_object *obj);
+void	manipulate_object(t_object *obj);
 
 #endif

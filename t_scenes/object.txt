@@ -23,8 +23,8 @@ MATERIAL:
 	R: 130
 	G: 100
 	B: 250
-	S: 0
-	*: 0
+	S: 3
+	*: 5
 
 MATERIAL:
 	R: 0
@@ -55,6 +55,8 @@ SPHERE:
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/untitled.obj
-	P: x0 y0 z0
+	F: ./t_scenes/cube1.obj
+	R: x45 y0 z45
+	S: 1.5
+	P: x0 y20 z-30
 	M: 1
