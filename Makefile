@@ -39,11 +39,6 @@ SRCS_NAME1 = main.c \
 			in_epsilon.c \
 			rotate_tri.c \
 			key_hook.c \
-			close_window.c \
-			intersect_ray_trace.c \
-			intersect_triangle.c \
-			ft_plane_intersection.c \
-			intersect_object.c
 
 SRCS_NAME2 = count_types.c \
 			raytrace.c\
@@ -57,7 +52,11 @@ SRCS_NAME2 = count_types.c \
 			solve_quadratic.c \
 		   	normals.c \
 			make_threads.c\
-			color_add.c
+			color_add.c \
+			close_window.c \
+			intersect_ray_trace.c \
+			intersect_triangle.c \
+			ft_plane_intersection.c \
 
 SRCS_NAME3 = ft_get_input.c \
 			 ft_count_objs.c \
@@ -73,9 +72,10 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_fill_object.c \
 			 ft_obj_vec_count.c \
 			 read_obj.c \
-			 manipulate_object.c
+			 manipulate_object.c \
+			 intersect_object.c 
 
-SRCS3 = $(addprefix ($SRCS_PATH), $(SRCS_NAME3))
+SRCS3 = $(addprefix $(SRCS_PATH), $(SRCS_NAME3))
 
 SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
 
