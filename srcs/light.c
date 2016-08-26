@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/24 10:20:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 09:10:48 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray *light_ray
 		+ sh_cone(env, light_ray, t));
 }
 
-static void	lambert_diffuse(t_env *env, float coef, t_ray light_ray, t_light light)
+static void	lambert_diffuse(t_env *env, t_ray light_ray, t_light light)
 {
 	double		lam;
 	double		spec;
 	t_vector	dir;
 	double		term;
 
-	lam = vector_dot(light_ray.dir, OBJ.normal) * coef;
+	lam = vector_dot(light_ray.dir, OBJ.normal) * env->ref_coef;
 	dir = vector_sub(light_ray.dir, env->ray.dir);
 	dir = vector_scale(1.0 / sqrt(vector_dot(dir, dir)) , dir);
 	term = vector_dot(dir, OBJ.normal);
@@ -53,7 +53,7 @@ static void	add_ambient(t_env *env, t_light *light)
 		* light->intensity.b * OBJ.cur_mat.diffuse.b;
 }
 
-void		calc_lighting(t_env *env, float coef)
+void		calc_lighting(t_env *env)
 {
 	int			j;
 	t_vector	dist;
@@ -79,7 +79,7 @@ void		calc_lighting(t_env *env, float coef)
 		}
 		if (check_in_shadow(env, t, dist, &light_ray) == 0)
 		{
-			lambert_diffuse(env, coef, light_ray, OBJ.lights[j]);
+			lambert_diffuse(env, light_ray, OBJ.lights[j]);
 			env->spec_n++;
 		}
 		j++;

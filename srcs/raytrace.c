@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/26 08:41:12 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 09:48:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 static void			reflect_ray(t_env *env, t_ray *ray)
 {
+	env->ref_coef *= OBJ.cur_mat.reflection;
+	env->ambient_coef *= env->ambient_level;
+	env->spec_coef = 0.0;
 	ray->start = OBJ.new_start;
 	ray->dir = vector_sub(ray->dir,
 		vector_scale(2.0f * vector_dot(ray->dir, OBJ.normal), OBJ.normal));
@@ -30,13 +33,12 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 
 static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 {
-	float		coef;
 	double		t;
 
-	coef = 1.0;
-	env->spec_coef = 1.0F; //can init somewhewre else? 
-	env->ambient_coef = 1.0F; //
-	while (coef > 0.0f && level_max--)
+	env->ref_coef = 1.0F;
+	env->spec_coef = 1.0F; 
+	env->ambient_coef = 1.0F; 
+	while (env->ref_coef > 0.0F && level_max--)
 	{
 		t = 20000.0f;
 		get_intersections(env, &ray, &t);
@@ -54,10 +56,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 			break ;
 		if (env->br == 1)
 			break ;
-		calc_lighting(env, coef);
-		coef *= OBJ.cur_mat.reflection;
-		env->ambient_coef *= env->ambient_level;
-		env->spec_coef = 0.0;
+		calc_lighting(env);
 		reflect_ray(env, &ray);
 	}
 	return (OBJ.col);
@@ -106,7 +105,7 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 	double	frag_y;
 	double	frag_step;
 	t_ray	ray;
-	t_col	ret = {0.0F , 0.0F , 0.0F };
+	t_col	ret = {0.0F , 0.0F , 0.0F};
 	double	fragments;
 
 	fragments = pow(t->env->sampling_level, 2);

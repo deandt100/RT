@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 08:33:28 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 09:08:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ typedef struct	s_env
 	double      ambient_coef;
 	double      ambient_level;
 	int			ref_level;
+	double		ref_coef;
 	double		fov;
 	int			sampling_level;
 }				t_env;
@@ -245,7 +246,7 @@ void			ft_fill_plane(int fd, t_env *env);
 
 void    		print_col(t_col col);
 
-void			calc_lighting(t_env *env, float coef);
+void			calc_lighting(t_env *env);
 
 void			*raytrace(void *p);
 
