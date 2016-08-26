@@ -6,12 +6,19 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 09:45:52 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 10:20:35 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
+
+typedef struct	s_obj_count
+{
+	int			vecs;
+	int			norms;
+	int			faces;
+}				t_obj_count;
 
 typedef struct	s_face
 {
@@ -33,7 +40,10 @@ typedef struct	s_object
 	int			num_norms;
 	t_face		*faces;
 	int			num_faces;
+	t_obj_count	count;
 }				t_object;
+
+char	*ft_trim(char *str);
 
 void	read_obj(t_object *obj);
 void	ft_obj_vec_count(t_object *obj);
