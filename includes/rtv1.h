@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 07:32:12 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 08:24:06 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,6 +275,13 @@ int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 
 int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
 void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
+
+/*
+** Blender Obj Files.
+*/
+
+
+
 /*
 ** Light & shadows
 */
