@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 07:31:16 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 09:30:32 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef struct	s_face
 {
-	int			vec_1;
-	int			vec_2;
-	int			vec_3;
+	int			v1;
+	int			v2;
+	int			v3;
 	int			nor;
 }				t_face;
 
@@ -26,6 +26,7 @@ typedef struct	s_object
 	char		*path;
 	t_vector	pos;
 	int			material;
+	double		dist;
 	t_vector	*vectors;
 	int			num_vecs;
 	t_vector	*normals;

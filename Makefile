@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/26 07:19:16 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/26 09:14:52 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS_NAME1 = main.c \
 			close_window.c \
 			intersect_ray_trace.c \
 			intersect_triangle.c \
-			ft_plane_intersection.c
+			ft_plane_intersection.c \
+			intersect_object.c
 
 SRCS_NAME2 = get_input.c \
 			count_types.c \
