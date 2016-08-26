@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 14:14:34 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 09:30:32 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 09:45:52 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ typedef struct	s_object
 	t_face		*faces;
 	int			num_faces;
 }				t_object;
+
+void	read_obj(t_object *obj);
+void	ft_obj_vec_count(t_object *obj);
 
 #endif

@@ -44,11 +44,6 @@ LIGHT:
 	B: 200
 	P: x20 y-100 z0
 
-OBJECT:
-	F: ./t_scenes/monkey.obj
-	P: x0 y0 z0
-	M: 1
-
 SPHERE:
 	P: x40 y0 z0
 	R: 20
@@ -58,3 +53,8 @@ SPHERE:
 	P: x-50 y25 z0
 	R: 20
 	M: 2
+
+OBJECT:
+	F: ./t_scenes/monkey.obj
+	P: x0 y0 z0
+	M: 1
