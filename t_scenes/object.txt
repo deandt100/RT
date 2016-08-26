@@ -1,7 +1,7 @@
 CAMERA:
 	R: x0 y0 z0
 	D: x0 y0 z0
-	P: x0 y-400 z0
+	P: x0 y-200 z0
 	U: x0 y0 z1
 
 REFLECTION: 50 
@@ -10,7 +10,7 @@ REFLECTION: 50
 FOV: 60
 
 #1 - 100
-AMBIENT: 0
+AMBIENT: 30
 
 MATERIAL:
 	R: 210
@@ -24,7 +24,7 @@ MATERIAL:
 	G: 100
 	B: 250
 	S: 0
-	*: 5
+	*: 0
 
 MATERIAL:
 	R: 0
@@ -45,16 +45,16 @@ LIGHT:
 	P: x20 y-100 z0
 
 SPHERE:
-	P: x40 y0 z0
+	P: x60 y0 z0
 	R: 20
 	M: 0
 
 SPHERE:
-	P: x-50 y25 z0
+	P: x-60 y0 z0
 	R: 20
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/cube.obj
+	F: ./t_scenes/cube1.obj
 	P: x0 y0 z0
 	M: 1

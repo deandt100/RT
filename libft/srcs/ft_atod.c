@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/14 12:45:45 by ggroener          #+#    #+#             */
-/*   Updated: 2016/08/26 12:08:11 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 13:08:30 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ double			ft_atod(const char *str)
 	integer_value = ft_atoi(integer_part);
 	free(integer_part);
 	floating_value = get_floating_value(((char *)str) + end + 1);
-	return ((integer_value + floating_value) * ((str[0] == '-') ? -1 : 1));
+	//return (((double)integer_value + floating_value) *
+	//		((str[0] == '-') ? -1 : 1));
+	return ((double)integer_value +
+			(floating_value * ((str[0] == '-') ? -1 : 1)));
 }
