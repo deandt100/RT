@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 08:24:06 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 08:54:46 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 ** Blender Obj Files.
 */
 
-
+void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
 
 /*
 ** Light & shadows
