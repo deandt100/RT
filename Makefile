@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/25 07:11:41 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/26 07:55:05 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,15 +44,7 @@ SRCS_NAME1 = main.c \
 			intersect_triangle.c \
 			ft_plane_intersection.c
 
-SRCS_NAME2 = get_input.c \
-			count_types.c \
-			get_cam.c \
-			fill_spheres.c\
-			fill_triangles.c\
-			fill_lights.c\
-			fill_materials.c\
-			fill_cylinders.c\
-			fill_cone.c\
+SRCS_NAME2 = count_types.c \
 			raytrace.c\
 			set_vec_shape.c\
 			get_intersections.c\
@@ -63,7 +55,8 @@ SRCS_NAME2 = get_input.c \
 			unrotate_vec2.c \
 			solve_quadratic.c \
 		   	normals.c \
-			make_threads.c
+			make_threads.c\
+			color_add.c
 
 SRCS_NAME3 = ft_get_input.c \
 			 ft_count_objs.c \

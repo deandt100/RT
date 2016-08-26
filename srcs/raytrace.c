@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/25 13:28:15 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:02:06 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 			break ;
 		calc_lighting(env, coef);
 		coef *= OBJ.cur_mat.reflection;
-		env->ambient_coef *= 0.2;
+		env->ambient_coef *= env->ambient_level;
 		env->spec_coef = 0.0;
 		reflect_ray(env, &ray);
 	}
@@ -70,6 +70,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 static void			save_to_img(t_env *env, t_col col, int x, int y)
 {
 	t_col temp;
+
 
 	if (col.r * 255.0f < 255.0f)
 		temp.r = col.r * 255.0f;
@@ -98,6 +99,40 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 	vector_norm(&ray->dir);
 }
 
+
+t_col	create_fragments(t_rt_thread *t, int x, int y)
+{
+	double	frag_x;
+	double	frag_y;
+	double	frag_step;
+	t_ray	ray;
+	t_col	ret = {0.0F , 0.0F , 0.0F };
+	t_col	temp;
+	double	fragments;
+	int		count = 0;
+
+	fragments = pow(t->env->sampling_level, 2);
+	frag_step = 1.0F / (fragments / t->env->sampling_level);
+	frag_y = frag_step / 2;
+	while (frag_y < 1.0)
+	{
+		frag_x = frag_step / 2;
+		while (frag_x < 1.0F)
+		{
+			create_ray(x + frag_x, y + frag_y, &ray, t->env);
+			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
+			temp = shoot_ray(ray, t->env->ref_level, t->env);
+			color_add(&ret, temp);
+			frag_x += frag_step;
+			count++;
+		}
+		frag_y += frag_step;
+	}
+//	ft_printf("count = %d\n", count);
+	color_div(&ret, fragments);
+	return (ret);
+}
+
 /*
 ** Iterate through each pixel, shoot ray into scene for each and save returned
 ** colour value to image.
@@ -106,26 +141,27 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 void				*raytrace(void *p)
 {
 	int		x;
-	double	frag_x;
-	double	frag_x;
-	double	frag_coef;
+
 	t_ray	ray;
 	t_rt_thread	*t;
 
 	t = (t_rt_thread*)p;
 	ray.start = t->env->obj.cam.pos;
-	t->env->sampling_level = 2;
-	frag_coef = 1.0F;
+	t->env->sampling_level = 1;
 	while (t->y_s < t->y_e)
 	{
 		x = t->x_s - 1;
 		while (++x < t->x_e)
 		{
+		
 			create_ray(x, t->y_s, &ray, t->env);
 			t->env->ray = ray;
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
-			t->env->br = 0;			
-			save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env), x, t->y_s);			
+			t->env->br = 0;
+			if (t->env->sampling_level > 1)
+				save_to_img(t->env, create_fragments(t, x, t->y_s), x, t->y_s);	
+			else
+				save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env), x, t->y_s);
 		}
 		t->y_s++;
 	}

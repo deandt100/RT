@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 13:51:01 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:05:26 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,8 @@ typedef struct	s_ray_tri
 }				t_ray_tri;
 
 void			color_add(t_col *col, t_col add);
+
+void			color_div(t_col *col, double div);
 
 int				in_epsilon(double val);
 
