@@ -91,9 +91,15 @@ OBJS_NAME = $(SRCS_NAME1:.c=.o) $(SRCS_NAME2:.c=.o) $(SRCS_NAME3:.c=.o)
 
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
+#uncomment these to work on Mac and comment to work on Linux.
 LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
 
 INCLUDES = -I includes/ -I libft/includes
+
+#uncomment these to work on Linux and comment to work on Mac.
+#LIBRARY = -L /usr/X11/lib -lmlx -lX11 -lm -lXext -L libft/ -lft
+ 
+#INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
 HEADER = 	$(INCLUDES_PATH)colours.h \
 			$(INCLUDES_PATH)light.h \
@@ -157,7 +163,10 @@ norm:
 
 qme:
 	@rm -Rf author
-	@whoami > author
+	@echo ddu-toit > author
+	@echo oexall >> author
+	@echo daviwel >> author
+	@echo ggroener >> author
 	
 me: qme
 	cat -e author
