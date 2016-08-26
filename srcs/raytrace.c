@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/26 08:02:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/26 08:37:19 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	double		t;
 
 	coef = 1.0;
-	env->spec_coef = 0.6; //
+	env->spec_coef = 1.0F; //can init somewhewre else? 
 	env->ambient_coef = 1.0F; //
 	while (coef > 0.0f && level_max--)
 	{
@@ -128,7 +128,6 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 		}
 		frag_y += frag_step;
 	}
-//	ft_printf("count = %d\n", count);
 	color_div(&ret, fragments);
 	return (ret);
 }
@@ -141,7 +140,6 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 void				*raytrace(void *p)
 {
 	int		x;
-
 	t_ray	ray;
 	t_rt_thread	*t;
 
@@ -153,7 +151,6 @@ void				*raytrace(void *p)
 		x = t->x_s - 1;
 		while (++x < t->x_e)
 		{
-		
 			create_ray(x, t->y_s, &ray, t->env);
 			t->env->ray = ray;
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
