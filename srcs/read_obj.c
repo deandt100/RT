@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 08:57:43 by ggroener          #+#    #+#             */
-/*   Updated: 2016/08/26 10:24:22 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 11:49:28 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 t_vector	ft_obj_vector(char *line)
 {
-	(void)line;
-	return ((t_vector){0, 0, 0});
+	t_vector	vec;
+	char		*tmp;
+
+	vec = (t_vector){0, 0, 0};
+	tmp = ft_strchr(line, ' ');
+	vec.x = ft_atod(tmp);
+	tmp = ft_strchr(&tmp[1], ' ');
+	vec.y = ft_atod(tmp);
+	tmp = ft_strrchr(&tmp[1], ' ');
+	vec.z = ft_atod(tmp);
+	return (vec);
 }
 
 void		create_obj_arrays(t_object *obj)
@@ -48,4 +57,12 @@ void		read_obj(t_object *obj)
 		free(line);
 	}
 	close(fd);
+	
+	//DEBUG
+	int	i;
+	for (i = 0; i < obj->num_vecs; i++)
+		printf("%i| ", i), print_vector("v", obj->vectors[i]);
+	for (i = 0; i < obj->num_norms; i++)
+		print_vector("vn", obj->normals[i]);
+	//END
 }
