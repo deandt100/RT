@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 15:34:07 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/25 13:51:01 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct	s_env
 	double      ambient_level;
 	int			ref_level;
 	double		fov;
+	int			sampling_level;
 }				t_env;
 
 typedef struct	s_rt_thread
@@ -169,6 +170,8 @@ typedef struct	s_ray_tri
 	t_vector	s2;
 	t_vector	s3;
 }				t_ray_tri;
+
+void			color_add(t_col *col, t_col add);
 
 int				in_epsilon(double val);
 
@@ -276,6 +279,7 @@ int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
 void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 
+<<<<<<< HEAD
 /*
 ** Blender Obj Files.
 */
@@ -283,6 +287,8 @@ int				intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face);
 void			set_val_object(t_env *env, double t, t_ray ray);
 void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
 
+=======
+>>>>>>> master
 /*
 ** Light & shadows
 */
