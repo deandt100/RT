@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 15:04:43 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 07:32:12 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ void			ft_fill_triangle(int fd, t_env *env);
 void			ft_fill_cone(int fd, t_env *env);
 void			ft_fill_cylinder(int fd, t_env *env);
 void			ft_fill_plane(int fd, t_env *env);
+void			ft_fill_object(int fd, t_env *env);
 
 /*
 ** Primitive Intersection & raytracing
