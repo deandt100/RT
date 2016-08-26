@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/26 08:54:46 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 13:54:26 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,8 @@ void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 /*
 ** Blender Obj Files.
 */
-
+int				intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face);
+void			set_val_object(t_env *env, double t, t_ray ray);
 void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
 
 /*

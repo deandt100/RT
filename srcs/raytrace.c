@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/25 15:21:08 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 13:48:52 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 			set_val_cone(env, t, ray);
 		else if (OBJ.cur_plane != -1)
 			set_val_plane(env, t, ray);
+		else if (OBJ.cur_object != -1)
+			set_val_object(env, t, ray);
 		else
 			break ;
 		if (env->br == 1)

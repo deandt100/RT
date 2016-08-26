@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 08:51:30 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 09:35:22 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/26 14:58:54 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face)
 	if (r.tmp < EPSILON)
 		return (0);
 	*t = r.tmp - 0.05F;
-	obj->normals[obj->faces[face].nor] = vector_cross(r.e1, r.e2);
+//	obj->normals[obj->faces[face].nor] = vector_cross(r.e1, r.e2);
 	return (1);
 }
 
@@ -48,6 +48,14 @@ void	empty_others(t_env *env)
 	OBJ.cur_tri = -1;
 	OBJ.cur_cyl = -1;
 	OBJ.cur_plane = -1;
+}
+
+void	set_val_object(t_env *env, double t, t_ray ray)
+{
+	//(void)t;
+	//(void)ray;
+	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
+	OBJ.cur_mat = OBJ.mats[OBJ.objects[OBJ.cur_object].material];
 }
 
 void	gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist)
@@ -74,6 +82,11 @@ void	gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist)
 					OBJ.cur_object = i;
 					empty_others(env);
 				}
+				OBJ.normal = OBJ.objects[i].normals[OBJ.objects[i].faces[j].nor];
+//				OBJ.normal = vector_scale(1.0f / ABSV(OBJ.normal), OBJ.normal);
+				if (vector_dot(ray->dir, OBJ.normal) > 0.0F)
+					OBJ.normal = vector_sub((t_vector){0, 0, 0}, OBJ.normal);
+//				vector_norm(&OBJ.normal);
 			}
 	}
 }
