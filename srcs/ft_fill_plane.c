@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 14:54:52 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/25 10:26:39 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:56:52 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,4 @@ void	ft_fill_plane(int fd, t_env *env)
 	}
 	if (ft_val_mat(env, OBJ.planes[i].shape.material, "PLANE") == -1)
 		exit(-1);
-	//DEBUG
-	printf("PLANE:\n");
-	print_vector("POS", OBJ.planes[i].shape.pos);
-	print_vector("ROT", OBJ.planes[i].rot);
-	printf("MAT: %i\n", OBJ.planes[i].shape.material);
 }

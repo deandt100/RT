@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 13:50:58 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/24 14:30:59 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:54:15 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,9 @@ void	ft_fill_light(int fd, t_env *env)
 		else if (ft_strchr(line, 'G'))
 			LIGHTS[i].intensity.g = ft_atoi(&ft_strchr(line, ':')[1]) / 255.0f;
 		else if (ft_strchr(line, 'B'))
-			LIGHTS[i].intensity.b =	ft_atoi(&ft_strchr(line, ':')[1]) / 255.0f;
+			LIGHTS[i].intensity.b = ft_atoi(&ft_strchr(line, ':')[1]) / 255.0f;
 		else
 			r = 0;
 		free(line);
 	}
-	//DEBUG
-	/*printf("LIGHT:\n")nt     ft_val_col(t_col *col)
-	print_vector("POS:", OBJ.lights[i].pos); printf("\n");
-	printf("RGB: (%f ; %f ; %f)\n\n", OBJ.lights[i].intensity.r,
-								  OBJ.lights[i].intensity.g,
-								  OBJ.lights[i].intensity.b);*/
 }

@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 06:56:36 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 07:32:47 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:50:37 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_arrays(t_env *env)
 {
-	ft_printf("==INITIALIZING ARRAYS==\n"); //DEBUG
 	OBJ.mats = (t_material *)malloc(sizeof(t_material) * OBJ.num_mats);
 	OBJ.lights = (t_light *)malloc(sizeof(t_light) * OBJ.num_lights);
 	OBJ.spheres = (t_sphere *)malloc(sizeof(t_sphere) * OBJ.num_spheres);
@@ -23,13 +22,14 @@ void	ft_init_arrays(t_env *env)
 	OBJ.cones = (t_cone *)malloc(sizeof(t_cone) * OBJ.num_cone);
 	OBJ.planes = (t_plane *)malloc(sizeof(t_plane) * OBJ.num_planes);
 	OBJ.objects = (t_object *)malloc(sizeof(t_object) * OBJ.num_objects);
-	//Initialize more shape below as we go along
 }
 
 void	ft_init_env(t_env *env)
 {
 	env->ambient_level = 0;
 	env->ref_level = 0;
+	env->fov = 60;
+	env->sampling_level = 1;
 	OBJ.num_mats = 0;
 	OBJ.num_lights = 0;
 	OBJ.num_spheres = 0;
@@ -48,15 +48,9 @@ void	ft_init_env(t_env *env)
 	env->count.objects = -1;
 }
 
-void	ft_check_1(int fd, t_env *env, char *line)
+void	ft_check_objects(int fd, t_env *env, char *line)
 {
-	if (ft_strncmp(line, "CAMERA", 6) == 0)
-		ft_fill_camera(fd, env);
-	else if (ft_strncmp(line, "REFLECTION", 10) == 0 && ft_strchr(line, ':'))
-		env->ref_level = ft_atoi(&ft_strchr(line, ':')[1]);
-	else if (ft_strncmp(line, "AMBIENT", 7) == 0 && ft_strchr(line, ':'))
-		env->ambient_level = (ft_atoi(&ft_strchr(line, ':')[1]) * 1.0f) / 100;
-	else if (ft_strncmp(line, "MATERIAL", 8) == 0)
+	if (ft_strncmp(line, "MATERIAL", 8) == 0)
 		ft_fill_material(fd, env);
 	else if (ft_strncmp(line, "LIGHT", 5) == 0)
 		ft_fill_light(fd, env);
@@ -72,7 +66,22 @@ void	ft_check_1(int fd, t_env *env, char *line)
 		ft_fill_plane(fd, env);
 	else if (ft_strncmp(line, "OBJECT", 6) == 0)
 		ft_fill_object(fd, env);
-	//ADD more checks below
+}
+
+void	ft_check_setup(int fd, t_env *env, char *line)
+{
+	if (ft_strncmp(line, "CAMERA", 6) == 0)
+		ft_fill_camera(fd, env);
+	else if (ft_strncmp(line, "REFLECTION", 10) == 0 && ft_strchr(line, ':'))
+		env->ref_level = ft_atoi(&ft_strchr(line, ':')[1]);
+	else if (ft_strncmp(line, "AMBIENT", 7) == 0 && ft_strchr(line, ':'))
+		env->ambient_level = (ft_atoi(&ft_strchr(line, ':')[1]) * 1.0f) / 100;
+	else if (ft_strncmp(line, "FOV", 3) == 0 && ft_strchr(line, ':'))
+		env->fov = ft_atod(&ft_strchr(line, ':')[1]);
+	else if (ft_strncmp(line, "SAMPLING", 8) == 0 && ft_strchr(line, ':'))
+		env->sampling_level = ft_atoi(&ft_strchr(line, ':')[1]);
+	else
+		ft_check_objects(fd, env, line);
 }
 
 void	ft_get_input(t_env *env, char *file)
@@ -80,7 +89,6 @@ void	ft_get_input(t_env *env, char *file)
 	int		fd;
 	char	*line;
 
-	printf("READING\n"); //DEBUG
 	ft_init_env(env);
 	ft_count_objs(env, file);
 	ft_init_arrays(env);
@@ -89,12 +97,10 @@ void	ft_get_input(t_env *env, char *file)
 	while (get_next_line(fd, &line))
 	{
 		if (line && *line != '#' && ft_strlen(line) > 0)
-			ft_check_1(fd, env, line);
+			ft_check_setup(fd, env, line);
 		free(line);
 	}
 	close(fd);
-	//DEBUG
-	printf("REFLECTION: %i\n", env->ref_level);
-	printf("AMBIENCE: %f\n", env->ambient_level);
-	printf("END OF READ\n");
+	if (env->sampling_level <= 0)
+		ft_input_error("Reading", "Sampling level must be >= 1");
 }

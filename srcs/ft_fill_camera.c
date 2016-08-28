@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:43:07 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/25 13:23:54 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/28 08:53:04 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_fill_camera(int fd, t_env *env)
 {
 	int		r;
 	char	*line;
-	
+
 	r = 1;
 	ft_new_cam(env);
 	while (r && get_next_line(fd, &line))
@@ -83,9 +83,4 @@ void		ft_fill_camera(int fd, t_env *env)
 	}
 	ft_init_cam(env, CAM.rot, 1);
 	OBJ.cam_rot = (t_vector){0.0F, 0.0F, 0.0F};
-	//DEBUG DEBUG
-	/*print_vector("CAM ROT:", CAM.rot); printf("\n");
-	print_vector("CAM DIR:", CAM.dir); printf("\n");
-	print_vector("CAM POS:", CAM.pos); printf("\n");
-	print_vector("CAM VUP:", CAM.v_up); printf("\n");*/
 }

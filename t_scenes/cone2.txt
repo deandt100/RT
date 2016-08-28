@@ -8,6 +8,8 @@ REFLECTION: 50
 
 AMBIENT: 5
 
+SAMPLING: 3
+
 LIGHT:
 	P: x-20 y-120 z0
 	R: 250

@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 06:59:08 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 16:55:10 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:57:40 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_init_object(t_object *obj)
 	obj->faces = NULL;
 }
 
-int		ft_get_obj(char *line, t_env *env, int i)
+int			ft_get_obj(char *line, t_env *env, int i)
 {
 	if (*line == '#')
 		return (1);
@@ -46,7 +46,7 @@ int		ft_get_obj(char *line, t_env *env, int i)
 	return (1);
 }
 
-void	ft_fill_object(int fd, t_env *env)
+void		ft_fill_object(int fd, t_env *env)
 {
 	int		r;
 	int		i;
@@ -63,9 +63,4 @@ void	ft_fill_object(int fd, t_env *env)
 	if (ft_val_mat(env, OBJ.objects[i].material, "OBJECT") == -1)
 		exit(-1);
 	read_obj(&OBJ.objects[i]);
-	//DEBUG
-	printf("OBJECT:\n");
-	printf("Path: %s\n", OBJ.objects[i].path);
-	print_vector("POS:", OBJ.objects[i].pos);
-	printf("MAT: %i\n", OBJ.objects[i].material);
 }

@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 08:54:45 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 10:52:52 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:56:24 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,5 @@ void	ft_fill_cylinder(int fd, t_env *env)
 	}
 	if (ft_val_mat(env, CYLINDERS[i].shape.material, "Cylinder") == -1)
 		exit(0);
-	//DEGUG
-	/*printf("CYLINDER:\n");
-	print_vector("ROT: ", CYLINDERS[i].rot); printf("\n");
-	print_vector("POS: ", CYLINDERS[i].p); printf("\n");
-	print_vector("V  : ", CYLINDERS[i].v); printf("\n");
-	printf("RAD: %f\nMAT: %i\n", CYLINDERS[i].radius, CYLINDERS[i].shape.material);*/
-	//END
 	ft_rot_cyl(env, i);
 }

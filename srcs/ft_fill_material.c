@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 08:42:14 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 07:10:08 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:51:59 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,4 @@ void	ft_fill_material(int fd, t_env *env)
 			r = 0;
 		free(line);
 	}
-	//DEBUG DEBUG
-	/*printf("MATERIAL\n");
-	printf("R: %f\n", OBJ.mats[i].diffuse.r);
-	printf("G: %f\n", OBJ.mats[i].diffuse.g);
-	printf("B: %f\n", OBJ.mats[i].diffuse.b);
-	printf("S: %f\n", OBJ.mats[i].specular);
-	printf("*: %f\n", OBJ.mats[i].reflection);*/
-	//DEBUG END
 }

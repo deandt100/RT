@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/26 16:06:22 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:44:43 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void				*raytrace(void *p)
 
 	t = (t_rt_thread*)p;
 	ray.start = t->env->obj.cam.pos;
-	t->env->sampling_level = 2;
+	//t->env->sampling_level = 2;
 	frag_coef = 1.0F;
 	while (t->y_s < t->y_e)
 	{

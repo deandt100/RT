@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 06:49:19 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 10:51:33 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:55:03 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,4 @@ void	ft_fill_triangle(int fd, t_env *env)
 	rotate_tri(&TRI[i]);
 	if (ft_val_mat(env, TRI[i].shape.material, "Triangle") == -1)
 		exit(-1);
-	/*printf("TRIANGLE:\n");
-	print_vector("V1: ", TRI[i].v1); printf("\n");
-	print_vector("V2: ", TRI[i].v2); printf("\n");
-	print_vector("V3: ", TRI[i].v3); printf("\n");
-	print_vector("ROT: ", TRI[i].rot); printf("\n");
-	printf("MAT: %i\n", TRI[i].shape.material);*/
 }

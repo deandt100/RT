@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 08:57:43 by ggroener          #+#    #+#             */
-/*   Updated: 2016/08/26 16:44:25 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:58:57 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,5 @@ void		read_obj(t_object *obj)
 		free(line);
 	}
 	close(fd);
-	manipulate_object(obj);	
-	//DEBUG
-	/*int	i;
-	for (i = 0; i < obj->num_vecs; i++)
-		print_vector("v", obj->vectors[i]);
-	for (i = 0; i < obj->num_norms; i++)
-		print_vector("vn", obj->normals[i]);
-	for (i = 0; i < obj->num_faces; i++)
-	{
-		print_vector("V1", obj->faces[i].v1);
-		print_vector("V2", obj->faces[i].v2);
-		print_vector("V3", obj->faces[i].v3);
-	}*/
-	//END
+	manipulate_object(obj);
 }

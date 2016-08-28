@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 08:14:57 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 10:54:17 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:55:43 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_input_cone(int c, t_env *env, char *line)
 	else if (ft_strchr(line, 'V'))
 		CONES[c].v = ft_get_vector(line);
 	else if (ft_strchr(line, 'A'))
-		CONES[c].alpha = 
+		CONES[c].alpha =
 			((double)ft_atoi(&ft_strchr(line, ':')[1]) * M_PI) / 180;
 	else if (ft_strchr(line, 'M'))
 		CONES[c].shape.material = ft_atoi(&ft_strchr(line, ':')[1]);
@@ -67,10 +67,4 @@ void	ft_fill_cone(int fd, t_env *env)
 	ft_rot_cone(env, i);
 	if (ft_val_mat(env, CONES[i].shape.material, "Cone") == -1)
 		exit(0);
-	//DEBUG
-	/*printf("CONE\n");
-	print_vector("ROT: ", CONES[i].rot);
-	print_vector("POS: ", CONES[i].p);
-	print_vector("V  : ", CONES[i].v);
-	printf("A: %f\nM: %i\n", CONES[i].alpha, CONES[i].shape.material);*/
 }

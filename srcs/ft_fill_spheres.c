@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:41:54 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/23 10:49:23 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 08:54:35 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,4 @@ void	ft_fill_sphere(int fd, t_env *env)
 	}
 	if (ft_val_mat(env, SPHERES[i].shape.material, "Light") == -1)
 		exit(-1);
-	//DEBUG
-	/*printf("SPHERE\n");
-	print_vector("POS:", SPHERES[i].shape.pos); printf("\n");
-	printf("MAT: %d\nRAD: %f\n", SPHERES[i].shape.material, SPHERES[i].radius);*/
 }
