@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/28 08:35:49 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 09:09:12 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ typedef struct	s_env
 	int			spec_n;
 	double		spec_coef;
 	t_count		count;
-	double      ambient_coef;
-	double      ambient_level;
+	double		ambient_coef;
+	double		ambient_level;
 	int			ref_level;
 	double		ref_coef;
 	double		fov;
@@ -250,7 +250,7 @@ void			ft_fill_object(int fd, t_env *env);
 ** Primitive Intersection & raytracing
 */
 
-void    		print_col(t_col col);
+void			print_col(t_col col);
 
 void			calc_lighting(t_env *env);
 
@@ -285,7 +285,8 @@ void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 /*
 ** Blender Obj Files.
 */
-int				intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face);
+int				intersect_ray_obj(t_ray *ray, t_object *obj,
+					double *t, int face);
 void			set_val_object(t_env *env, double t, t_ray ray);
 void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
 

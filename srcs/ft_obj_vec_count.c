@@ -6,13 +6,13 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 09:44:57 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 11:58:06 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 09:13:33 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
- char		*ft_trim(char *str)
+char		*ft_trim(char *str)
 {
 	char	*end;
 
@@ -42,12 +42,10 @@ void		ft_obj_vec_count(t_object *obj)
 
 	if ((fd = open(ft_trim(obj->path), O_RDONLY)) == -1)
 		exit(-1);
-	printf("OPENED\n"); //DEBUG
 	while (get_next_line(fd, &line))
 	{
 		ft_count_vec(line, obj);
 		free(line);
 	}
 	close(fd);
-	printf("V: %i\nVN: %i\nF: %i\n", obj->num_vecs, obj->num_norms, obj->num_faces);
 }

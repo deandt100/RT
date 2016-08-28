@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:11:28 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/24 14:42:35 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 09:37:05 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	make_threads(t_env *env)
 	t_rt_thread	bounds[NO_THREADS];
 	pthread_t	thread_id[NO_THREADS];
 	int			i;
-	t_env 		e[NO_THREADS];
+	t_env		e[NO_THREADS];
 	int			d;
 
 	d = -1;

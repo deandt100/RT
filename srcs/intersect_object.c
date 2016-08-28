@@ -6,40 +6,11 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/26 08:51:30 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/26 15:41:27 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 09:12:53 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
-
-/*int		intersect_ray_obj(t_ray *ray, t_object *obj, double *t, int face)
-{
-	t_ray_tri	r;
-
-	r.e1 = vector_sub(obj->vectors[obj->faces[face].v2],
-			obj->vectors[obj->faces[face].v1]);
-	r.e2 = vector_sub(obj->vectors[obj->faces[face].v3],
-			obj->vectors[obj->faces[face].v1]);
-	r.s1 = vector_cross(ray->dir, r.e2);
-	r.d = vector_dot(r.e1, r.s1);
-	if (r.d > -EPSILON && r.d < EPSILON)
-		return (0);
-	r.inv_d = 1 / r.d;
-	r.s2 = vector_sub(ray->start, obj->vectors[obj->faces[face].v1]);
-	r.u = vector_dot(r.s2, r.s1) * r.inv_d;
-	if (r.u < EPSILON || r.u > 1)
-		return (0);
-	r.s3 = vector_cross(r.s2, r.e1);
-	r.v = vector_dot(ray->dir, r.s3) * r.inv_d;
-	if (r.v < 0 || (r.u + r.v) > 1)
-		return (0);
-	r.tmp = vector_dot(r.e2, r.s3) * r.inv_d;
-	if (r.tmp < EPSILON)
-		return (0);
-	*t = r.tmp - 0.05F;
-//	obj->normals[obj->faces[face].nor] = vector_cross(r.e1, r.e2);
-	return (1);
-}*/
 
 void	empty_others(t_env *env)
 {
