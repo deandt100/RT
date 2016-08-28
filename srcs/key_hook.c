@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 07:35:04 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/25 13:08:53 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/28 10:37:33 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	re_render(t_env *env, int r)
 	ft_init_cam(env, OBJ.cam_rot, r);
 	mlx_destroy_image(env->mlx, env->img.img);
 	env->img.img = mlx_new_image(env->mlx, WIN_X, WIN_Y);
-	env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp, &env->img.s, &env->img.e);
+	env->img.data = mlx_get_data_addr(env->img.img, &env->img.bpp, &env->img.s,
+			&env->img.e);
 	make_threads(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 }
@@ -27,10 +28,11 @@ void	move_cam(t_env *env, int dir)
 	if (dir == 1)
 		CAM.pos = vector_add(CAM.pos, vector_scale(10, CAM.dir));
 	else
-		CAM.pos = vector_add(CAM.pos, vector_scale(10, vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.dir)));
+		CAM.pos = vector_add(CAM.pos, vector_scale(10, vector_sub((t_vector)
+						{0.0F, 0.0F, 0.0F}, CAM.dir)));
 }
 
-int	key_hook(int keycode, t_env *env)
+int		key_hook(int keycode, t_env *env)
 {
 	ft_printf("key = %d\n", keycode);
 	if (keycode == EXIT)

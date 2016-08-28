@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/28 08:44:43 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 10:55:57 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 	double		t;
 
 	env->ref_coef = 1.0F;
-	env->spec_coef = 1.0F; 
-	env->ambient_coef = 1.0F; 
+	env->spec_coef = 1.0F;
+	env->ambient_coef = 1.0F;
 	while (env->ref_coef > 0.0F && level_max--)
 	{
 		t = 20000.0f;
@@ -72,7 +72,6 @@ static void			save_to_img(t_env *env, t_col col, int x, int y)
 {
 	t_col temp;
 
-
 	if (col.r * 255.0f < 255.0f)
 		temp.r = col.r * 255.0f;
 	else
@@ -90,7 +89,7 @@ static void			save_to_img(t_env *env, t_col col, int x, int y)
 	env->img.data[(x + y * WIN_X) * 4 + 0] = (unsigned char)temp.b;
 }
 
-void	create_ray(double x, double y, t_ray *ray, t_env *env)
+void				create_ray(double x, double y, t_ray *ray, t_env *env)
 {
 	t_vector	s;
 
@@ -100,14 +99,17 @@ void	create_ray(double x, double y, t_ray *ray, t_env *env)
 	vector_norm(&ray->dir);
 }
 
+/*
+**Will have to change function below. It has 6 variables, only allowed 4!
+*/
 
-t_col	create_fragments(t_rt_thread *t, int x, int y)
+t_col				create_fragments(t_rt_thread *t, int x, int y)
 {
 	double	frag_x;
 	double	frag_y;
 	double	frag_step;
 	t_ray	ray;
-	t_col	ret = {0.0F , 0.0F , 0.0F};
+	t_col	ret = {0.0F, 0.0F, 0.0F};
 	double	fragments;
 
 	fragments = pow(t->env->sampling_level, 2);
@@ -136,10 +138,10 @@ t_col	create_fragments(t_rt_thread *t, int x, int y)
 
 void				*raytrace(void *p)
 {
-	int		x;
+	int			x;
 	//double	frag_x;
-	double	frag_coef;
-	t_ray	ray;
+	double		frag_coef;
+	t_ray		ray;
 	t_rt_thread	*t;
 
 	t = (t_rt_thread*)p;
@@ -156,9 +158,10 @@ void				*raytrace(void *p)
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
 			t->env->br = 0;
 			if (t->env->sampling_level > 1)
-				save_to_img(t->env, create_fragments(t, x, t->y_s), x, t->y_s);	
+				save_to_img(t->env, create_fragments(t, x, t->y_s), x, t->y_s);
 			else
-				save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env), x, t->y_s);
+				save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env),
+						x, t->y_s);
 		}
 		t->y_s++;
 	}

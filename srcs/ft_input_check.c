@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:14:53 by oexall            #+#    #+#             */
-/*   Updated: 2016/08/28 08:47:37 by oexall           ###   ########.fr       */
+/*   Updated: 2016/08/28 11:00:00 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_input_error(char *obj, char *msg)
 	exit(-1);
 }
 
-int     ft_val_col(t_col *col)
+int		ft_val_col(t_col *col)
 {
 	if (col->r < 0 || col->r > 255)
 		return (-1);

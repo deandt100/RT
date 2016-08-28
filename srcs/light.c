@@ -6,13 +6,14 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/26 09:10:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/28 10:40:29 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rtv1.h>
 
-static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray *light_ray)
+static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray
+		*light_ray)
 {
 	light_ray->start = OBJ.new_start;
 	light_ray->dir = vector_unit(vector_scale((1 / t), dist));
@@ -31,7 +32,7 @@ static void	lambert_diffuse(t_env *env, t_ray light_ray, t_light light)
 
 	lam = vector_dot(light_ray.dir, OBJ.normal) * env->ref_coef;
 	dir = vector_sub(light_ray.dir, env->ray.dir);
-	dir = vector_scale(1.0 / sqrt(vector_dot(dir, dir)) , dir);
+	dir = vector_scale(1.0 / sqrt(vector_dot(dir, dir)), dir);
 	term = vector_dot(dir, OBJ.normal);
 	term = (term > 0.0f) ? term : 0.0f;
 	spec = powf(term, SPEC_POWER) * env->spec_coef;

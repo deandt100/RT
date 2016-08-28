@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/08/24 14:04:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/08/28 10:12:54 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int		expose(t_env *env)
 	ft_printf("drawing\n");
 	if (env->win && env->img.img)
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	//cleanup(env);
+//	cleanup(env);
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
-	t_env		env;
+	t_env	env;
 
 	if (argc != 2)
 	{
@@ -79,7 +79,8 @@ int		main(int argc, char **argv)
 	make_threads(&env);
 	clock_t diff = clock() - start;
 	int msec = diff * 1000 / CLOCKS_PER_SEC;
-	printf("Time taken %d seconds %d milliseconds\n", msec/1000/4, msec%1000/4);
+	printf("Time taken %d seconds %d milliseconds\n",
+			msec / 1000 / 4, msec % 1000 / 4);
 //	exit(1);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
