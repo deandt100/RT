@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 /*
 ** Calculate ray - primitive intesection.
@@ -119,15 +119,32 @@ static void		gi_cone(t_env *env, t_ray *ray, double *t, double *ref_dist)
 ** Get shape intersections with ray - sets values for closest one.
 */
 
-void			get_intersections(t_env *env, t_ray *ray, double *t)
+int				get_intersections(t_env *env, t_ray *ray)
 {
 	double	ref_dist;
+	double	t;
 
 	ref_dist = 3.402823e+38;
-	gi_sphere(env, ray, t, &ref_dist);
-	gi_tri(env, ray, t, &ref_dist);
-	gi_cyl(env, ray, t, &ref_dist);
-	gi_cone(env, ray, t, &ref_dist);
-	gi_plane(env, ray, t, &ref_dist);
-	gi_object(env, ray, t, &ref_dist);
+	t = 20000.0f;
+	gi_sphere(env, ray, &t, &ref_dist);
+	gi_tri(env, ray, &t, &ref_dist);
+	gi_cyl(env, ray, &t, &ref_dist);
+	gi_cone(env, ray, &t, &ref_dist);
+	gi_plane(env, ray, &t, &ref_dist);
+	gi_object(env, ray, &t, &ref_dist);
+	if (OBJ.cur_sphere != -1)
+		set_val_sphere(env, t, ray);
+	else if (OBJ.cur_tri != -1)
+		set_val_tri(env, t, ray);
+	else if (OBJ.cur_cyl != -1)
+		set_val_cyl(env, t, ray);
+	else if (OBJ.cur_cone != -1)
+		set_val_cone(env, t, ray);
+	else if (OBJ.cur_plane != -1)
+		set_val_plane(env, t, ray);
+	else if (OBJ.cur_object[0] != -1)
+		set_val_object(env, t, ray);
+	else
+		return (0);
+	return (1);
 }

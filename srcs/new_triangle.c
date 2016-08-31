@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/vector.h"
+#include <vector.h>
 
 t_triangle	new_triangle(t_vector v1, t_vector v2, t_vector v3, int mat)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 void	re_render(t_env *env, int r)
 {
@@ -32,21 +32,8 @@ void	move_cam(t_env *env, int dir)
 						{0.0F, 0.0F, 0.0F}, CAM.dir)));
 }
 
-int		key_hook(int keycode, t_env *env)
+int		keyhook2(int keycode, t_env *env)
 {
-	ft_printf("key = %d\n", keycode);
-	if (keycode == EXIT)
-		exit(0);
-	if (keycode == KEY_UP)
-	{
-		OBJ.cam_rot.x -= ROT_DELTA;
-		re_render(env, 1);
-	}
-	if (keycode == KEY_DOWN)
-	{
-		OBJ.cam_rot.x += ROT_DELTA;
-		re_render(env, 1);
-	}
 	if (keycode == KEY_LEFT)
 	{
 		OBJ.cam_rot.z -= ROT_DELTA;
@@ -57,15 +44,36 @@ int		key_hook(int keycode, t_env *env)
 		OBJ.cam_rot.z += ROT_DELTA;
 		re_render(env, 1);
 	}
-	if (keycode == 13)
+	if (keycode == KEY_W)
 	{
 		move_cam(env, 1);
 		re_render(env, 0);
 	}
-	if (keycode == 1)
+	if (keycode == KEY_S)
 	{
 		move_cam(env, -1);
 		re_render(env, 0);
 	}
-	return (env->img.s);
+	return (1);
+}
+
+int		key_hook(int keycode, t_env *env)
+{
+	ft_printf("key = %d\n", keycode);
+	if (keycode == EXIT)
+	{
+		cleanup(env);
+		exit(0);
+	}
+	if (keycode == KEY_UP)
+	{
+		OBJ.cam_rot.x -= ROT_DELTA;
+		re_render(env, 1);
+	}
+	if (keycode == KEY_DOWN)
+	{
+		OBJ.cam_rot.x += ROT_DELTA;
+		re_render(env, 1);
+	}
+	return (keyhook2(keycode, env));
 }

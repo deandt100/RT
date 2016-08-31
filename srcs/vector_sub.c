@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rt.h>
 
 /*
 ** Subtract two vectors and return the resulting vector

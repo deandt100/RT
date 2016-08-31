@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 void	ft_new_cylinder(t_cylinder *cyl)
 {
 	cyl->rot = (t_vector){0, 0, 0};
 	cyl->p = (t_vector){0, 0, 0};
 	cyl->v = (t_vector){0, 0, 0};
+	cyl->lim = (t_vector){0, 0, 0};
 	cyl->radius = 0;
 	cyl->shape.material = 0;
+	cyl->inf = 1;
 }
 
 void	ft_rot_cyl(t_env *env, int i)
@@ -43,6 +45,11 @@ int		ft_input_cyl(int i, t_env *env, char *line)
 		CYLINDERS[i].p = ft_get_vector(line);
 	else if (ft_strchr(line, 'V'))
 		CYLINDERS[i].v = ft_get_vector(line);
+	else if (ft_strchr(line, 'L'))
+	{
+		CYLINDERS[i].lim = ft_get_vector(line);
+		CYLINDERS[i].inf = 0;
+	}
 	else if (ft_strchr(line, 'r'))
 		CYLINDERS[i].radius = ft_atoi(&ft_strchr(line, ':')[1]);
 	else if (ft_strchr(line, 'M'))

@@ -73,7 +73,10 @@ typedef struct	s_triangle
 
 typedef struct	s_cylinder
 {
+	int			inf;
+	int			cap_hit;
 	t_vector	p;
+	t_vector	lim;
 	t_vector	v;
 	t_vector	rot;
 	double		radius;
@@ -82,6 +85,8 @@ typedef struct	s_cylinder
 
 typedef struct	s_cone
 {
+	int			inf;
+	t_vector	lim;
 	t_vector	p;
 	t_vector	v;
 	t_vector	rot;
@@ -132,5 +137,6 @@ void			rotate_tri(t_triangle *tri);
 t_vector		get_cyl_normal(t_cylinder cyl, t_vector p);
 
 t_vector		get_cone_normal(t_cone	cone, t_vector p);
+
 
 #endif

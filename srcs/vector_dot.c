@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rt.h>
 
 /*
 ** Multiply two vectors and return the resulting scalar (dot product)

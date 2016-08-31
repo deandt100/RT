@@ -13,7 +13,7 @@
 #ifndef LIGHT_H
 # define LIGHT_H
 
-# include "rtv1.h"
+# include "rt.h"
 
 typedef struct	s_light
 {

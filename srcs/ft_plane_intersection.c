@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 int		intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5)
 {

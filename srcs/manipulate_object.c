@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 static void	rotate(t_vector rot, t_triangle *tri)
 {
@@ -48,7 +48,7 @@ void		manipulate_object(t_object *obj)
 	while (++i < obj->num_faces)
 	{
 		rotate(obj->rot, &obj->faces[i]);
-		if (obj->scale > 1)
+		if (obj->scale > 0.0F)
 			scale(obj->scale, &obj->faces[i]);
 		add(obj->pos, &obj->faces[i]);
 	}
