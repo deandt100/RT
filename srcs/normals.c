@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 /*
 ** Will get normal vector for cylinder where p is the point of
@@ -19,10 +19,8 @@
 
 t_vector	get_cyl_normal(t_cylinder cyl, t_vector p)
 {
-	t_vector	proj;
-
-	proj = vector_project(p, cyl.v);
-	return (vector_dir(proj, p));
+	return (vector_unit(vector_sub(vector_sub(p, cyl.shape.pos),
+		vector_project(vector_sub(p, cyl.shape.pos), cyl.v))));
 }
 
 /*

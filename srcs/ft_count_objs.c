@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 static void	ft_count_1(t_env *env, char *line)
 {
@@ -38,9 +38,11 @@ void		ft_count_objs(t_env *env, char *file)
 	char	*line;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-		exit(0);
+		ft_input_error("Reading", "Invalid File");
 	while (get_next_line(fd, &line))
 	{
+		if (line == NULL)
+			ft_input_error("Reading", "Invalid File");
 		if (*line != '#' && ft_strlen(line) > 0)
 			ft_count_1(env, line);
 		free(line);

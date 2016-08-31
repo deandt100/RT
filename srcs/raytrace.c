@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 /*
 ** Reflect ray around normal.
@@ -23,7 +23,7 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 	env->spec_coef = 0.0;
 	ray->start = OBJ.new_start;
 	ray->dir = vector_sub(ray->dir,
-		vector_scale(2.0f * vector_dot(ray->dir, OBJ.normal), OBJ.normal));
+	vector_scale(2.0f * vector_dot(ray->dir, OBJ.normal), OBJ.normal));
 }
 
 /*
@@ -33,60 +33,18 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 
 static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 {
-	double		t;
-
 	env->ref_coef = 1.0F;
 	env->spec_coef = 1.0F;
 	env->ambient_coef = 1.0F;
 	while (env->ref_coef > 0.0F && level_max--)
 	{
-		t = 20000.0f;
-		get_intersections(env, &ray, &t);
-		if (OBJ.cur_sphere != -1)
-			set_val_sphere(env, t, ray);
-		else if (OBJ.cur_tri != -1)
-			set_val_tri(env, t, ray);
-		else if (OBJ.cur_cyl != -1)
-			set_val_cyl(env, t, ray);
-		else if (OBJ.cur_cone != -1)
-			set_val_cone(env, t, ray);
-		else if (OBJ.cur_plane != -1)
-			set_val_plane(env, t, ray);
-		else if (OBJ.cur_object[0] != -1)
-			set_val_object(env, t, ray);
-		else
-			break ;
-		if (env->br == 1)
+		if (get_intersections(env, &ray) == 0
+			|| env->br == 1)
 			break ;
 		calc_lighting(env);
 		reflect_ray(env, &ray);
 	}
 	return (OBJ.col);
-}
-
-/*
-** Save color value to image.
-*/
-
-static void			save_to_img(t_env *env, t_col col, int x, int y)
-{
-	t_col temp;
-
-	if (col.r * 255.0f < 255.0f)
-		temp.r = col.r * 255.0f;
-	else
-		temp.r = 255.0f;
-	if (col.g * 255.0f < 255.0f)
-		temp.g = col.g * 255.0f;
-	else
-		temp.g = 255.0f;
-	if (col.b * 255.0f < 255.0f)
-		temp.b = col.b * 255.0f;
-	else
-		temp.b = 255.0f;
-	env->img.data[(x + y * WIN_X) * 4 + 2] = (unsigned char)temp.r;
-	env->img.data[(x + y * WIN_X) * 4 + 1] = (unsigned char)temp.g;
-	env->img.data[(x + y * WIN_X) * 4 + 0] = (unsigned char)temp.b;
 }
 
 void				create_ray(double x, double y, t_ray *ray, t_env *env)
@@ -100,7 +58,7 @@ void				create_ray(double x, double y, t_ray *ray, t_env *env)
 }
 
 /*
-**Will have to change function below. It has 6 variables, only allowed 4!
+** Creates rays for every fragment depending on sampling level
 */
 
 t_col				create_fragments(t_rt_thread *t, int x, int y)
@@ -108,10 +66,10 @@ t_col				create_fragments(t_rt_thread *t, int x, int y)
 	double	frag_x;
 	double	frag_y;
 	double	frag_step;
-	t_ray	ray;
-	t_col	ret = {0.0F, 0.0F, 0.0F};
+	t_col	ret;
 	double	fragments;
 
+	ret = (t_col){0.0F, 0.0F, 0.0F};
 	fragments = pow(t->env->sampling_level, 2);
 	frag_step = 1.0F / (fragments / t->env->sampling_level);
 	frag_y = frag_step / 2;
@@ -120,9 +78,10 @@ t_col				create_fragments(t_rt_thread *t, int x, int y)
 		frag_x = frag_step / 2;
 		while (frag_x < 1.0F)
 		{
-			create_ray(x + frag_x, y + frag_y, &ray, t->env);
+			create_ray(x + frag_x, y + frag_y, &t->env->ray, t->env);
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
-			color_add(&ret, shoot_ray(ray, t->env->ref_level, t->env));
+			color_add(&ret, shoot_ray(
+				t->env->ray, t->env->ref_level + 1, t->env));
 			frag_x += frag_step;
 		}
 		frag_y += frag_step;
@@ -139,29 +98,23 @@ t_col				create_fragments(t_rt_thread *t, int x, int y)
 void				*raytrace(void *p)
 {
 	int			x;
-	//double	frag_x;
-	double		frag_coef;
-	t_ray		ray;
 	t_rt_thread	*t;
 
 	t = (t_rt_thread*)p;
-	ray.start = t->env->obj.cam.pos;
-	//t->env->sampling_level = 2;
-	frag_coef = 1.0F;
+	t->env->ray.start = t->env->obj.cam.pos;
 	while (t->y_s < t->y_e)
 	{
 		x = t->x_s - 1;
 		while (++x < t->x_e)
 		{
-			create_ray(x, t->y_s, &ray, t->env);
-			t->env->ray = ray;
+			create_ray(x, t->y_s, &t->env->ray, t->env);
 			t->env->obj.col = (t_col){0.0, 0.0, 0.0};
 			t->env->br = 0;
 			if (t->env->sampling_level > 1)
 				save_to_img(t->env, create_fragments(t, x, t->y_s), x, t->y_s);
 			else
-				save_to_img(t->env, shoot_ray(ray, t->env->ref_level, t->env),
-						x, t->y_s);
+				save_to_img(t->env, shoot_ray(
+					t->env->ray, t->env->ref_level + 1, t->env), x, t->y_s);
 		}
 		t->y_s++;
 	}

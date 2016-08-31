@@ -15,7 +15,7 @@
 ** returns normalized direction vector.
 */
 
-#include <rtv1.h>
+#include <rt.h>
 
 t_vector	vector_dir(t_vector s, t_vector t)
 {

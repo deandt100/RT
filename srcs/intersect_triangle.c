@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 /*
 ** Uses triangle - plane intersection algorith to determine if a ray hits

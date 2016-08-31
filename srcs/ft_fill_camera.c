@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 t_vector	ft_get_vector(char *line)
 {
@@ -37,7 +37,6 @@ void		ft_init_cam(t_env *env, t_vector rot, int r)
 {
 	t_vector	drot;
 
-	env->fov = 59.324377 * M_PI / 180;
 	CAM.d = 1.0F;
 	CAM.h = tan(env->fov / 2) / CAM.d;
 	CAM.w = CAM.h * ((double)WIN_X / (double)WIN_Y);
@@ -50,7 +49,6 @@ void		ft_init_cam(t_env *env, t_vector rot, int r)
 		CAM.dir = vector_unit(drot);
 	}
 	CAM.n = vector_unit(vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CAM.dir));
-	print_vector("n", CAM.n);
 	CAM.u = vector_unit(vector_cross(CAM.v_up, CAM.n));
 	CAM.v = vector_cross(CAM.n, CAM.u);
 	CAM.c = vector_sub(CAM.pos, vector_scale(CAM.d, CAM.n));
@@ -81,6 +79,6 @@ void		ft_fill_camera(int fd, t_env *env)
 			r = 0;
 		free(line);
 	}
-	ft_init_cam(env, CAM.rot, 1);
+	
 	OBJ.cam_rot = (t_vector){0.0F, 0.0F, 0.0F};
 }

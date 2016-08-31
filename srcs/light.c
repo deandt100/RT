@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
-static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray
-		*light_ray)
+static int	check_in_shadow(t_env *env, double t, t_vector dist,
+	t_ray *light_ray)
 {
 	light_ray->start = OBJ.new_start;
 	light_ray->dir = vector_unit(vector_scale((1 / t), dist));
@@ -24,7 +24,7 @@ static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray
 		+ sh_obj(env, light_ray, t));
 }
 
-static void	lambert_diffuse(t_env *env, t_ray light_ray, t_light light)
+static void	phong_shade(t_env *env, t_ray light_ray, t_light light)
 {
 	double		lam;
 	double		spec;
@@ -62,28 +62,21 @@ void		calc_lighting(t_env *env)
 	t_ray		light_ray;
 	double		t;
 
-	j = 0;
+	j = -1;
 	env->spec_n = 0;
-	while (j < OBJ.num_lights)
+	while (++j < OBJ.num_lights)
 	{
 		add_ambient(env, &OBJ.lights[j]);
 		dist = vector_sub(OBJ.lights[j].pos, OBJ.new_start);
 		if (vector_dot(OBJ.normal, dist) <= 0.0F)
-		{
-			j++;
 			continue ;
-		}
 		t = sqrt(vector_dot(dist, dist));
 		if (t <= EPSILON)
-		{
-			j++;
 			continue ;
-		}
 		if (check_in_shadow(env, t, dist, &light_ray) == 0)
 		{
-			lambert_diffuse(env, light_ray, OBJ.lights[j]);
+			phong_shade(env, light_ray, OBJ.lights[j]);
 			env->spec_n++;
 		}
-		j++;
 	}
 }

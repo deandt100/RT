@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rt.h>
 
 static char	*set_temp(char *ptr, char c)
 {

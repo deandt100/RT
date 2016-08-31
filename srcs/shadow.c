@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
 # include <objects.h>
+#include <rt.h>
 
 int		sh_spheres(t_env *env, t_ray *light_ray, double t)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/vector.h"
+#include <vector.h>
 
 /*
 ** Add two vectors and return the resulting vector.

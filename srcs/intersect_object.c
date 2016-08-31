@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 void	empty_others(t_env *env)
 {
@@ -21,13 +21,13 @@ void	empty_others(t_env *env)
 	OBJ.cur_plane = -1;
 }
 
-void	set_val_object(t_env *env, double t, t_ray ray)
+void	set_val_object(t_env *env, double t, t_ray *ray)
 {
-	OBJ.new_start = vector_add(ray.start, vector_scale(t, ray.dir));
+	OBJ.new_start = vector_add(ray->start, vector_scale(t, ray->dir));
 	OBJ.normal = OBJ.objects[OBJ.cur_object[0]].faces[OBJ.cur_object[1]].normal;
 	OBJ.normal = vector_scale(1.0f / ABSV(OBJ.normal), OBJ.normal);
 	vector_norm(&OBJ.normal);
-	if (vector_dot(ray.dir, OBJ.normal) > 0.0F)
+	if (vector_dot(ray->dir, OBJ.normal) > 0.0F)
 		OBJ.normal = vector_sub((t_vector){0, 0, 0}, OBJ.normal);
 	OBJ.cur_mat = OBJ.mats[OBJ.objects[OBJ.cur_object[0]].material];
 }

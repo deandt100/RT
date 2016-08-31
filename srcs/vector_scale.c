@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/vector.h"
+#include <vector.h>
 
 t_vector	vector_scale(double c, t_vector v)
 {

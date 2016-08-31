@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rtv1.h"
+#include <rt.h>
 
 void	print_vector(char *des, t_vector v)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 /*
 ** Determine whether ray intersects with cone by substiting ray equation
@@ -38,7 +38,16 @@ int			intersect_ray_cone(t_ray *ray, t_cone *cone, double *t)
 	if (rs.discr < 0.0F)
 		return (0);
 	else
+	{
 		return (solve_quadratic(&rs, t));
+		if (solve_quadratic(&rs, t) == 0)
+			return (0);
+		t_vector p = vector_add(ray->start, vector_scale(*t, ray->dir));
+		if (cone->inf == 0 && vector_dot(cone->v, vector_sub(p, cone->p)) > 0
+			&& vector_dot(cone->v, vector_sub(p, cone->lim)) < 0)
+			return (1);
+		return (cone->inf);
+	}
 }
 
 /*
@@ -63,7 +72,17 @@ int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, double *t)
 	if (rs.discr < 0.0F)
 		return (0);
 	else
-		return (solve_quadratic(&rs, t));
+	{
+		//return (solve_quadratic_cylinder(ray, cyl, &rs, t));
+
+		if (solve_quadratic(&rs, t) == 0)
+			return (0);
+		t_vector p = vector_add(ray->start, vector_scale(*t, ray->dir));
+		if (cyl->inf == 0 && vector_dot(cyl->v, vector_sub(p, cyl->p)) > 0
+			&& vector_dot(cyl->v, vector_sub(p, cyl->lim)) < 0)
+			return (1);
+		return (cyl->inf);
+	}
 }
 
 /*

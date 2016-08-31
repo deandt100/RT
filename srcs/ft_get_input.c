@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rtv1.h>
+#include <rt.h>
 
 void	ft_init_arrays(t_env *env)
 {
@@ -28,7 +28,7 @@ void	ft_init_env(t_env *env)
 {
 	env->ambient_level = 0;
 	env->ref_level = 0;
-	env->fov = 60;
+	env->fov = 59.324377 * M_PI / 180;
 	env->sampling_level = 1;
 	OBJ.num_mats = 0;
 	OBJ.num_lights = 0;
@@ -77,7 +77,10 @@ void	ft_check_setup(int fd, t_env *env, char *line)
 	else if (ft_strncmp(line, "AMBIENT", 7) == 0 && ft_strchr(line, ':'))
 		env->ambient_level = (ft_atoi(&ft_strchr(line, ':')[1]) * 1.0f) / 100;
 	else if (ft_strncmp(line, "FOV", 3) == 0 && ft_strchr(line, ':'))
+	{
 		env->fov = ft_atod(&ft_strchr(line, ':')[1]);
+		env->fov *= M_PI / 180;
+	}
 	else if (ft_strncmp(line, "SAMPLING", 8) == 0 && ft_strchr(line, ':'))
 		env->sampling_level = ft_atoi(&ft_strchr(line, ':')[1]);
 	else
@@ -96,6 +99,8 @@ void	ft_get_input(t_env *env, char *file)
 		exit(-1);
 	while (get_next_line(fd, &line))
 	{
+		if (line == NULL)
+			ft_input_error("Reading", "Invalid File");
 		if (line && *line != '#' && ft_strlen(line) > 0)
 			ft_check_setup(fd, env, line);
 		free(line);
@@ -103,4 +108,7 @@ void	ft_get_input(t_env *env, char *file)
 	close(fd);
 	if (env->sampling_level <= 0)
 		ft_input_error("Reading", "Sampling level must be >= 1");
+	if (env->fov > 90 | env->fov < 0)
+		ft_input_error("Reading", "FOV must be between 1 and 90");
+	ft_init_cam(env, CAM.rot, 1);
 }
