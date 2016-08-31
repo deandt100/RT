@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <rtv1.h>
+# include <objects.h>
 
 int		sh_spheres(t_env *env, t_ray *light_ray, double t)
 {
@@ -64,6 +65,24 @@ int		sh_cone(t_env *env, t_ray *light_ray, double t)
 	{
 		if (intersect_ray_cone(light_ray, &CONES[k], &t))
 			return (1);
+		k++;
+	}
+	return (0);
+}
+
+int		sh_obj(t_env *env, t_ray *light_ray, double t)
+{
+	int		k;
+	int		j;
+	t_vector	n;
+
+	k = 0;
+	while (k < OBJ.num_objects)
+	{
+		j = -1;
+		while (++j < OBJ.objects[k].num_faces)
+			if (intersect_ray_tri(light_ray, &OBJ.objects[k].faces[j], &t, &n))
+				return (1);
 		k++;
 	}
 	return (0);

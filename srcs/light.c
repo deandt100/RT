@@ -20,7 +20,8 @@ static int	check_in_shadow(t_env *env, double t, t_vector dist, t_ray
 	return (sh_spheres(env, light_ray, t)
 		+ sh_tri(env, light_ray, t)
 		+ sh_cylinder(env, light_ray, t)
-		+ sh_cone(env, light_ray, t));
+		+ sh_cone(env, light_ray, t)
+		+ sh_obj(env, light_ray, t));
 }
 
 static void	lambert_diffuse(t_env *env, t_ray light_ray, t_light light)

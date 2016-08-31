@@ -12,6 +12,8 @@ FOV: 60
 #1 - 100
 AMBIENT: 20
 
+SAMPLING: 2
+
 MATERIAL:
 	R: 0
 	G: 210
@@ -39,10 +41,10 @@ LIGHT:
 	B: 225
 	P: x20 y-200 z0
 
-SPHERE:
-	P: x0 y0 z0
-	R: 18
-	M: 1
+#SPHERE:
+#	P: x0 y0 z0
+#	R: 18
+#	M: 1
 
 SPHERE:
 	P: x-12 y0 z12
@@ -74,3 +76,7 @@ PLANE
 	R: x90 y1 z0
 	M: 2
 
+OBJECT:
+	F: t_scenes/monkey.obj
+	P: x0 y0 z0
+	M: 1

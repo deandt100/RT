@@ -301,4 +301,6 @@ int				sh_tri(t_env *env, t_ray *light_ray, double t);
 int				sh_cylinder(t_env *env, t_ray *light_ray, double t);
 
 int				sh_cone(t_env *env, t_ray *light_ray, double t);
+
+int				sh_obj(t_env *env, t_ray *light_ray, double t);
 #endif

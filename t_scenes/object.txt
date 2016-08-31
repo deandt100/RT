@@ -12,7 +12,7 @@ FOV: 60
 #1 - 100
 AMBIENT: 30
 
-SAMPLING: 2
+SAMPLING: 1
 
 MATERIAL:
 	R: 210
@@ -44,7 +44,7 @@ LIGHT:
 	R: 200
 	G: 200
 	B: 200
-	P: x20 y-100 z0
+	P: x10 y-100 z0
 
 SPHERE:
 	P: x60 y0 z0
@@ -56,8 +56,13 @@ SPHERE:
 	R: 20
 	M: 2
 
+PLANE:
+	P: x0 y60 z0
+	R: x0 y1 z0
+	M: 2
+
 OBJECT:
-	F: ./t_scenes/untitled.obj
+	F: ./t_scenes/cube1.obj
 	R: x10 y0 z0
 	S: 2.0
 	P: x0 y0 z0
