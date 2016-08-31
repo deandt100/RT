@@ -60,6 +60,61 @@ void	get_cyl_caps(t_ray *ray, t_cylinder *cyl, double *t_top, double *t_bot)
 		*t_bot = 0.0F;
 }
 
+int	solve_quadratic_cylinder(t_ray *ray, t_cylinder *cyl,
+	t_ray_sphere *rs, double *t)
+{
+	double	temp;
+
+	temp = *t;
+	cyl->bot = vector_scale(cyl->scale,
+					vector_sub((t_vector){0, 0, 0}, cyl->v));
+	cyl->top = vector_scale(cyl->scale, cyl->v);
+	if (solve_quadratic(rs, &temp) == 0)
+			return (0);
+	t_vector p = vector_add(ray->start, vector_scale(temp, ray->dir));
+	if (cyl->inf == 0 && vector_dot(cyl->v, vector_sub(p, cyl->bot)) > 0
+		&& vector_dot(cyl->v, vector_sub(p, cyl->top)) < 0)
+	{
+		*t = temp;
+		return (1);
+	}
+	if (cyl->inf == 1)
+		*t = temp;
+	return (cyl->inf);
+}
+
+int	solve_quadratic_cone(t_ray *ray, t_cone *cone,
+	t_ray_sphere *rs, double *t)
+{
+	double	temp;
+
+	temp = *t;
+	if (cone->type == 0)
+	{
+		cone->bot = cone->p;
+		cone->top = vector_add(vector_scale(cone->scale, cone->v), cone->p);
+	}
+	else
+	{
+		cone->bot = vector_add(
+			vector_scale(cone->scale / 2, vector_sub((t_vector){0, 0, 0}, cone->v)), cone->p);
+		cone->top = vector_add(vector_scale(cone->scale / 2, cone->v), cone->p);
+	}
+	if (solve_quadratic(rs, &temp) == 0)
+			return (0);
+	t_vector p = vector_add(ray->start, vector_scale(temp, ray->dir));
+	if (cone->inf == 0 && vector_dot(cone->v, vector_sub(p, cone->bot)) > 0
+		&& vector_dot(cone->v, vector_sub(p, cone->top)) < 0)
+	{
+		*t = temp;
+		return (1);
+	}
+	if (cone->inf == 1)
+		*t = temp;
+	return (cone->inf);
+}
+
+/*
 int	solve_quadratic_cylinder(t_ray *ray, t_cylinder *cyl, t_ray_sphere *rs, double *t)
 {
 	int			i;
@@ -107,4 +162,4 @@ int	solve_quadratic_cylinder(t_ray *ray, t_cylinder *cyl, t_ray_sphere *rs, doub
 	}
 	else
 		return (0);
-}
+}*/

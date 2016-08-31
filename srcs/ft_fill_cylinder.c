@@ -21,6 +21,7 @@ void	ft_new_cylinder(t_cylinder *cyl)
 	cyl->radius = 0;
 	cyl->shape.material = 0;
 	cyl->inf = 1;
+	cyl->scale = 42;
 }
 
 void	ft_rot_cyl(t_env *env, int i)
@@ -45,9 +46,9 @@ int		ft_input_cyl(int i, t_env *env, char *line)
 		CYLINDERS[i].p = ft_get_vector(line);
 	else if (ft_strchr(line, 'V'))
 		CYLINDERS[i].v = ft_get_vector(line);
-	else if (ft_strchr(line, 'L'))
+	else if (ft_strchr(line, 'S'))
 	{
-		CYLINDERS[i].lim = ft_get_vector(line);
+		CYLINDERS[i].scale = (double)ft_atoi(&ft_strchr(line, ':')[1]);
 		CYLINDERS[i].inf = 0;
 	}
 	else if (ft_strchr(line, 'r'))

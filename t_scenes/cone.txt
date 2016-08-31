@@ -10,7 +10,7 @@ FOV : 60
 
 AMBIENT: 10
 
-SAMPLING: 2
+SAMPLING: 1
 
 LIGHT:
 	P: x-20 y-10 z20
@@ -66,6 +66,13 @@ MATERIAL:
 	S: 0
 	*: 1
 
+MATERIAL:
+	R: 3
+	G: 184
+	B: 235
+	S: 2
+	*: 3
+
 SPHERE:
 	P: x0 y20 z-10
 	R: 10
@@ -94,6 +101,23 @@ CONE:
 	M: 2
 
 CONE:
+	R: x0 y0 z0
+	P: x40 y10 z20
+	V: x0 y0 z1
+	A: 20
+	S: 20
+	M: 2
+
+CONE:
+	R: x45 y0 z0
+	P: x40 y10 z-20
+	V: x0 y0 z1
+	A: 20
+	S: 20
+	M: 6
+	T: 0
+
+CONE:
 	R: x0 y45 z0
 	P: x0 y30 z0
 	V: x0 y0 z1
@@ -107,7 +131,7 @@ CYLINDER:
 	r: 5
 	M: 2
 
-OBJECT:
+#OBJECT:
 	F: ./t_scenes/untitled.obj
 	R: x-5 y0 z-20
 	S: 0.4

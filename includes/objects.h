@@ -12,8 +12,6 @@
 
 #ifndef OBJECTS_H
 # define OBJECTS_H
-
-# include <rt.h>
 # include <vector.h>
 
 typedef struct	s_obj_count

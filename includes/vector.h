@@ -76,6 +76,9 @@ typedef struct	s_cylinder
 	int			inf;
 	int			cap_hit;
 	t_vector	p;
+	double		scale;
+	t_vector	top;
+	t_vector	bot;
 	t_vector	lim;
 	t_vector	v;
 	t_vector	rot;
@@ -86,7 +89,10 @@ typedef struct	s_cylinder
 typedef struct	s_cone
 {
 	int			inf;
-	t_vector	lim;
+	int			type;
+	t_vector	top;
+	t_vector	bot;
+	double		scale;
 	t_vector	p;
 	t_vector	v;
 	t_vector	rot;

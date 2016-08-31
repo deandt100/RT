@@ -17,10 +17,11 @@ void	ft_new_cone(t_cone *c)
 	c->rot = (t_vector){0, 0, 0};
 	c->p = (t_vector){0, 0, 0};
 	c->v = (t_vector){0, 0, 0};
-	c->lim = (t_vector){0, 0, 0};
+	c->scale = 42;
 	c->alpha = 0;
 	c->shape.material = 0;
 	c->inf = 1;
+	c->type = 1;
 }
 
 void	ft_rot_cone(t_env *env, int i)
@@ -44,11 +45,13 @@ int		ft_input_cone(int c, t_env *env, char *line)
 	else if (ft_strchr(line, 'A'))
 		CONES[c].alpha =
 			((double)ft_atoi(&ft_strchr(line, ':')[1]) * M_PI) / 180;
-	else if (ft_strchr(line, 'L'))
+	else if (ft_strchr(line, 'S'))
 	{
-		CONES[c].lim = ft_get_vector(line);
+		CONES[c].scale = (double)ft_atoi(&ft_strchr(line, ':')[1]);
 		CONES[c].inf = 0;
 	}
+	else if (ft_strchr(line, 'T'))
+		CONES[c].type = (ft_atoi(&ft_strchr(line, ':')[1]) == 1);
 	else if (ft_strchr(line, 'M'))
 		CONES[c].shape.material = ft_atoi(&ft_strchr(line, ':')[1]);
 	else

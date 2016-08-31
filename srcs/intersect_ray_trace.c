@@ -39,14 +39,10 @@ int			intersect_ray_cone(t_ray *ray, t_cone *cone, double *t)
 		return (0);
 	else
 	{
-		return (solve_quadratic(&rs, t));
-		if (solve_quadratic(&rs, t) == 0)
-			return (0);
-		t_vector p = vector_add(ray->start, vector_scale(*t, ray->dir));
-		if (cone->inf == 0 && vector_dot(cone->v, vector_sub(p, cone->p)) > 0
-			&& vector_dot(cone->v, vector_sub(p, cone->lim)) < 0)
-			return (1);
-		return (cone->inf);
+		if (cone->inf)
+			return (solve_quadratic(&rs, t));
+		else
+			return (solve_quadratic_cone(ray, cone, &rs, t));
 	}
 }
 
@@ -73,15 +69,29 @@ int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, double *t)
 		return (0);
 	else
 	{
-		//return (solve_quadratic_cylinder(ray, cyl, &rs, t));
+		if (cyl->inf)
+			return (solve_quadratic(&rs, t));
+		else
+			return (solve_quadratic_cylinder(ray, cyl, &rs, t));
 
-		if (solve_quadratic(&rs, t) == 0)
+		/*
+		double tt = *t;
+		//return (solve_quadratic_cylinder(ray, cyl, &rs, t));
+	//	printf("scale = %f", cyl->scale);
+		cyl->bot = vector_scale(cyl->scale, vector_sub((t_vector){0, 0, 0}, cyl->v));
+		cyl->top = vector_scale(cyl->scale, cyl->v);
+		if (solve_quadratic(&rs, &tt) == 0)
 			return (0);
-		t_vector p = vector_add(ray->start, vector_scale(*t, ray->dir));
-		if (cyl->inf == 0 && vector_dot(cyl->v, vector_sub(p, cyl->p)) > 0
-			&& vector_dot(cyl->v, vector_sub(p, cyl->lim)) < 0)
+		t_vector p = vector_add(ray->start, vector_scale(tt, ray->dir));
+		if (cyl->inf == 0 && vector_dot(cyl->v, vector_sub(p, cyl->bot)) > 0
+			&& vector_dot(cyl->v, vector_sub(p, cyl->top)) < 0)
+		{
+			*t = tt;
 			return (1);
-		return (cyl->inf);
+		}
+		if (cyl->inf == 1)
+			*t = tt;
+		return (cyl->inf);*/
 	}
 }
 

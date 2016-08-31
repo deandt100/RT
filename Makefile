@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/26 16:39:03 by oexall           ###   ########.fr        #
+#    Updated: 2016/08/29 16:25:36 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME1 = main.c \
+			 cleanup.c \
 			vector_dot.c \
 			vector_new.c \
 			vector_sub.c \
@@ -42,13 +43,13 @@ SRCS_NAME1 = main.c \
 
 SRCS_NAME2 = count_types.c \
 			raytrace.c\
+			save_to_img.c\
 			set_vec_shape.c\
 			get_intersections.c\
 			light.c\
 			shadow.c\
 			set_structs.c\
 			new_triangle.c\
-			unrotate_vec2.c \
 			solve_quadratic.c \
 		   	normals.c \
 			make_threads.c\

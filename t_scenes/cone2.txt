@@ -6,9 +6,11 @@ CAMERA:
 
 REFLECTION: 50
 
-AMBIENT: 5
+FOV : 60
 
-SAMPLING: 3
+AMBIENT: 20
+
+SAMPLING: 2
 
 LIGHT:
 	P: x-20 y-120 z0
@@ -67,10 +69,11 @@ SPHERE:
 
 CONE:
 	R: x0 y0 z0
-	P: x50 y0 z0
+	P: x50 y0 z-10
 	V: x0 y0 z1
 	A: 30
 	M: 2
+	T: 0
 
 CONE:
 	R: x0 y45 z0

@@ -58,7 +58,7 @@
 # define KEY_W 13
 # define KEY_S 1
 # define ROT_DELTA 5.0F
-# define SPEC_POWER 42
+# define SPEC_POWER 66
 
 typedef struct	s_count
 {
@@ -177,6 +177,8 @@ void			color_div(t_col *col, double div);
 int				in_epsilon(double val);
 int				solve_quadratic(t_ray_sphere *rs, double *t);
 int				solve_quadratic_cylinder(t_ray *ray, t_cylinder *cyl,
+					t_ray_sphere *rs, double *t);
+int				solve_quadratic_cone(t_ray *ray, t_cone *cone,
 					t_ray_sphere *rs, double *t);
 void			unrotate_vec2(t_env *env, int i, t_vector *vec);
 void			print_vector(char *des, t_vector v);
