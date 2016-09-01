@@ -33,13 +33,6 @@ SRCS_NAME1 = main.c \
 			vector_norm.c \
 			vector_dir.c \
 			vector_project.c \
-			vector_unit.c \
-			vector_div.c \
-			vector_mult.c \
-			vector_comp.c \
-			in_epsilon.c \
-			rotate_tri.c \
-			key_hook.c \
 
 SRCS_NAME2 = count_types.c \
 			raytrace.c\
@@ -55,9 +48,6 @@ SRCS_NAME2 = count_types.c \
 			make_threads.c\
 			color_add.c \
 			close_window.c \
-			intersect_ray_trace.c \
-			intersect_triangle.c \
-			ft_plane_intersection.c \
 
 SRCS_NAME3 = ft_get_input.c \
 			 ft_count_objs.c \
@@ -73,9 +63,22 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_fill_object.c \
 			 ft_obj_vec_count.c \
 			 read_obj.c \
+
+SRCS_NAME4 = vector_unit.c \
+			 vector_div.c \
+			 vector_mult.c \
+			 vector_comp.c \
+			 in_epsilon.c \
+			 rotate_tri.c \
+			 key_hook.c \
 			 manipulate_object.c \
 			 intersect_object.c \
-			 ft_increment_progress.c
+			 ft_increment_progress.c\
+			 intersect_ray_trace.c \
+			 intersect_triangle.c \
+			 ft_plane_intersection.c
+
+SRCS4 = $(addprefix $(SRCS_PATH), $(SRCS_NAME4))
 
 SRCS3 = $(addprefix $(SRCS_PATH), $(SRCS_NAME3))
 
@@ -83,7 +86,7 @@ SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
 
 SRCS1 = $(addprefix $(SRCS_PATH), $(SRCS_NAME1))
 
-SRCS = $(SRCS1) $(SRCS2) $(SRCS3)
+SRCS = $(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4)
 
 OBJS_PATH = objs/
 
@@ -159,6 +162,7 @@ norm:
 	@norminette $(SRCS1)
 	@norminette $(SRCS2)
 	@norminette $(SRCS3)
+	@norminette	$(SRCS4)
 	@norminette $(HEADER)
 
 qme:

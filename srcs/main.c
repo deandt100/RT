@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 	}
 	ft_get_input(&env, argv[1]);
 	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "rtv1");
+	env.win = mlx_new_window(env.mlx, WIN_X, WIN_Y, "RT");
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
