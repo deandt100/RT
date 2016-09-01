@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/08/29 16:25:36 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/09/01 14:07:40 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,8 @@ SRCS_NAME3 = ft_get_input.c \
 			 ft_obj_vec_count.c \
 			 read_obj.c \
 			 manipulate_object.c \
-			 intersect_object.c 
+			 intersect_object.c \
+			 ft_increment_progress.c
 
 SRCS3 = $(addprefix $(SRCS_PATH), $(SRCS_NAME3))
 

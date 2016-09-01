@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:11:28 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/28 09:37:05 by oexall           ###   ########.fr       */
+/*   Updated: 2016/09/01 13:23:49 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ void	make_threads(t_env *env)
 	int			i;
 	t_env		e[NO_THREADS];
 	int			d;
+	int			tmp;
 
 	d = -1;
 	while (++d < 4)
 		e[d] = *env;
 	i = -1;
-	bounds[0] = (t_rt_thread){0, WIN_X, 0, WIN_Y / 4, &e[0]};
-	bounds[1] = (t_rt_thread){0, WIN_X, WIN_Y / 4, WIN_Y / 4 * 2, &e[1]};
-	bounds[2] = (t_rt_thread){0, WIN_X, WIN_Y / 4 * 2, WIN_Y / 4 * 3, &e[2]};
-	bounds[3] = (t_rt_thread){0, WIN_X, WIN_Y / 4 * 3, WIN_Y, &e[3]};
+	tmp = 0;
+	bounds[0] = (t_rt_thread){1, &tmp, 0, WIN_X, 0, WIN_Y / 4, &e[0]};
+	bounds[1] = (t_rt_thread){2, &tmp, 0, WIN_X, WIN_Y / 4, WIN_Y / 4 * 2, &e[1]};
+	bounds[2] = (t_rt_thread){3, &tmp, 0, WIN_X, WIN_Y / 4 * 2, WIN_Y / 4 * 3, &e[2]};
+	bounds[3] = (t_rt_thread){4, &tmp, 0, WIN_X, WIN_Y / 4 * 3, WIN_Y, &e[3]};
 	while (++i < NO_THREADS)
 		pthread_create(&thread_id[i], NULL, raytrace, &bounds[i]);
 	i = -1;

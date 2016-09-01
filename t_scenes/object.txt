@@ -12,7 +12,7 @@ FOV: 60
 #1 - 100
 AMBIENT: 30
 
-SAMPLING: 1
+SAMPLING: 2
 
 MATERIAL:
 	R: 210
@@ -62,7 +62,7 @@ PLANE:
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/cube1.obj
+	F: ./t_scenes/untitled.obj
 	R: x10 y0 z0
 	S: 2.0
 	P: x0 y0 z0

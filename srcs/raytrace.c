@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/28 10:55:57 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/09/01 14:08:06 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void				*raytrace(void *p)
 				save_to_img(t->env, shoot_ray(
 					t->env->ray, t->env->ref_level + 1, t->env), x, t->y_s);
 		}
+		if ((t->y_s % 10) == 0)
+			ft_increment_progress(t);
 		t->y_s++;
 	}
 	pthread_exit(NULL);
