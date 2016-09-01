@@ -29,6 +29,7 @@ void	cleanup3(t_env *env)
 			free(OBJ.objects[i].vectors);
 			free(OBJ.objects[i].normals);
 			free(OBJ.objects[i].faces);
+			free(OBJ.objects[i].path);
 			i++;
 		}
 		free(OBJ.objects);

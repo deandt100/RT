@@ -33,12 +33,15 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 
 static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 {
+	double	t;
+
 	env->ref_coef = 1.0F;
 	env->spec_coef = 1.0F;
 	env->ambient_coef = 1.0F;
 	while (env->ref_coef > 0.0F && level_max--)
 	{
-		if (get_intersections(env, &ray) == 0
+		t = 20000.0f;
+		if (get_intersections(env, &ray, &t) == 0
 			|| env->br == 1)
 			break ;
 		calc_lighting(env);

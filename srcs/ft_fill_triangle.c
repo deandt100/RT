@@ -55,6 +55,7 @@ void	ft_fill_triangle(int fd, t_env *env)
 		free(line);
 	}
 	rotate_tri(&TRI[i]);
+	TRI[i].normal = get_tri_normal(&TRI[i]);
 	if (ft_val_mat(env, TRI[i].shape.material, "Triangle") == -1)
 		exit(-1);
 }

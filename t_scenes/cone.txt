@@ -10,7 +10,7 @@ FOV : 60
 
 AMBIENT: 10
 
-SAMPLING: 1
+SAMPLING: 2
 
 LIGHT:
 	P: x-20 y-10 z20
@@ -131,7 +131,7 @@ CYLINDER:
 	r: 5
 	M: 2
 
-#OBJECT:
+OBJECT:
 	F: ./t_scenes/untitled.obj
 	R: x-5 y0 z-20
 	S: 0.4

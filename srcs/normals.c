@@ -12,6 +12,12 @@
 
 #include <rt.h>
 
+t_vector	get_tri_normal(t_triangle *tri)
+{
+	return (vector_unit(vector_cross(vector_sub(tri->v2, tri->v1),
+		vector_sub(tri->v3, tri->v1))));
+}
+
 /*
 ** Will get normal vector for cylinder where p is the point of
 ** intersection.

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <objects.h>
 #include <rt.h>
 
 int		sh_spheres(t_env *env, t_ray *light_ray, double t)
@@ -30,12 +29,11 @@ int		sh_spheres(t_env *env, t_ray *light_ray, double t)
 int		sh_tri(t_env *env, t_ray *light_ray, double t)
 {
 	int			k;
-	t_vector	n;
 
 	k = 0;
 	while (k < env->obj.num_tri)
 	{
-		if (intersect_ray_tri(light_ray, &TRI[k], &t, &n))
+		if (intersect_ray_tri(light_ray, &TRI[k], &t))
 			return (1);
 		k++;
 	}
@@ -47,7 +45,7 @@ int		sh_cylinder(t_env *env, t_ray *light_ray, double t)
 	int			k;
 
 	k = 0;
-	while (k < env->obj.num_tri)
+	while (k < env->obj.num_cyl)
 	{
 		if (intersect_ray_cylinder(light_ray, &CYLINDERS[k], &t))
 			return (1);
@@ -72,16 +70,15 @@ int		sh_cone(t_env *env, t_ray *light_ray, double t)
 
 int		sh_obj(t_env *env, t_ray *light_ray, double t)
 {
-	int		k;
-	int		j;
-	t_vector	n;
+	int			k;
+	int			j;
 
 	k = 0;
 	while (k < OBJ.num_objects)
 	{
 		j = -1;
 		while (++j < OBJ.objects[k].num_faces)
-			if (intersect_ray_tri(light_ray, &OBJ.objects[k].faces[j], &t, &n))
+			if (intersect_ray_tri(light_ray, &OBJ.objects[k].faces[j], &t))
 				return (1);
 		k++;
 	}

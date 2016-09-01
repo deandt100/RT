@@ -32,11 +32,11 @@ int			ft_get_obj(char *line, t_env *env, int i)
 	if (*line == '#')
 		return (1);
 	else if (ft_strchr(line, 'F'))
-		OBJ.objects[i].path = ft_strdup(&ft_strchr(line, ':')[1]); //FREE THIS
+		OBJ.objects[i].path = ft_strdup(&ft_strchr(line, ':')[1]);
 	else if (ft_strchr(line, 'P'))
 		OBJ.objects[i].pos = ft_get_vector(line);
 	else if (ft_strchr(line, 'R'))
-		OBJ.objects[i].rot = ft_get_vector(line);
+		OBJ.objects[i].rot = vector_unit(ft_get_vector(line));
 	else if (ft_strchr(line, 'M'))
 		OBJ.objects[i].material = ft_atoi(&ft_strchr(line, ':')[1]);
 	else if (ft_strchr(line, 'S') && ft_strchr(line, ':'))

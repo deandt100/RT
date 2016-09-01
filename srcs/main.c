@@ -16,7 +16,7 @@ int		expose(t_env *env)
 {
 	if (env->win && env->img.img)
 	{
-		mlx_clear_window(0, env->win);	
+		mlx_clear_window(0, env->win);
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	}
 	return (0);
@@ -25,6 +25,8 @@ int		expose(t_env *env)
 int		main(int argc, char **argv)
 {
 	t_env	env;
+	clock_t start;
+	int		ms;
 
 	if (argc != 2)
 	{
@@ -37,12 +39,10 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
-	clock_t start = clock();
+	start = clock();
 	make_threads(&env);
-	clock_t diff = clock() - start;
-	int msec = diff * 1000 / CLOCKS_PER_SEC;
-	printf("Time taken %d seconds %d milliseconds\n",
-			msec / 1000 / 4, msec % 1000 / 4);
+	ms = (clock() - start) * 1000 / CLOCKS_PER_SEC;
+	ft_printf("Render time %d s %d ms\n", ms / 1000 / 4, ms % 1000 / 4);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_hook(env.win, 17, 0L, &close_window, &env);

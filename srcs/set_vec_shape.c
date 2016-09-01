@@ -33,8 +33,6 @@ void	set_val_tri(t_env *env, double t, t_ray *ray)
 {
 	OBJ.new_start = vector_add(ray->start, vector_scale(t, ray->dir));
 	OBJ.normal = TRI[OBJ.cur_tri].normal;
-	OBJ.normal = vector_scale(1.0f / ABSV(OBJ.normal), OBJ.normal);
-	vector_norm(&OBJ.normal);
 	if (vector_dot(ray->dir, OBJ.normal) > 0.0F)
 		OBJ.normal = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[TRI[OBJ.cur_tri].shape.material];
@@ -44,14 +42,6 @@ void	set_val_cyl(t_env *env, double t, t_ray *ray)
 {
 	OBJ.new_start = vector_add(ray->start, vector_scale(t, ray->dir));
 	OBJ.normal = get_cyl_normal(CYLINDERS[OBJ.cur_cyl], OBJ.new_start);
-	/*
-	if (CYLINDERS[OBJ.cur_cyl].cap_hit == 1)
-		OBJ.normal = CYLINDERS[OBJ.cur_cyl].v;
-	else if (CYLINDERS[OBJ.cur_cyl].cap_hit == 2)
-		OBJ.normal = vector_sub((t_vector){0.0F, 0.0F, 0.0F}, CYLINDERS[OBJ.cur_cyl].v);
-	else*/
-		OBJ.normal = get_cyl_normal(CYLINDERS[OBJ.cur_cyl], OBJ.new_start);
-	//print_vector("normal", OBJ.normal);
 	OBJ.cur_mat = env->obj.mats[CYLINDERS[OBJ.cur_cyl].shape.material];
 }
 

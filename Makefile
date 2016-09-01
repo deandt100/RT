@@ -104,7 +104,7 @@ INCLUDES = -I includes/ -I libft/includes
 HEADER = 	$(INCLUDES_PATH)colours.h \
 			$(INCLUDES_PATH)light.h \
 			$(INCLUDES_PATH)vector.h \
-			$(INCLUDES_PATH)rtv1.h \
+			$(INCLUDES_PATH)rt.h \
 
 all: qme odir $(NAME)
 

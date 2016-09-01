@@ -74,7 +74,6 @@ typedef struct	s_triangle
 typedef struct	s_cylinder
 {
 	int			inf;
-	int			cap_hit;
 	t_vector	p;
 	double		scale;
 	t_vector	top;
@@ -101,31 +100,18 @@ typedef struct	s_cone
 }				t_cone;
 
 double			vector_dot(t_vector v1, t_vector v2);
-
 t_vector		new_vector(double x, double y, double z);
-
 t_vector		vector_sub(t_vector v1, t_vector v2);
-
 t_vector		vector_add(t_vector v1, t_vector v2);
-
 t_vector		vector_scale(double c, t_vector v);
-
 t_vector		vector_cross(t_vector v1, t_vector v2);
-
 t_vector		vector_div(t_vector *v1, t_vector *v2);
-
 t_vector		vector_mult(t_vector v1, t_vector v2);
-
 double			vector_dist(t_vector v1, t_vector v2);
-
 t_vector		vector_norm(t_vector *v);
-
 t_vector		vector_dir(t_vector s, t_vector t);
-
 t_vector		vector_unit(t_vector v);
-
 t_vector		vector_project(t_vector a, t_vector b);
-
 int				vector_comp(t_vector v1, t_vector v2);
 
 /*
@@ -133,16 +119,11 @@ int				vector_comp(t_vector v1, t_vector v2);
 */
 
 void			rotate_vec_x(double angle, t_vector *v);
-
 void			rotate_vec_y(double angle, t_vector *v);
-
 void			rotate_vec_z(double angle, t_vector *v);
-
 void			rotate_tri(t_triangle *tri);
-
 t_vector		get_cyl_normal(t_cylinder cyl, t_vector p);
-
 t_vector		get_cone_normal(t_cone	cone, t_vector p);
-
+t_vector		get_tri_normal(t_triangle *tri);
 
 #endif
