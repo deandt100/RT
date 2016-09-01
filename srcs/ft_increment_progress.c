@@ -6,7 +6,7 @@
 /*   By: oexall <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/01 14:04:45 by oexall            #+#    #+#             */
-/*   Updated: 2016/09/01 14:06:44 by oexall           ###   ########.fr       */
+/*   Updated: 2016/09/01 14:27:41 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_increment_progress(t_rt_thread *t)
 	prog = *(t->progress);
 	prog = prog / (WIN_Y / 10);
 	prog *= 100;
-
 	pthread_mutex_lock(&mutex);
 	*(t->progress) += 1;
 	ft_putnbr((int)prog);

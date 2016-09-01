@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/01 14:04:32 by oexall           ###   ########.fr       */
+/*   Updated: 2016/09/01 14:25:36 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # define KEY_S 1
 # define ROT_DELTA 5.0F
 # define SPEC_POWER 66
+# define PROGRESS env->progress
 
 typedef struct	s_count
 {
@@ -135,6 +136,7 @@ typedef struct	s_env
 	double		ref_coef;
 	double		fov;
 	int			sampling_level;
+	int			progress;
 }				t_env;
 
 typedef struct	s_rt_threhad
