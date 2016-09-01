@@ -31,7 +31,7 @@ int		intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5)
 	return (0);
 }
 
-void	gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist)
+void	gi_plane(t_env *env, t_ray *ray, double *t)
 {
 	int			i;
 	double		t5;
@@ -42,12 +42,9 @@ void	gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist)
 	while (++i < OBJ.num_planes)
 		if (intersect_ray_plane(ray, &OBJ.planes[i], &t5))
 		{
-			OBJ.planes[i].shape.dist = vector_dist(vector_add(ray->start,
-						vector_scale(t5, ray->dir)), ray->start);
-			if (OBJ.planes[i].shape.dist < *ref_dist)
+			if (t5 < *t)
 			{
 				*t = t5;
-				*ref_dist = OBJ.planes[i].shape.dist;
 				OBJ.cur_plane = i;
 				OBJ.cur_cone = -1;
 				OBJ.cur_sphere = -1;

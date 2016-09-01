@@ -79,6 +79,5 @@ void		ft_fill_camera(int fd, t_env *env)
 			r = 0;
 		free(line);
 	}
-	
 	OBJ.cam_rot = (t_vector){0.0F, 0.0F, 0.0F};
 }

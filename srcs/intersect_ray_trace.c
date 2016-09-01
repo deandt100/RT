@@ -73,25 +73,6 @@ int			intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, double *t)
 			return (solve_quadratic(&rs, t));
 		else
 			return (solve_quadratic_cylinder(ray, cyl, &rs, t));
-
-		/*
-		double tt = *t;
-		//return (solve_quadratic_cylinder(ray, cyl, &rs, t));
-	//	printf("scale = %f", cyl->scale);
-		cyl->bot = vector_scale(cyl->scale, vector_sub((t_vector){0, 0, 0}, cyl->v));
-		cyl->top = vector_scale(cyl->scale, cyl->v);
-		if (solve_quadratic(&rs, &tt) == 0)
-			return (0);
-		t_vector p = vector_add(ray->start, vector_scale(tt, ray->dir));
-		if (cyl->inf == 0 && vector_dot(cyl->v, vector_sub(p, cyl->bot)) > 0
-			&& vector_dot(cyl->v, vector_sub(p, cyl->top)) < 0)
-		{
-			*t = tt;
-			return (1);
-		}
-		if (cyl->inf == 1)
-			*t = tt;
-		return (cyl->inf);*/
 	}
 }
 

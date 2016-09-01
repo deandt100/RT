@@ -24,25 +24,25 @@ static int	check_in_shadow(t_env *env, double t, t_vector dist,
 		+ sh_obj(env, light_ray, t));
 }
 
-static void	phong_shade(t_env *env, t_ray light_ray, t_light light)
+static void	phong_shade(t_env *env, t_ray *light_ray, t_light *light)
 {
 	double		lam;
 	double		spec;
 	t_vector	dir;
 	double		term;
 
-	lam = vector_dot(light_ray.dir, OBJ.normal) * env->ref_coef;
-	dir = vector_sub(light_ray.dir, env->ray.dir);
+	lam = vector_dot(light_ray->dir, OBJ.normal) * env->ref_coef;
+	dir = vector_sub(light_ray->dir, env->ray.dir);
 	dir = vector_scale(1.0 / sqrt(vector_dot(dir, dir)), dir);
 	term = vector_dot(dir, OBJ.normal);
 	term = (term > 0.0f) ? term : 0.0f;
 	spec = powf(term, SPEC_POWER) * env->spec_coef;
-	OBJ.col.r += lam * light.intensity.r * OBJ.cur_mat.diffuse.r;
-	OBJ.col.g += lam * light.intensity.g * OBJ.cur_mat.diffuse.g;
-	OBJ.col.b += lam * light.intensity.b * OBJ.cur_mat.diffuse.b;
-	OBJ.col.r += spec * light.intensity.r * OBJ.cur_mat.diffuse.r;
-	OBJ.col.g += spec * light.intensity.g * OBJ.cur_mat.diffuse.g;
-	OBJ.col.b += spec * light.intensity.b * OBJ.cur_mat.diffuse.b;
+	OBJ.col.r += lam * light->intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += lam * light->intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += lam * light->intensity.b * OBJ.cur_mat.diffuse.b;
+	OBJ.col.r += spec * light->intensity.r * OBJ.cur_mat.diffuse.r;
+	OBJ.col.g += spec * light->intensity.g * OBJ.cur_mat.diffuse.g;
+	OBJ.col.b += spec * light->intensity.b * OBJ.cur_mat.diffuse.b;
 }
 
 static void	add_ambient(t_env *env, t_light *light)
@@ -75,7 +75,7 @@ void		calc_lighting(t_env *env)
 			continue ;
 		if (check_in_shadow(env, t, dist, &light_ray) == 0)
 		{
-			phong_shade(env, light_ray, OBJ.lights[j]);
+			phong_shade(env, &light_ray, &OBJ.lights[j]);
 			env->spec_n++;
 		}
 	}

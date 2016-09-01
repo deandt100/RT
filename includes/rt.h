@@ -241,14 +241,13 @@ void			set_val_tri(t_env *env, double t, t_ray *ray);
 void			set_val_cyl(t_env *env, double t, t_ray *ray);
 void			set_val_cone(t_env *env, double t, t_ray *ray);
 void			set_val_plane(t_env *env, double t, t_ray *ray);
-int				get_intersections(t_env *env, t_ray *ray);
+int				get_intersections(t_env *env, t_ray *ray, double *t);
 int				intersect_ray_sphere(t_ray *ray, t_sphere *sphere, double *t);
 int				intersect_ray_cylinder(t_ray *ray, t_cylinder *cyl, double *t);
-int				intersect_ray_tri(t_ray *r, t_triangle *tri, double *res,
-					t_vector *n);
+int				intersect_ray_tri(t_ray *r, t_triangle *tri, double *t);
 int				intersect_ray_cone(t_ray *ray, t_cone *cone, double *t);
 int				intersect_ray_plane(t_ray *ray, t_plane *pla, double *t5);
-void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
+void			gi_plane(t_env *env, t_ray *ray, double *t);
 
 /*
 ** Blender Obj Files.
@@ -257,7 +256,7 @@ void			gi_plane(t_env *env, t_ray *ray, double *t, double *ref_dist);
 int				intersect_ray_obj(t_ray *ray, t_object *obj,
 					double *t, int face);
 void			set_val_object(t_env *env, double t, t_ray *ray);
-void			gi_object(t_env *env, t_ray *ray, double *t, double *ref_dist);
+void			gi_object(t_env *env, t_ray *ray, double *t);
 
 /*
 ** Light & shadows

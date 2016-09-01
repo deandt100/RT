@@ -4,13 +4,13 @@ CAMERA:
 	P: x0 y-200 z0
 	U: x0 y0 z1
 
-REFLECTION: 50 
+REFLECTION: 1
 
 # 1 - 89.99...
 FOV: 60
 
 #1 - 100
-AMBIENT: 30
+AMBIENT: 20
 
 SAMPLING: 1
 
@@ -62,8 +62,8 @@ PLANE:
 	M: 2
 
 OBJECT:
-	F: ./t_scenes/cube1.obj
+	F: ./t_scenes/untitled.obj
 	R: x10 y0 z0
-	S: 2.0
+	S: 1.0
 	P: x0 y0 z0
 	M: 1

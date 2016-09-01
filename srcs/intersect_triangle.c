@@ -17,8 +17,7 @@
 ** the plane.
 */
 
-int			intersect_ray_tri(t_ray *ray, t_triangle *tri, double *res,
-		t_vector *n)
+int			intersect_ray_tri(t_ray *ray, t_triangle *tri, double *t)
 {
 	t_ray_tri	r;
 
@@ -40,7 +39,6 @@ int			intersect_ray_tri(t_ray *ray, t_triangle *tri, double *res,
 	r.tmp = vector_dot(r.e2, r.s3) * r.inv_d;
 	if (r.tmp < EPSILON)
 		return (0);
-	*res = r.tmp - 0.05F;
-	*n = vector_cross(r.e1, r.e2);
+	*t = r.tmp - 0.005F;
 	return (1);
 }
