@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/09/02 11:03:10 by daviwel          ###   ########.fr        #
+#    Updated: 2016/09/02 14:11:57 by oexall           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,9 @@ SRCS_NAME4 = vector_unit.c \
 			 ft_increment_progress.c\
 			 intersect_ray_trace.c \
 			 intersect_triangle.c \
-			 ft_plane_intersection.c
+			 ft_plane_intersection.c \
+			 ft_refract_ray.c \
+			 ft_combine_col.c
 
 SRCS4 = $(addprefix $(SRCS_PATH), $(SRCS_NAME4))
 

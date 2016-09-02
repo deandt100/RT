@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/07 07:24:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/09/01 14:08:06 by oexall           ###   ########.fr       */
+/*   Updated: 2016/09/02 15:12:28 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ static void			reflect_ray(t_env *env, t_ray *ray)
 static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 {
 	double	t;
+	t_col	refract;
 
 	env->ref_coef = 1.0F;
 	env->spec_coef = 1.0F;
 	env->ambient_coef = 1.0F;
+	refract = (t_col){0, 0, 0};
 	while (env->ref_coef > 0.0F && level_max--)
 	{
 		t = 20000.0f;
@@ -46,8 +48,11 @@ static t_col		shoot_ray(t_ray ray, int level_max, t_env *env)
 			break ;
 		calc_lighting(env);
 		reflect_ray(env, &ray);
+			if (OBJ.cur_mat.refraction > 0.0F)
+				refract = shoot_ray(ft_refract_ray(env, ray), 
+					level_max, env);
 	}
-	return (OBJ.col);
+	return (ft_combine_col(OBJ.col, refract));
 }
 
 void				create_ray(double x, double y, t_ray *ray, t_env *env)

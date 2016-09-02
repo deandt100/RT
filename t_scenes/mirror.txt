@@ -77,6 +77,8 @@ PLANE
 	M: 2
 
 OBJECT:
-	F: t_scenes/monkey.obj
+	F: t_scenes/cube1.obj
 	P: x0 y0 z0
+	R: x90 y0 z90
+	S: 1
 	M: 1

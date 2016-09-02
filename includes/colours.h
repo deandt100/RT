@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/04 08:59:41 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/25 16:38:30 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/09/02 13:10:11 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_col
 
 typedef struct	s_material
 {
+	double		refraction;
 	t_col		diffuse;
 	double		reflection;
 	double		specular;

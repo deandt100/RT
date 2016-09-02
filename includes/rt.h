@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:09:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/01 14:25:36 by oexall           ###   ########.fr       */
+/*   Updated: 2016/09/02 14:23:02 by oexall           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ typedef struct	s_env
 	int			progress;
 	int			render;
 	t_render	render_vals;
+	int			in_obj;
 }				t_env;
 
 typedef struct	s_rt_threhad
@@ -252,6 +253,8 @@ void			calc_lighting(t_env *env);
 void			*raytrace(void *p);
 void			make_threads(t_env *env);
 void			ft_increment_progress(t_rt_thread *t);
+t_ray			ft_refract_ray(t_env *env, t_ray ray1);
+t_col			ft_combine_col(t_col col1, t_col col2);
 void			set_val_sphere(t_env *env, double t, t_ray *ray);
 void			set_val_tri(t_env *env, double t, t_ray *ray);
 void			set_val_cyl(t_env *env, double t, t_ray *ray);
