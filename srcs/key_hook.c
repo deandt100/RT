@@ -60,6 +60,12 @@ int		keyhook2(int keycode, t_env *env)
 int		key_hook(int keycode, t_env *env)
 {
 	ft_printf("key = %d\n", keycode);
+	if (keycode == KEY_R)
+	{
+		env->render = (env->render == 1) ? 0 : 1;
+		set_render_val(env, &env->render_vals);
+		re_render(env, 0);
+	}
 	if (keycode == EXIT)
 	{
 		cleanup(env);

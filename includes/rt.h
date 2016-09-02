@@ -57,6 +57,7 @@
 # define KEY_LEFT 123
 # define KEY_W 13
 # define KEY_S 1
+# define KEY_R 15
 # define ROT_DELTA 5.0F
 # define SPEC_POWER 66
 # define PROGRESS env->progress
@@ -119,6 +120,12 @@ typedef struct	s_obj
 	int			in_shadow;
 }				t_obj;
 
+typedef struct	s_render
+{
+	int			ref_level;
+	int			sampling_level;
+}				t_render;
+
 typedef struct	s_env
 {
 	void		*mlx;
@@ -137,6 +144,8 @@ typedef struct	s_env
 	double		fov;
 	int			sampling_level;
 	int			progress;
+	int			render;
+	t_render	render_vals;
 }				t_env;
 
 typedef struct	s_rt_threhad
@@ -176,6 +185,8 @@ typedef struct	s_ray_tri
 	t_vector	s3;
 }				t_ray_tri;
 
+void			init_render_val(t_env *env, t_render *render);
+void			set_render_val(t_env *env, t_render *render);
 void			color_add(t_col *col, t_col add);
 void			color_div(t_col *col, double div);
 int				in_epsilon(double val);

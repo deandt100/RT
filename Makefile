@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/22 11:13:51 by ggroener          #+#    #+#              #
-#    Updated: 2016/09/01 14:07:40 by oexall           ###   ########.fr        #
+#    Updated: 2016/09/02 11:03:10 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS_NAME1 = main.c \
 			vector_norm.c \
 			vector_dir.c \
 			vector_project.c \
+			set_render_val.c
 
 SRCS_NAME2 = count_types.c \
 			raytrace.c\

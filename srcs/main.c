@@ -39,6 +39,9 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
+	env.render = 1;
+	init_render_val(&env, &env.render_vals);
+	set_render_val(&env, &env.render_vals);
 	start = clock();
 	make_threads(&env);
 	ms = (clock() - start) * 1000 / CLOCKS_PER_SEC;
