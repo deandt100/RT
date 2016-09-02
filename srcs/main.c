@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/02 11:50:00 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/02 11:54:37 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int		expose(t_env *env)
 		mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	}
 	return (0);
+}
+
+void	init_render(t_env *env)
+{
+	env->render = 1;
+	init_render_val(env, &env->render_vals);
+	set_render_val(env, &env->render_vals);
 }
 
 int		main(int argc, char **argv)
@@ -39,9 +46,7 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
-	env.render = 1;
-	init_render_val(&env, &env.render_vals);
-	set_render_val(&env, &env.render_vals);
+	init_render(&env);
 	start = clock();
 	make_threads(&env);
 	ms = (clock() - start) * 1000 / CLOCKS_PER_SEC;
