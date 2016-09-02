@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 08:19:55 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/08/28 10:40:29 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/09/02 11:50:12 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@ static int	check_in_shadow(t_env *env, double t, t_vector dist,
 {
 	light_ray->start = OBJ.new_start;
 	light_ray->dir = vector_unit(vector_scale((1 / t), dist));
-	return (sh_spheres(env, light_ray, t)
-		+ sh_tri(env, light_ray, t)
-		+ sh_cylinder(env, light_ray, t)
-		+ sh_cone(env, light_ray, t)
-		+ sh_obj(env, light_ray, t));
+	if (env->render == 1)
+	{
+		return (sh_spheres(env, light_ray, t)
+			+ sh_tri(env, light_ray, t)
+			+ sh_cylinder(env, light_ray, t)
+			+ sh_cone(env, light_ray, t)
+			+ sh_obj(env, light_ray, t));
+	}
+	else
+		return (0);
 }
 
 static void	phong_shade(t_env *env, t_ray *light_ray, t_light *light)
