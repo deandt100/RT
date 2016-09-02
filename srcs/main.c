@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/01 08:32:34 by daviwel           #+#    #+#             */
-/*   Updated: 2016/09/02 11:54:37 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:32:02 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ int		expose(t_env *env)
 	return (0);
 }
 
-void	init_render(t_env *env)
+void	init_render(t_env *env, int argc, char **argv)
 {
 	env->render = 1;
+	if (argc == 3)
+		if (ft_strcmp(argv[2], "-b") == 0)
+			env->render = 0;
 	init_render_val(env, &env->render_vals);
 	set_render_val(env, &env->render_vals);
 }
@@ -35,7 +38,7 @@ int		main(int argc, char **argv)
 	clock_t start;
 	int		ms;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		ft_printf("Please include a scene file\n");
 		return (0);
@@ -46,7 +49,7 @@ int		main(int argc, char **argv)
 	env.img.img = mlx_new_image(env.mlx, WIN_X, WIN_Y);
 	env.img.data = mlx_get_data_addr(env.img.img, &env.img.bpp,
 		&env.img.s, &env.img.e);
-	init_render(&env);
+	init_render(&env, argc, argv);
 	start = clock();
 	make_threads(&env);
 	ms = (clock() - start) * 1000 / CLOCKS_PER_SEC;
