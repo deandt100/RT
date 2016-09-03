@@ -14,6 +14,6 @@
 
 int	close_window(t_env *env)
 {
+	cleanup(env);
 	exit(0);
-	env->mlx = NULL;
 }

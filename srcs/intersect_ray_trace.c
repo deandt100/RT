@@ -34,7 +34,7 @@ int			intersect_ray_cone(t_ray *ray, t_cone *cone, double *t)
 		* vector_dot(V, cone->v) * vector_dot(del_p, cone->v);
 	rs.c = SQR(cos(cone->alpha)) * VEC_SQR(b) - SQR(sin(cone->alpha)) *
 		SQR(vector_dot(del_p, cone->v));
-	rs.discr = SQR(rs.b) - (4 * rs.a * rs.c);
+	rs.discr = SQR(rs.b) - (4.0F * rs.a * rs.c);
 	if (rs.discr < 0.0F)
 		return (0);
 	else
