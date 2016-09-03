@@ -14,10 +14,10 @@
 
 void	ft_new_cone(t_cone *c)
 {
-	c->rot = (t_vector){0, 0, 0};
-	c->p = (t_vector){0, 0, 0};
-	c->v = (t_vector){0, 0, 0};
-	c->scale = 42;
+	c->rot = (t_vector){0.0F, 0.0F, 0.0F};
+	c->p = (t_vector){0.0F, 0.0F, 0.0F};
+	c->v = (t_vector){0.0F, 0.0F, 0.0F};
+	c->scale = 42.0F;
 	c->alpha = 0;
 	c->shape.material = 0;
 	c->inf = 1;
