@@ -51,8 +51,6 @@ double			ft_atod(const char *str)
 	integer_value = ft_atoi(integer_part);
 	free(integer_part);
 	floating_value = get_floating_value(((char *)str) + end + 1);
-	//return (((double)integer_value + floating_value) *
-	//		((str[0] == '-') ? -1 : 1));
 	return ((double)integer_value +
 			(floating_value * ((str[0] == '-') ? -1 : 1)));
 }

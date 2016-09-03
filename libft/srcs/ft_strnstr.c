@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *litl, size_t len)
 {
 	size_t	i;
 	size_t	stop;
@@ -21,13 +21,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	stop = 0;
 	i = 0;
-	l_len = ft_strlen(little);
-	if (ft_strlen(big) >= ft_strlen(little))
+	l_len = ft_strlen(litl);
+	if (ft_strlen(big) >= ft_strlen(litl))
 	{
 		buff = (char*)big;
 		while (buff && stop < len)
 		{
-			while (buff[i] == little[i] && stop < len)
+			while (buff[i] == litl[i] && stop < len)
 			{
 				i++;
 				stop++;
